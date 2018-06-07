@@ -1,6 +1,7 @@
 package com.landexp.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 
@@ -68,6 +69,7 @@ public class SearchTracking implements Serializable {
     @Column(name = "land_type")
     private LandType landType;
 
+    @CreationTimestamp
     @Column(name = "create_at")
     private LocalDate createAt;
 

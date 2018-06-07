@@ -1,6 +1,7 @@
 package com.landexp.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 
@@ -38,6 +39,7 @@ public class HouseTracking implements Serializable {
     @Column(name = "description")
     private String description;
 
+    @CreationTimestamp
     @Column(name = "create_at")
     private LocalDate createAt;
 

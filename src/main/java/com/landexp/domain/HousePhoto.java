@@ -1,6 +1,8 @@
 package com.landexp.domain;
 
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
 
 import org.springframework.data.elasticsearch.annotations.Document;
@@ -25,6 +27,7 @@ public class HousePhoto implements Serializable {
     @Column(name = "name")
     private String name;
 
+    @CreationTimestamp
     @Column(name = "create_at")
     private LocalDate createAt;
 

@@ -1,6 +1,8 @@
 package com.landexp.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 
@@ -25,9 +27,11 @@ public class UserRegion implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @CreationTimestamp
     @Column(name = "create_at")
     private LocalDate createAt;
 
+    @UpdateTimestamp
     @Column(name = "update_at")
     private LocalDate updateAt;
 

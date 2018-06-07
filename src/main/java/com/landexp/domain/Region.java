@@ -1,6 +1,9 @@
 package com.landexp.domain;
 
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
 
 import org.springframework.data.elasticsearch.annotations.Document;
@@ -28,9 +31,11 @@ public class Region implements Serializable {
     @Column(name = "enabled")
     private Boolean enabled;
 
+    @CreationTimestamp
     @Column(name = "create_at")
     private LocalDate createAt;
 
+    @UpdateTimestamp
     @Column(name = "update_at")
     private LocalDate updateAt;
 
