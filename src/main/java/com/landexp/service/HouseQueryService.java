@@ -101,14 +101,23 @@ public class HouseQueryService extends QueryService<House> {
             if (criteria.getDirection() != null) {
                 specification = specification.and(buildSpecification(criteria.getDirection(), House_.direction));
             }
+            if (criteria.getDirectionBalcony() != null) {
+                specification = specification.and(buildSpecification(criteria.getDirectionBalcony(), House_.directionBalcony));
+            }
             if (criteria.getFloor() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getFloor(), House_.floor));
+            }
+            if (criteria.getNumberOfFloor() != null) {
+                specification = specification.and(buildRangeSpecification(criteria.getNumberOfFloor(), House_.numberOfFloor));
             }
             if (criteria.getBathRoom() != null) {
                 specification = specification.and(buildRangeSpecification(criteria.getBathRoom(), House_.bathRoom));
             }
             if (criteria.getParking() != null) {
                 specification = specification.and(buildSpecification(criteria.getParking(), House_.parking));
+            }
+            if (criteria.getFurniture() != null) {
+                specification = specification.and(buildSpecification(criteria.getFurniture(), House_.furniture));
             }
             if (criteria.getBedRoom() != null) {
                 specification = specification.and(buildRangeSpecification(criteria.getBedRoom(), House_.bedRoom));

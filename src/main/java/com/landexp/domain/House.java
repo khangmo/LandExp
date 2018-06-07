@@ -61,14 +61,24 @@ public class House implements Serializable {
     @Column(name = "direction")
     private DirectionType direction;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "direction_balcony")
+    private DirectionType directionBalcony;
+
     @Column(name = "floor")
     private String floor;
+
+    @Column(name = "number_of_floor")
+    private Float numberOfFloor;
 
     @Column(name = "bath_room")
     private Integer bathRoom;
 
     @Column(name = "parking")
     private Boolean parking;
+
+    @Column(name = "furniture")
+    private Boolean furniture;
 
     @Column(name = "bed_room")
     private Integer bedRoom;
@@ -222,6 +232,19 @@ public class House implements Serializable {
         this.direction = direction;
     }
 
+    public DirectionType getDirectionBalcony() {
+        return directionBalcony;
+    }
+
+    public House directionBalcony(DirectionType directionBalcony) {
+        this.directionBalcony = directionBalcony;
+        return this;
+    }
+
+    public void setDirectionBalcony(DirectionType directionBalcony) {
+        this.directionBalcony = directionBalcony;
+    }
+
     public String getFloor() {
         return floor;
     }
@@ -233,6 +256,19 @@ public class House implements Serializable {
 
     public void setFloor(String floor) {
         this.floor = floor;
+    }
+
+    public Float getNumberOfFloor() {
+        return numberOfFloor;
+    }
+
+    public House numberOfFloor(Float numberOfFloor) {
+        this.numberOfFloor = numberOfFloor;
+        return this;
+    }
+
+    public void setNumberOfFloor(Float numberOfFloor) {
+        this.numberOfFloor = numberOfFloor;
     }
 
     public Integer getBathRoom() {
@@ -259,6 +295,19 @@ public class House implements Serializable {
 
     public void setParking(Boolean parking) {
         this.parking = parking;
+    }
+
+    public Boolean isFurniture() {
+        return furniture;
+    }
+
+    public House furniture(Boolean furniture) {
+        this.furniture = furniture;
+        return this;
+    }
+
+    public void setFurniture(Boolean furniture) {
+        this.furniture = furniture;
     }
 
     public Integer getBedRoom() {
@@ -475,9 +524,12 @@ public class House implements Serializable {
             ", acreage=" + getAcreage() +
             ", discount=" + getDiscount() +
             ", direction='" + getDirection() + "'" +
+            ", directionBalcony='" + getDirectionBalcony() + "'" +
             ", floor='" + getFloor() + "'" +
+            ", numberOfFloor=" + getNumberOfFloor() +
             ", bathRoom=" + getBathRoom() +
             ", parking='" + isParking() + "'" +
+            ", furniture='" + isFurniture() + "'" +
             ", bedRoom=" + getBedRoom() +
             ", landType='" + getLandType() + "'" +
             ", saleType='" + getSaleType() + "'" +

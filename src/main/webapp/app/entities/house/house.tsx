@@ -139,14 +139,23 @@ export class House extends React.Component<IHouseProps, IHouseState> {
                 <th className="hand" onClick={this.sort('direction')}>
                   <Translate contentKey="landexpApp.house.direction">Direction</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
+                <th className="hand" onClick={this.sort('directionBalcony')}>
+                  <Translate contentKey="landexpApp.house.directionBalcony">Direction Balcony</Translate> <FontAwesomeIcon icon="sort" />
+                </th>
                 <th className="hand" onClick={this.sort('floor')}>
                   <Translate contentKey="landexpApp.house.floor">Floor</Translate> <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={this.sort('numberOfFloor')}>
+                  <Translate contentKey="landexpApp.house.numberOfFloor">Number Of Floor</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th className="hand" onClick={this.sort('bathRoom')}>
                   <Translate contentKey="landexpApp.house.bathRoom">Bath Room</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th className="hand" onClick={this.sort('parking')}>
                   <Translate contentKey="landexpApp.house.parking">Parking</Translate> <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={this.sort('furniture')}>
+                  <Translate contentKey="landexpApp.house.furniture">Furniture</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th className="hand" onClick={this.sort('bedRoom')}>
                   <Translate contentKey="landexpApp.house.bedRoom">Bed Room</Translate> <FontAwesomeIcon icon="sort" />
@@ -208,9 +217,12 @@ export class House extends React.Component<IHouseProps, IHouseState> {
                   <td>{house.acreage}</td>
                   <td>{house.discount}</td>
                   <td>{house.direction}</td>
+                  <td>{house.directionBalcony}</td>
                   <td>{house.floor}</td>
+                  <td>{house.numberOfFloor}</td>
                   <td>{house.bathRoom}</td>
                   <td>{house.parking ? 'true' : 'false'}</td>
+                  <td>{house.furniture ? 'true' : 'false'}</td>
                   <td>{house.bedRoom}</td>
                   <td>{house.landType}</td>
                   <td>{house.saleType}</td>

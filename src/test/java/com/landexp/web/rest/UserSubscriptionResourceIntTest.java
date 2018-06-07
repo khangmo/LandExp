@@ -92,7 +92,7 @@ public class UserSubscriptionResourceIntTest {
     private static final Boolean UPDATED_PARKING = true;
 
     private static final LandType DEFAULT_LAND_TYPE = LandType.APARTMENT;
-    private static final LandType UPDATED_LAND_TYPE = LandType.PENHOUSE;
+    private static final LandType UPDATED_LAND_TYPE = LandType.PEN_HOUSE;
 
     private static final Boolean DEFAULT_ENABLED = false;
     private static final Boolean UPDATED_ENABLED = true;

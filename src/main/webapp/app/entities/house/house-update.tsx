@@ -272,10 +272,37 @@ export class HouseUpdate extends React.Component<IHouseUpdateProps, IHouseUpdate
                   </AvInput>
                 </AvGroup>
                 <AvGroup>
+                  <Label id="directionBalconyLabel">
+                    <Translate contentKey="landexpApp.house.directionBalcony">Direction Balcony</Translate>
+                  </Label>
+                  <AvInput
+                    id="house-directionBalcony"
+                    type="select"
+                    className="form-control"
+                    name="directionBalcony"
+                    value={(!isNew && house.directionBalcony) || 'NORTH'}
+                  >
+                    <option value="NORTH">NORTH</option>
+                    <option value="SOUTH">SOUTH</option>
+                    <option value="EAST">EAST</option>
+                    <option value="WEST">WEST</option>
+                    <option value="EAST_NORTH">EAST_NORTH</option>
+                    <option value="WEST_NORTH">WEST_NORTH</option>
+                    <option value="EAST_SOUTH">EAST_SOUTH</option>
+                    <option value="WEST_SOUTH">WEST_SOUTH</option>
+                  </AvInput>
+                </AvGroup>
+                <AvGroup>
                   <Label id="floorLabel" for="floor">
                     <Translate contentKey="landexpApp.house.floor">Floor</Translate>
                   </Label>
                   <AvField id="house-floor" type="text" name="floor" />
+                </AvGroup>
+                <AvGroup>
+                  <Label id="numberOfFloorLabel" for="numberOfFloor">
+                    <Translate contentKey="landexpApp.house.numberOfFloor">Number Of Floor</Translate>
+                  </Label>
+                  <AvField id="house-numberOfFloor" type="number" className="form-control" name="numberOfFloor" />
                 </AvGroup>
                 <AvGroup>
                   <Label id="bathRoomLabel" for="bathRoom">
@@ -287,6 +314,12 @@ export class HouseUpdate extends React.Component<IHouseUpdateProps, IHouseUpdate
                   <Label id="parkingLabel" check>
                     <AvInput id="house-parking" type="checkbox" className="form-control" name="parking" />
                     <Translate contentKey="landexpApp.house.parking">Parking</Translate>
+                  </Label>
+                </AvGroup>
+                <AvGroup>
+                  <Label id="furnitureLabel" check>
+                    <AvInput id="house-furniture" type="checkbox" className="form-control" name="furniture" />
+                    <Translate contentKey="landexpApp.house.furniture">Furniture</Translate>
                   </Label>
                 </AvGroup>
                 <AvGroup>
@@ -307,12 +340,16 @@ export class HouseUpdate extends React.Component<IHouseUpdateProps, IHouseUpdate
                     value={(!isNew && house.landType) || 'APARTMENT'}
                   >
                     <option value="APARTMENT">APARTMENT</option>
-                    <option value="PENHOUSE">PENHOUSE</option>
+                    <option value="PEN_HOUSE">PEN_HOUSE</option>
                     <option value="HOME">HOME</option>
                     <option value="HOME_VILLA">HOME_VILLA</option>
                     <option value="HOME_STREET_SIDE">HOME_STREET_SIDE</option>
+                    <option value="MOTEL_ROOM">MOTEL_ROOM</option>
+                    <option value="OFFICE">OFFICE</option>
                     <option value="LAND_SCAPE">LAND_SCAPE</option>
                     <option value="LAND_OF_PROJECT">LAND_OF_PROJECT</option>
+                    <option value="LAND_FARM">LAND_FARM</option>
+                    <option value="LAND_RESORT">LAND_RESORT</option>
                     <option value="WAREHOUSES">WAREHOUSES</option>
                     <option value="KIOSKS">KIOSKS</option>
                     <option value="OTHER">OTHER</option>

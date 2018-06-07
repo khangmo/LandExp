@@ -4,6 +4,7 @@ import java.io.Serializable;
 import com.landexp.domain.enumeration.UserActionType;
 import com.landexp.domain.enumeration.MoneyType;
 import com.landexp.domain.enumeration.DirectionType;
+import com.landexp.domain.enumeration.DirectionType;
 import com.landexp.domain.enumeration.LandType;
 import com.landexp.domain.enumeration.SaleType;
 import com.landexp.domain.enumeration.StatusType;
@@ -84,11 +85,17 @@ public class HouseCriteria implements Serializable {
 
     private DirectionTypeFilter direction;
 
+    private DirectionTypeFilter directionBalcony;
+
     private StringFilter floor;
+
+    private FloatFilter numberOfFloor;
 
     private IntegerFilter bathRoom;
 
     private BooleanFilter parking;
+
+    private BooleanFilter furniture;
 
     private IntegerFilter bedRoom;
 
@@ -185,12 +192,28 @@ public class HouseCriteria implements Serializable {
         this.direction = direction;
     }
 
+    public DirectionTypeFilter getDirectionBalcony() {
+        return directionBalcony;
+    }
+
+    public void setDirectionBalcony(DirectionTypeFilter directionBalcony) {
+        this.directionBalcony = directionBalcony;
+    }
+
     public StringFilter getFloor() {
         return floor;
     }
 
     public void setFloor(StringFilter floor) {
         this.floor = floor;
+    }
+
+    public FloatFilter getNumberOfFloor() {
+        return numberOfFloor;
+    }
+
+    public void setNumberOfFloor(FloatFilter numberOfFloor) {
+        this.numberOfFloor = numberOfFloor;
     }
 
     public IntegerFilter getBathRoom() {
@@ -207,6 +230,14 @@ public class HouseCriteria implements Serializable {
 
     public void setParking(BooleanFilter parking) {
         this.parking = parking;
+    }
+
+    public BooleanFilter getFurniture() {
+        return furniture;
+    }
+
+    public void setFurniture(BooleanFilter furniture) {
+        this.furniture = furniture;
     }
 
     public IntegerFilter getBedRoom() {
@@ -332,9 +363,12 @@ public class HouseCriteria implements Serializable {
                 (acreage != null ? "acreage=" + acreage + ", " : "") +
                 (discount != null ? "discount=" + discount + ", " : "") +
                 (direction != null ? "direction=" + direction + ", " : "") +
+                (directionBalcony != null ? "directionBalcony=" + directionBalcony + ", " : "") +
                 (floor != null ? "floor=" + floor + ", " : "") +
+                (numberOfFloor != null ? "numberOfFloor=" + numberOfFloor + ", " : "") +
                 (bathRoom != null ? "bathRoom=" + bathRoom + ", " : "") +
                 (parking != null ? "parking=" + parking + ", " : "") +
+                (furniture != null ? "furniture=" + furniture + ", " : "") +
                 (bedRoom != null ? "bedRoom=" + bedRoom + ", " : "") +
                 (landType != null ? "landType=" + landType + ", " : "") +
                 (saleType != null ? "saleType=" + saleType + ", " : "") +

@@ -6,6 +6,7 @@ import java.util.Objects;
 import com.landexp.domain.enumeration.UserActionType;
 import com.landexp.domain.enumeration.MoneyType;
 import com.landexp.domain.enumeration.DirectionType;
+import com.landexp.domain.enumeration.DirectionType;
 import com.landexp.domain.enumeration.LandType;
 import com.landexp.domain.enumeration.SaleType;
 import com.landexp.domain.enumeration.StatusType;
@@ -31,11 +32,17 @@ public class HouseDTO implements Serializable {
 
     private DirectionType direction;
 
+    private DirectionType directionBalcony;
+
     private String floor;
+
+    private Float numberOfFloor;
 
     private Integer bathRoom;
 
     private Boolean parking;
+
+    private Boolean furniture;
 
     private Integer bedRoom;
 
@@ -139,12 +146,28 @@ public class HouseDTO implements Serializable {
         this.direction = direction;
     }
 
+    public DirectionType getDirectionBalcony() {
+        return directionBalcony;
+    }
+
+    public void setDirectionBalcony(DirectionType directionBalcony) {
+        this.directionBalcony = directionBalcony;
+    }
+
     public String getFloor() {
         return floor;
     }
 
     public void setFloor(String floor) {
         this.floor = floor;
+    }
+
+    public Float getNumberOfFloor() {
+        return numberOfFloor;
+    }
+
+    public void setNumberOfFloor(Float numberOfFloor) {
+        this.numberOfFloor = numberOfFloor;
     }
 
     public Integer getBathRoom() {
@@ -161,6 +184,14 @@ public class HouseDTO implements Serializable {
 
     public void setParking(Boolean parking) {
         this.parking = parking;
+    }
+
+    public Boolean isFurniture() {
+        return furniture;
+    }
+
+    public void setFurniture(Boolean furniture) {
+        this.furniture = furniture;
     }
 
     public Integer getBedRoom() {
@@ -347,9 +378,12 @@ public class HouseDTO implements Serializable {
             ", acreage=" + getAcreage() +
             ", discount=" + getDiscount() +
             ", direction='" + getDirection() + "'" +
+            ", directionBalcony='" + getDirectionBalcony() + "'" +
             ", floor='" + getFloor() + "'" +
+            ", numberOfFloor=" + getNumberOfFloor() +
             ", bathRoom=" + getBathRoom() +
             ", parking='" + isParking() + "'" +
+            ", furniture='" + isFurniture() + "'" +
             ", bedRoom=" + getBedRoom() +
             ", landType='" + getLandType() + "'" +
             ", saleType='" + getSaleType() + "'" +

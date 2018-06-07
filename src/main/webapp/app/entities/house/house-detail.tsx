@@ -71,11 +71,23 @@ export class HouseDetail extends React.Component<IHouseDetailProps> {
             </dt>
             <dd>{house.direction}</dd>
             <dt>
+              <span id="directionBalcony">
+                <Translate contentKey="landexpApp.house.directionBalcony">Direction Balcony</Translate>
+              </span>
+            </dt>
+            <dd>{house.directionBalcony}</dd>
+            <dt>
               <span id="floor">
                 <Translate contentKey="landexpApp.house.floor">Floor</Translate>
               </span>
             </dt>
             <dd>{house.floor}</dd>
+            <dt>
+              <span id="numberOfFloor">
+                <Translate contentKey="landexpApp.house.numberOfFloor">Number Of Floor</Translate>
+              </span>
+            </dt>
+            <dd>{house.numberOfFloor}</dd>
             <dt>
               <span id="bathRoom">
                 <Translate contentKey="landexpApp.house.bathRoom">Bath Room</Translate>
@@ -88,6 +100,12 @@ export class HouseDetail extends React.Component<IHouseDetailProps> {
               </span>
             </dt>
             <dd>{house.parking ? 'true' : 'false'}</dd>
+            <dt>
+              <span id="furniture">
+                <Translate contentKey="landexpApp.house.furniture">Furniture</Translate>
+              </span>
+            </dt>
+            <dd>{house.furniture ? 'true' : 'false'}</dd>
             <dt>
               <span id="bedRoom">
                 <Translate contentKey="landexpApp.house.bedRoom">Bed Room</Translate>

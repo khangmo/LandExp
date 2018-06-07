@@ -267,12 +267,16 @@ export class SearchTrackingUpdate extends React.Component<ISearchTrackingUpdateP
                     value={(!isNew && searchTracking.landType) || 'APARTMENT'}
                   >
                     <option value="APARTMENT">APARTMENT</option>
-                    <option value="PENHOUSE">PENHOUSE</option>
+                    <option value="PEN_HOUSE">PEN_HOUSE</option>
                     <option value="HOME">HOME</option>
                     <option value="HOME_VILLA">HOME_VILLA</option>
                     <option value="HOME_STREET_SIDE">HOME_STREET_SIDE</option>
+                    <option value="MOTEL_ROOM">MOTEL_ROOM</option>
+                    <option value="OFFICE">OFFICE</option>
                     <option value="LAND_SCAPE">LAND_SCAPE</option>
                     <option value="LAND_OF_PROJECT">LAND_OF_PROJECT</option>
+                    <option value="LAND_FARM">LAND_FARM</option>
+                    <option value="LAND_RESORT">LAND_RESORT</option>
                     <option value="WAREHOUSES">WAREHOUSES</option>
                     <option value="KIOSKS">KIOSKS</option>
                     <option value="OTHER">OTHER</option>

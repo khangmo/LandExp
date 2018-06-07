@@ -26,12 +26,16 @@ export const enum DirectionType {
 
 export const enum LandType {
   APARTMENT = 'APARTMENT',
-  PENHOUSE = 'PENHOUSE',
+  PEN_HOUSE = 'PEN_HOUSE',
   HOME = 'HOME',
   HOME_VILLA = 'HOME_VILLA',
   HOME_STREET_SIDE = 'HOME_STREET_SIDE',
+  MOTEL_ROOM = 'MOTEL_ROOM',
+  OFFICE = 'OFFICE',
   LAND_SCAPE = 'LAND_SCAPE',
   LAND_OF_PROJECT = 'LAND_OF_PROJECT',
+  LAND_FARM = 'LAND_FARM',
+  LAND_RESORT = 'LAND_RESORT',
   WAREHOUSES = 'WAREHOUSES',
   KIOSKS = 'KIOSKS',
   OTHER = 'OTHER'
@@ -60,9 +64,12 @@ export interface IHouse {
   acreage?: number;
   discount?: number;
   direction?: DirectionType;
+  directionBalcony?: DirectionType;
   floor?: string;
+  numberOfFloor?: number;
   bathRoom?: number;
   parking?: boolean;
+  furniture?: boolean;
   bedRoom?: number;
   landType?: LandType;
   saleType?: SaleType;
@@ -85,5 +92,6 @@ export interface IHouse {
 }
 
 export const defaultValue: Readonly<IHouse> = {
-  parking: false
+  parking: false,
+  furniture: false
 };

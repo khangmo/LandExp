@@ -49,7 +49,7 @@
         {
             "fieldName": "landType",
             "fieldType": "LandType",
-            "fieldValues": "APARTMENT,PENHOUSE,HOME,HOME_VILLA,HOME_STREET_SIDE,LAND_SCAPE,LAND_OF_PROJECT,WAREHOUSES,KIOSKS,OTHER"
+            "fieldValues": "APARTMENT,PEN_HOUSE,HOME,HOME_VILLA,HOME_STREET_SIDE,MOTEL_ROOM,OFFICE,LAND_SCAPE,LAND_OF_PROJECT,LAND_FARM,LAND_RESORT,WAREHOUSES,KIOSKS,OTHER"
         },
         {
             "fieldName": "enabled",

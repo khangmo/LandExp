@@ -50,7 +50,15 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="direction_balcony" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
             <column name="floor" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="number_of_floor" type="${floatType}">
                 <constraints nullable="true" />
             </column>
 
@@ -59,6 +67,10 @@
             </column>
 
             <column name="parking" type="bit">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="furniture" type="bit">
                 <constraints nullable="true" />
             </column>
 

@@ -51,6 +51,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.landexp.domain.enumeration.UserActionType;
 import com.landexp.domain.enumeration.MoneyType;
 import com.landexp.domain.enumeration.DirectionType;
+import com.landexp.domain.enumeration.DirectionType;
 import com.landexp.domain.enumeration.LandType;
 import com.landexp.domain.enumeration.SaleType;
 import com.landexp.domain.enumeration.StatusType;
@@ -84,8 +85,14 @@ public class HouseResourceIntTest {
     private static final DirectionType DEFAULT_DIRECTION = DirectionType.NORTH;
     private static final DirectionType UPDATED_DIRECTION = DirectionType.SOUTH;
 
+    private static final DirectionType DEFAULT_DIRECTION_BALCONY = DirectionType.NORTH;
+    private static final DirectionType UPDATED_DIRECTION_BALCONY = DirectionType.SOUTH;
+
     private static final String DEFAULT_FLOOR = "AAAAAAAAAA";
     private static final String UPDATED_FLOOR = "BBBBBBBBBB";
+
+    private static final Float DEFAULT_NUMBER_OF_FLOOR = 1F;
+    private static final Float UPDATED_NUMBER_OF_FLOOR = 2F;
 
     private static final Integer DEFAULT_BATH_ROOM = 1;
     private static final Integer UPDATED_BATH_ROOM = 2;
@@ -93,11 +100,14 @@ public class HouseResourceIntTest {
     private static final Boolean DEFAULT_PARKING = false;
     private static final Boolean UPDATED_PARKING = true;
 
+    private static final Boolean DEFAULT_FURNITURE = false;
+    private static final Boolean UPDATED_FURNITURE = true;
+
     private static final Integer DEFAULT_BED_ROOM = 1;
     private static final Integer UPDATED_BED_ROOM = 2;
 
     private static final LandType DEFAULT_LAND_TYPE = LandType.APARTMENT;
-    private static final LandType UPDATED_LAND_TYPE = LandType.PENHOUSE;
+    private static final LandType UPDATED_LAND_TYPE = LandType.PEN_HOUSE;
 
     private static final SaleType DEFAULT_SALE_TYPE = SaleType.SALE_BY_MYSELF;
     private static final SaleType UPDATED_SALE_TYPE = SaleType.SALE_SUPPORT;
@@ -184,9 +194,12 @@ public class HouseResourceIntTest {
             .acreage(DEFAULT_ACREAGE)
             .discount(DEFAULT_DISCOUNT)
             .direction(DEFAULT_DIRECTION)
+            .directionBalcony(DEFAULT_DIRECTION_BALCONY)
             .floor(DEFAULT_FLOOR)
+            .numberOfFloor(DEFAULT_NUMBER_OF_FLOOR)
             .bathRoom(DEFAULT_BATH_ROOM)
             .parking(DEFAULT_PARKING)
+            .furniture(DEFAULT_FURNITURE)
             .bedRoom(DEFAULT_BED_ROOM)
             .landType(DEFAULT_LAND_TYPE)
             .saleType(DEFAULT_SALE_TYPE)
@@ -227,9 +240,12 @@ public class HouseResourceIntTest {
         assertThat(testHouse.getAcreage()).isEqualTo(DEFAULT_ACREAGE);
         assertThat(testHouse.getDiscount()).isEqualTo(DEFAULT_DISCOUNT);
         assertThat(testHouse.getDirection()).isEqualTo(DEFAULT_DIRECTION);
+        assertThat(testHouse.getDirectionBalcony()).isEqualTo(DEFAULT_DIRECTION_BALCONY);
         assertThat(testHouse.getFloor()).isEqualTo(DEFAULT_FLOOR);
+        assertThat(testHouse.getNumberOfFloor()).isEqualTo(DEFAULT_NUMBER_OF_FLOOR);
         assertThat(testHouse.getBathRoom()).isEqualTo(DEFAULT_BATH_ROOM);
         assertThat(testHouse.isParking()).isEqualTo(DEFAULT_PARKING);
+        assertThat(testHouse.isFurniture()).isEqualTo(DEFAULT_FURNITURE);
         assertThat(testHouse.getBedRoom()).isEqualTo(DEFAULT_BED_ROOM);
         assertThat(testHouse.getLandType()).isEqualTo(DEFAULT_LAND_TYPE);
         assertThat(testHouse.getSaleType()).isEqualTo(DEFAULT_SALE_TYPE);
@@ -285,9 +301,12 @@ public class HouseResourceIntTest {
             .andExpect(jsonPath("$.[*].acreage").value(hasItem(DEFAULT_ACREAGE.doubleValue())))
             .andExpect(jsonPath("$.[*].discount").value(hasItem(DEFAULT_DISCOUNT.doubleValue())))
             .andExpect(jsonPath("$.[*].direction").value(hasItem(DEFAULT_DIRECTION.toString())))
+            .andExpect(jsonPath("$.[*].directionBalcony").value(hasItem(DEFAULT_DIRECTION_BALCONY.toString())))
             .andExpect(jsonPath("$.[*].floor").value(hasItem(DEFAULT_FLOOR.toString())))
+            .andExpect(jsonPath("$.[*].numberOfFloor").value(hasItem(DEFAULT_NUMBER_OF_FLOOR.doubleValue())))
             .andExpect(jsonPath("$.[*].bathRoom").value(hasItem(DEFAULT_BATH_ROOM)))
             .andExpect(jsonPath("$.[*].parking").value(hasItem(DEFAULT_PARKING.booleanValue())))
+            .andExpect(jsonPath("$.[*].furniture").value(hasItem(DEFAULT_FURNITURE.booleanValue())))
             .andExpect(jsonPath("$.[*].bedRoom").value(hasItem(DEFAULT_BED_ROOM)))
             .andExpect(jsonPath("$.[*].landType").value(hasItem(DEFAULT_LAND_TYPE.toString())))
             .andExpect(jsonPath("$.[*].saleType").value(hasItem(DEFAULT_SALE_TYPE.toString())))
@@ -318,9 +337,12 @@ public class HouseResourceIntTest {
             .andExpect(jsonPath("$.acreage").value(DEFAULT_ACREAGE.doubleValue()))
             .andExpect(jsonPath("$.discount").value(DEFAULT_DISCOUNT.doubleValue()))
             .andExpect(jsonPath("$.direction").value(DEFAULT_DIRECTION.toString()))
+            .andExpect(jsonPath("$.directionBalcony").value(DEFAULT_DIRECTION_BALCONY.toString()))
             .andExpect(jsonPath("$.floor").value(DEFAULT_FLOOR.toString()))
+            .andExpect(jsonPath("$.numberOfFloor").value(DEFAULT_NUMBER_OF_FLOOR.doubleValue()))
             .andExpect(jsonPath("$.bathRoom").value(DEFAULT_BATH_ROOM))
             .andExpect(jsonPath("$.parking").value(DEFAULT_PARKING.booleanValue()))
+            .andExpect(jsonPath("$.furniture").value(DEFAULT_FURNITURE.booleanValue()))
             .andExpect(jsonPath("$.bedRoom").value(DEFAULT_BED_ROOM))
             .andExpect(jsonPath("$.landType").value(DEFAULT_LAND_TYPE.toString()))
             .andExpect(jsonPath("$.saleType").value(DEFAULT_SALE_TYPE.toString()))
@@ -607,6 +629,45 @@ public class HouseResourceIntTest {
 
     @Test
     @Transactional
+    public void getAllHousesByDirectionBalconyIsEqualToSomething() throws Exception {
+        // Initialize the database
+        houseRepository.saveAndFlush(house);
+
+        // Get all the houseList where directionBalcony equals to DEFAULT_DIRECTION_BALCONY
+        defaultHouseShouldBeFound("directionBalcony.equals=" + DEFAULT_DIRECTION_BALCONY);
+
+        // Get all the houseList where directionBalcony equals to UPDATED_DIRECTION_BALCONY
+        defaultHouseShouldNotBeFound("directionBalcony.equals=" + UPDATED_DIRECTION_BALCONY);
+    }
+
+    @Test
+    @Transactional
+    public void getAllHousesByDirectionBalconyIsInShouldWork() throws Exception {
+        // Initialize the database
+        houseRepository.saveAndFlush(house);
+
+        // Get all the houseList where directionBalcony in DEFAULT_DIRECTION_BALCONY or UPDATED_DIRECTION_BALCONY
+        defaultHouseShouldBeFound("directionBalcony.in=" + DEFAULT_DIRECTION_BALCONY + "," + UPDATED_DIRECTION_BALCONY);
+
+        // Get all the houseList where directionBalcony equals to UPDATED_DIRECTION_BALCONY
+        defaultHouseShouldNotBeFound("directionBalcony.in=" + UPDATED_DIRECTION_BALCONY);
+    }
+
+    @Test
+    @Transactional
+    public void getAllHousesByDirectionBalconyIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        houseRepository.saveAndFlush(house);
+
+        // Get all the houseList where directionBalcony is not null
+        defaultHouseShouldBeFound("directionBalcony.specified=true");
+
+        // Get all the houseList where directionBalcony is null
+        defaultHouseShouldNotBeFound("directionBalcony.specified=false");
+    }
+
+    @Test
+    @Transactional
     public void getAllHousesByFloorIsEqualToSomething() throws Exception {
         // Initialize the database
         houseRepository.saveAndFlush(house);
@@ -642,6 +703,45 @@ public class HouseResourceIntTest {
 
         // Get all the houseList where floor is null
         defaultHouseShouldNotBeFound("floor.specified=false");
+    }
+
+    @Test
+    @Transactional
+    public void getAllHousesByNumberOfFloorIsEqualToSomething() throws Exception {
+        // Initialize the database
+        houseRepository.saveAndFlush(house);
+
+        // Get all the houseList where numberOfFloor equals to DEFAULT_NUMBER_OF_FLOOR
+        defaultHouseShouldBeFound("numberOfFloor.equals=" + DEFAULT_NUMBER_OF_FLOOR);
+
+        // Get all the houseList where numberOfFloor equals to UPDATED_NUMBER_OF_FLOOR
+        defaultHouseShouldNotBeFound("numberOfFloor.equals=" + UPDATED_NUMBER_OF_FLOOR);
+    }
+
+    @Test
+    @Transactional
+    public void getAllHousesByNumberOfFloorIsInShouldWork() throws Exception {
+        // Initialize the database
+        houseRepository.saveAndFlush(house);
+
+        // Get all the houseList where numberOfFloor in DEFAULT_NUMBER_OF_FLOOR or UPDATED_NUMBER_OF_FLOOR
+        defaultHouseShouldBeFound("numberOfFloor.in=" + DEFAULT_NUMBER_OF_FLOOR + "," + UPDATED_NUMBER_OF_FLOOR);
+
+        // Get all the houseList where numberOfFloor equals to UPDATED_NUMBER_OF_FLOOR
+        defaultHouseShouldNotBeFound("numberOfFloor.in=" + UPDATED_NUMBER_OF_FLOOR);
+    }
+
+    @Test
+    @Transactional
+    public void getAllHousesByNumberOfFloorIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        houseRepository.saveAndFlush(house);
+
+        // Get all the houseList where numberOfFloor is not null
+        defaultHouseShouldBeFound("numberOfFloor.specified=true");
+
+        // Get all the houseList where numberOfFloor is null
+        defaultHouseShouldNotBeFound("numberOfFloor.specified=false");
     }
 
     @Test
@@ -747,6 +847,45 @@ public class HouseResourceIntTest {
 
         // Get all the houseList where parking is null
         defaultHouseShouldNotBeFound("parking.specified=false");
+    }
+
+    @Test
+    @Transactional
+    public void getAllHousesByFurnitureIsEqualToSomething() throws Exception {
+        // Initialize the database
+        houseRepository.saveAndFlush(house);
+
+        // Get all the houseList where furniture equals to DEFAULT_FURNITURE
+        defaultHouseShouldBeFound("furniture.equals=" + DEFAULT_FURNITURE);
+
+        // Get all the houseList where furniture equals to UPDATED_FURNITURE
+        defaultHouseShouldNotBeFound("furniture.equals=" + UPDATED_FURNITURE);
+    }
+
+    @Test
+    @Transactional
+    public void getAllHousesByFurnitureIsInShouldWork() throws Exception {
+        // Initialize the database
+        houseRepository.saveAndFlush(house);
+
+        // Get all the houseList where furniture in DEFAULT_FURNITURE or UPDATED_FURNITURE
+        defaultHouseShouldBeFound("furniture.in=" + DEFAULT_FURNITURE + "," + UPDATED_FURNITURE);
+
+        // Get all the houseList where furniture equals to UPDATED_FURNITURE
+        defaultHouseShouldNotBeFound("furniture.in=" + UPDATED_FURNITURE);
+    }
+
+    @Test
+    @Transactional
+    public void getAllHousesByFurnitureIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        houseRepository.saveAndFlush(house);
+
+        // Get all the houseList where furniture is not null
+        defaultHouseShouldBeFound("furniture.specified=true");
+
+        // Get all the houseList where furniture is null
+        defaultHouseShouldNotBeFound("furniture.specified=false");
     }
 
     @Test
@@ -1317,9 +1456,12 @@ public class HouseResourceIntTest {
             .andExpect(jsonPath("$.[*].acreage").value(hasItem(DEFAULT_ACREAGE.doubleValue())))
             .andExpect(jsonPath("$.[*].discount").value(hasItem(DEFAULT_DISCOUNT.doubleValue())))
             .andExpect(jsonPath("$.[*].direction").value(hasItem(DEFAULT_DIRECTION.toString())))
+            .andExpect(jsonPath("$.[*].directionBalcony").value(hasItem(DEFAULT_DIRECTION_BALCONY.toString())))
             .andExpect(jsonPath("$.[*].floor").value(hasItem(DEFAULT_FLOOR.toString())))
+            .andExpect(jsonPath("$.[*].numberOfFloor").value(hasItem(DEFAULT_NUMBER_OF_FLOOR.doubleValue())))
             .andExpect(jsonPath("$.[*].bathRoom").value(hasItem(DEFAULT_BATH_ROOM)))
             .andExpect(jsonPath("$.[*].parking").value(hasItem(DEFAULT_PARKING.booleanValue())))
+            .andExpect(jsonPath("$.[*].furniture").value(hasItem(DEFAULT_FURNITURE.booleanValue())))
             .andExpect(jsonPath("$.[*].bedRoom").value(hasItem(DEFAULT_BED_ROOM)))
             .andExpect(jsonPath("$.[*].landType").value(hasItem(DEFAULT_LAND_TYPE.toString())))
             .andExpect(jsonPath("$.[*].saleType").value(hasItem(DEFAULT_SALE_TYPE.toString())))
@@ -1370,9 +1512,12 @@ public class HouseResourceIntTest {
             .acreage(UPDATED_ACREAGE)
             .discount(UPDATED_DISCOUNT)
             .direction(UPDATED_DIRECTION)
+            .directionBalcony(UPDATED_DIRECTION_BALCONY)
             .floor(UPDATED_FLOOR)
+            .numberOfFloor(UPDATED_NUMBER_OF_FLOOR)
             .bathRoom(UPDATED_BATH_ROOM)
             .parking(UPDATED_PARKING)
+            .furniture(UPDATED_FURNITURE)
             .bedRoom(UPDATED_BED_ROOM)
             .landType(UPDATED_LAND_TYPE)
             .saleType(UPDATED_SALE_TYPE)
@@ -1400,9 +1545,12 @@ public class HouseResourceIntTest {
         assertThat(testHouse.getAcreage()).isEqualTo(UPDATED_ACREAGE);
         assertThat(testHouse.getDiscount()).isEqualTo(UPDATED_DISCOUNT);
         assertThat(testHouse.getDirection()).isEqualTo(UPDATED_DIRECTION);
+        assertThat(testHouse.getDirectionBalcony()).isEqualTo(UPDATED_DIRECTION_BALCONY);
         assertThat(testHouse.getFloor()).isEqualTo(UPDATED_FLOOR);
+        assertThat(testHouse.getNumberOfFloor()).isEqualTo(UPDATED_NUMBER_OF_FLOOR);
         assertThat(testHouse.getBathRoom()).isEqualTo(UPDATED_BATH_ROOM);
         assertThat(testHouse.isParking()).isEqualTo(UPDATED_PARKING);
+        assertThat(testHouse.isFurniture()).isEqualTo(UPDATED_FURNITURE);
         assertThat(testHouse.getBedRoom()).isEqualTo(UPDATED_BED_ROOM);
         assertThat(testHouse.getLandType()).isEqualTo(UPDATED_LAND_TYPE);
         assertThat(testHouse.getSaleType()).isEqualTo(UPDATED_SALE_TYPE);
@@ -1479,9 +1627,12 @@ public class HouseResourceIntTest {
             .andExpect(jsonPath("$.[*].acreage").value(hasItem(DEFAULT_ACREAGE.doubleValue())))
             .andExpect(jsonPath("$.[*].discount").value(hasItem(DEFAULT_DISCOUNT.doubleValue())))
             .andExpect(jsonPath("$.[*].direction").value(hasItem(DEFAULT_DIRECTION.toString())))
+            .andExpect(jsonPath("$.[*].directionBalcony").value(hasItem(DEFAULT_DIRECTION_BALCONY.toString())))
             .andExpect(jsonPath("$.[*].floor").value(hasItem(DEFAULT_FLOOR.toString())))
+            .andExpect(jsonPath("$.[*].numberOfFloor").value(hasItem(DEFAULT_NUMBER_OF_FLOOR.doubleValue())))
             .andExpect(jsonPath("$.[*].bathRoom").value(hasItem(DEFAULT_BATH_ROOM)))
             .andExpect(jsonPath("$.[*].parking").value(hasItem(DEFAULT_PARKING.booleanValue())))
+            .andExpect(jsonPath("$.[*].furniture").value(hasItem(DEFAULT_FURNITURE.booleanValue())))
             .andExpect(jsonPath("$.[*].bedRoom").value(hasItem(DEFAULT_BED_ROOM)))
             .andExpect(jsonPath("$.[*].landType").value(hasItem(DEFAULT_LAND_TYPE.toString())))
             .andExpect(jsonPath("$.[*].saleType").value(hasItem(DEFAULT_SALE_TYPE.toString())))

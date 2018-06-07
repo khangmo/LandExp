@@ -92,7 +92,7 @@ public class SearchTrackingResourceIntTest {
     private static final Boolean UPDATED_PARKING = true;
 
     private static final LandType DEFAULT_LAND_TYPE = LandType.APARTMENT;
-    private static final LandType UPDATED_LAND_TYPE = LandType.PENHOUSE;
+    private static final LandType UPDATED_LAND_TYPE = LandType.PEN_HOUSE;
 
     private static final LocalDate DEFAULT_CREATE_AT = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_CREATE_AT = LocalDate.now(ZoneId.systemDefault());
