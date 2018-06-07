@@ -1,0 +1,28 @@
+
+{
+    "landexpApp": {
+        "userTracking" : {
+            "home": {
+                "title": "User Trackings",
+                "createLabel": "Create a new User Tracking",
+                "createOrEditLabel": "Create or edit a User Tracking",
+                "search": "Search for User Tracking"
+            },
+            "created": "A new User Tracking is created with identifier {{ param }}",
+            "updated": "A User Tracking is updated with identifier {{ param }}",
+            "deleted": "A User Tracking is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete User Tracking {{ id }}?"
+            },
+            "detail": {
+                "title": "User Tracking"
+            },
+            "activityType": "Activity Type",
+            "sourceId": "Source Id",
+            "sourceLink": "Source Link",
+            "description": "Description",
+            "createAt": "Create At",
+            "user": "User"
+        }
+    }
+}

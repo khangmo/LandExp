@@ -1,0 +1,26 @@
+
+{
+    "landexpApp": {
+        "userRegion" : {
+            "home": {
+                "title": "User Regions",
+                "createLabel": "Thêm mới một User Region",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật User Region",
+                "search": "Tìm User Region"
+            },
+            "created": "Một User Region mới được tạo với định danh {{ param }}",
+            "updated": "Một User Region cập nhật với định danh {{ param }}",
+            "deleted": "Một User Region đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa User Region {{ id }}?"
+            },
+            "detail": {
+                "title": "User Region"
+            },
+            "createAt": "Create At",
+            "updateAt": "Update At",
+            "user": "User",
+            "region": "Region"
+        }
+    }
+}

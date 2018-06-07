@@ -1,0 +1,29 @@
+
+{
+    "landexpApp": {
+        "houseTracking" : {
+            "home": {
+                "title": "House Trackings",
+                "createLabel": "Create a new House Tracking",
+                "createOrEditLabel": "Create or edit a House Tracking",
+                "search": "Search for House Tracking"
+            },
+            "created": "A new House Tracking is created with identifier {{ param }}",
+            "updated": "A House Tracking is updated with identifier {{ param }}",
+            "deleted": "A House Tracking is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete House Tracking {{ id }}?"
+            },
+            "detail": {
+                "title": "House Tracking"
+            },
+            "activityType": "Activity Type",
+            "sourceId": "Source Id",
+            "sourceLink": "Source Link",
+            "description": "Description",
+            "createAt": "Create At",
+            "house": "House",
+            "user": "User"
+        }
+    }
+}

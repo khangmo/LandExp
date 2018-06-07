@@ -1,0 +1,26 @@
+
+{
+    "landexpApp": {
+        "userRegion" : {
+            "home": {
+                "title": "User Regions",
+                "createLabel": "Create a new User Region",
+                "createOrEditLabel": "Create or edit a User Region",
+                "search": "Search for User Region"
+            },
+            "created": "A new User Region is created with identifier {{ param }}",
+            "updated": "A User Region is updated with identifier {{ param }}",
+            "deleted": "A User Region is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete User Region {{ id }}?"
+            },
+            "detail": {
+                "title": "User Region"
+            },
+            "createAt": "Create At",
+            "updateAt": "Update At",
+            "user": "User",
+            "region": "Region"
+        }
+    }
+}

@@ -1,0 +1,29 @@
+
+{
+    "landexpApp": {
+        "street" : {
+            "home": {
+                "title": "Streets",
+                "createLabel": "Thêm mới một Street",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Street",
+                "search": "Tìm Street"
+            },
+            "created": "Một Street mới được tạo với định danh {{ param }}",
+            "updated": "Một Street cập nhật với định danh {{ param }}",
+            "deleted": "Một Street đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Street {{ id }}?"
+            },
+            "detail": {
+                "title": "Street"
+            },
+            "name": "Name",
+            "postalCode": "Postal Code",
+            "stateProvince": "State Province",
+            "enabled": "Enabled",
+            "createAt": "Create At",
+            "updateAt": "Update At",
+            "district": "District"
+        }
+    }
+}

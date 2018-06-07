@@ -1,0 +1,26 @@
+
+{
+    "landexpApp": {
+        "userFeed" : {
+            "home": {
+                "title": "User Feeds",
+                "createLabel": "Thêm mới một User Feed",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật User Feed",
+                "search": "Tìm User Feed"
+            },
+            "created": "Một User Feed mới được tạo với định danh {{ param }}",
+            "updated": "Một User Feed cập nhật với định danh {{ param }}",
+            "deleted": "Một User Feed đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa User Feed {{ id }}?"
+            },
+            "detail": {
+                "title": "User Feed"
+            },
+            "body": "Body",
+            "createAt": "Create At",
+            "updateAt": "Update At",
+            "user": "User"
+        }
+    }
+}

@@ -1,0 +1,40 @@
+
+{
+    "landexpApp": {
+        "userSubscription" : {
+            "home": {
+                "title": "User Subscriptions",
+                "createLabel": "Create a new User Subscription",
+                "createOrEditLabel": "Create or edit a User Subscription",
+                "search": "Search for User Subscription"
+            },
+            "created": "A new User Subscription is created with identifier {{ param }}",
+            "updated": "A User Subscription is updated with identifier {{ param }}",
+            "deleted": "A User Subscription is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete User Subscription {{ id }}?"
+            },
+            "detail": {
+                "title": "User Subscription"
+            },
+            "actionType": "Action Type",
+            "keyword": "Keyword",
+            "costFrom": "Cost From",
+            "costTo": "Cost To",
+            "acreageFrom": "Acreage From",
+            "acreageTo": "Acreage To",
+            "direction": "Direction",
+            "floor": "Floor",
+            "bathRoom": "Bath Room",
+            "bedRoom": "Bed Room",
+            "parking": "Parking",
+            "landType": "Land Type",
+            "enabled": "Enabled",
+            "createAt": "Create At",
+            "updateAt": "Update At",
+            "user": "User",
+            "city": "City",
+            "street": "Street"
+        }
+    }
+}

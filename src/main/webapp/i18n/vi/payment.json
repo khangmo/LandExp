@@ -1,0 +1,32 @@
+
+{
+    "landexpApp": {
+        "payment" : {
+            "home": {
+                "title": "Payments",
+                "createLabel": "Thêm mới một Payment",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Payment",
+                "search": "Tìm Payment"
+            },
+            "created": "Một Payment mới được tạo với định danh {{ param }}",
+            "updated": "Một Payment cập nhật với định danh {{ param }}",
+            "deleted": "Một Payment đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Payment {{ id }}?"
+            },
+            "detail": {
+                "title": "Payment"
+            },
+            "code": "Code",
+            "money": "Money",
+            "paidTime": "Paid Time",
+            "paymentStatus": "Payment Status",
+            "createAt": "Create At",
+            "updateAt": "Update At",
+            "house": "House",
+            "customer": "Customer",
+            "createBy": "Create By",
+            "updateBy": "Update By"
+        }
+    }
+}

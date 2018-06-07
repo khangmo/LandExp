@@ -1,0 +1,28 @@
+
+{
+    "landexpApp": {
+        "userTracking" : {
+            "home": {
+                "title": "User Trackings",
+                "createLabel": "Thêm mới một User Tracking",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật User Tracking",
+                "search": "Tìm User Tracking"
+            },
+            "created": "Một User Tracking mới được tạo với định danh {{ param }}",
+            "updated": "Một User Tracking cập nhật với định danh {{ param }}",
+            "deleted": "Một User Tracking đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa User Tracking {{ id }}?"
+            },
+            "detail": {
+                "title": "User Tracking"
+            },
+            "activityType": "Activity Type",
+            "sourceId": "Source Id",
+            "sourceLink": "Source Link",
+            "description": "Description",
+            "createAt": "Create At",
+            "user": "User"
+        }
+    }
+}

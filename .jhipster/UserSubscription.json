@@ -1,0 +1,96 @@
+{
+    "fields": [
+        {
+            "fieldName": "actionType",
+            "fieldType": "UserActivityType",
+            "fieldValues": "USER_SEARCH_BUY,USER_SEARCH_RENT,USER_VIEW_NEWS,USER_LIKE_NEWS,USER_CREATE_NEWS,USER_UPDATE_NEWS,USER_SUBSCRIPTION,USER_UNSUBSCRIPTION,USER_REGISTERED_CONSULTING,USER_UPDATE_SALE_TYPE,USER_PAID_NEWS,USER_SOLD_HOUSE,USER_BOUGTH_HOUSE,USER_CREATE_BANNER,USER_UPDATE_BANNER"
+        },
+        {
+            "fieldName": "keyword",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "costFrom",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "costTo",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "acreageFrom",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "acreageTo",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "direction",
+            "fieldType": "DirectionType",
+            "fieldValues": "NORTH,SOUTH,EAST,WEST,EAST_NORTH,WEST_NORTH,EAST_SOUTH,WEST_SOUTH"
+        },
+        {
+            "fieldName": "floor",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "bathRoom",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "bedRoom",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "parking",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "landType",
+            "fieldType": "LandType",
+            "fieldValues": "APARTMENT,PENHOUSE,HOME,HOME_VILLA,HOME_STREET_SIDE,LAND_SCAPE,LAND_OF_PROJECT,WAREHOUSES,KIOSKS,OTHER"
+        },
+        {
+            "fieldName": "enabled",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "createAt",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "updateAt",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "otherEntityField": "login"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "city",
+            "otherEntityName": "city",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "street",
+            "otherEntityName": "street",
+            "otherEntityField": "name"
+        }
+    ],
+    "changelogDate": "20180607131206",
+    "entityTableName": "user_subscription",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

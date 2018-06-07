@@ -1,0 +1,30 @@
+
+{
+    "landexpApp": {
+        "userFinancial" : {
+            "home": {
+                "title": "User Financials",
+                "createLabel": "Create a new User Financial",
+                "createOrEditLabel": "Create or edit a User Financial",
+                "search": "Search for User Financial"
+            },
+            "created": "A new User Financial is created with identifier {{ param }}",
+            "updated": "A User Financial is updated with identifier {{ param }}",
+            "deleted": "A User Financial is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete User Financial {{ id }}?"
+            },
+            "detail": {
+                "title": "User Financial"
+            },
+            "housePrice": "House Price",
+            "houseAcreage": "House Acreage",
+            "loanRate": "Loan Rate",
+            "loanFromPeople": "Loan From People",
+            "customerMoneyHave": "Customer Money Have",
+            "customerMobile": "Customer Mobile",
+            "customerEmail": "Customer Email",
+            "user": "User"
+        }
+    }
+}

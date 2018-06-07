@@ -1,0 +1,24 @@
+
+{
+    "landexpApp": {
+        "housePhoto" : {
+            "home": {
+                "title": "House Photos",
+                "createLabel": "Thêm mới một House Photo",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật House Photo",
+                "search": "Tìm House Photo"
+            },
+            "created": "Một House Photo mới được tạo với định danh {{ param }}",
+            "updated": "Một House Photo cập nhật với định danh {{ param }}",
+            "deleted": "Một House Photo đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa House Photo {{ id }}?"
+            },
+            "detail": {
+                "title": "House Photo"
+            },
+            "name": "Name",
+            "createAt": "Create At"
+        }
+    }
+}

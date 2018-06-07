@@ -1,0 +1,11 @@
+{
+    "landexpApp": {
+        "UserActionType" : {
+            "null": "",
+            "FOR_BUY": "FOR_BUY",
+            "FOR_SELL": "FOR_SELL",
+            "FOR_RENT": "FOR_RENT",
+            "FOR_HIRE": "FOR_HIRE"
+        }
+    }
+}

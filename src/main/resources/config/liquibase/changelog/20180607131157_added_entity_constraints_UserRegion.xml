@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity UserRegion.
+    -->
+    <changeSet id="20180607131157-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="user_region"
+                                 constraintName="fk_user_region_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="user_regions_id"
+                                 baseTableName="user_region_region"
+                                 constraintName="fk_user_region_region_user_regions_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user_region"/>
+        <addForeignKeyConstraint baseColumnNames="regions_id"
+                                 baseTableName="user_region_region"
+                                 constraintName="fk_user_region_region_regions_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="region"/>
+        
+    </changeSet>
+</databaseChangeLog>

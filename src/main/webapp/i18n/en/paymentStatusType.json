@@ -1,0 +1,11 @@
+{
+    "landexpApp": {
+        "PaymentStatusType" : {
+            "null": "",
+            "OPEN": "OPEN",
+            "PENDING": "PENDING",
+            "SUCCESS": "SUCCESS",
+            "FAILED": "FAILED"
+        }
+    }
+}

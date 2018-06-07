@@ -1,0 +1,46 @@
+
+{
+    "landexpApp": {
+        "house" : {
+            "home": {
+                "title": "Houses",
+                "createLabel": "Create a new House",
+                "createOrEditLabel": "Create or edit a House",
+                "search": "Search for House"
+            },
+            "created": "A new House is created with identifier {{ param }}",
+            "updated": "A House is updated with identifier {{ param }}",
+            "deleted": "A House is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete House {{ id }}?"
+            },
+            "detail": {
+                "title": "House"
+            },
+            "actionType": "Action Type",
+            "address": "Address",
+            "money": "Money",
+            "moneyType": "Money Type",
+            "acreage": "Acreage",
+            "discount": "Discount",
+            "direction": "Direction",
+            "floor": "Floor",
+            "bathRoom": "Bath Room",
+            "parking": "Parking",
+            "bedRoom": "Bed Room",
+            "landType": "Land Type",
+            "saleType": "Sale Type",
+            "fee": "Fee",
+            "feeMax": "Fee Max",
+            "hits": "Hits",
+            "statusType": "Status Type",
+            "createAt": "Create At",
+            "updateAt": "Update At",
+            "city": "City",
+            "street": "Street",
+            "project": "Project",
+            "createBy": "Create By",
+            "updateBy": "Update By"
+        }
+    }
+}

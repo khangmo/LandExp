@@ -1,0 +1,48 @@
+{
+    "fields": [
+        {
+            "fieldName": "activityType",
+            "fieldType": "UserActivityType",
+            "fieldValues": "USER_SEARCH_BUY,USER_SEARCH_RENT,USER_VIEW_NEWS,USER_LIKE_NEWS,USER_CREATE_NEWS,USER_UPDATE_NEWS,USER_SUBSCRIPTION,USER_UNSUBSCRIPTION,USER_REGISTERED_CONSULTING,USER_UPDATE_SALE_TYPE,USER_PAID_NEWS,USER_SOLD_HOUSE,USER_BOUGTH_HOUSE,USER_CREATE_BANNER,USER_UPDATE_BANNER"
+        },
+        {
+            "fieldName": "sourceId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sourceLink",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createAt",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "house",
+            "otherEntityName": "house",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "otherEntityField": "login"
+        }
+    ],
+    "changelogDate": "20180607131200",
+    "entityTableName": "house_tracking",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

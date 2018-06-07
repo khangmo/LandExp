@@ -1,0 +1,33 @@
+
+{
+    "landexpApp": {
+        "article" : {
+            "home": {
+                "title": "Articles",
+                "createLabel": "Thêm mới một Article",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Article",
+                "search": "Tìm Article"
+            },
+            "created": "Một Article mới được tạo với định danh {{ param }}",
+            "updated": "Một Article cập nhật với định danh {{ param }}",
+            "deleted": "Một Article đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Article {{ id }}?"
+            },
+            "detail": {
+                "title": "Article"
+            },
+            "title": "Title",
+            "titleAlias": "Title Alias",
+            "summary": "Summary",
+            "content": "Content",
+            "statusType": "Status Type",
+            "hits": "Hits",
+            "createAt": "Create At",
+            "updateAt": "Update At",
+            "category": "Category",
+            "createBy": "Create By",
+            "updateBy": "Update By"
+        }
+    }
+}

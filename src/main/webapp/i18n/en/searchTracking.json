@@ -1,0 +1,38 @@
+
+{
+    "landexpApp": {
+        "searchTracking" : {
+            "home": {
+                "title": "Search Trackings",
+                "createLabel": "Create a new Search Tracking",
+                "createOrEditLabel": "Create or edit a Search Tracking",
+                "search": "Search for Search Tracking"
+            },
+            "created": "A new Search Tracking is created with identifier {{ param }}",
+            "updated": "A Search Tracking is updated with identifier {{ param }}",
+            "deleted": "A Search Tracking is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Search Tracking {{ id }}?"
+            },
+            "detail": {
+                "title": "Search Tracking"
+            },
+            "actionType": "Action Type",
+            "keyword": "Keyword",
+            "costFrom": "Cost From",
+            "costTo": "Cost To",
+            "acreageFrom": "Acreage From",
+            "acreageTo": "Acreage To",
+            "direction": "Direction",
+            "floor": "Floor",
+            "bathRoom": "Bath Room",
+            "bedRoom": "Bed Room",
+            "parking": "Parking",
+            "landType": "Land Type",
+            "createAt": "Create At",
+            "user": "User",
+            "city": "City",
+            "street": "Street"
+        }
+    }
+}

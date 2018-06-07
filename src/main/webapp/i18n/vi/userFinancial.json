@@ -1,0 +1,30 @@
+
+{
+    "landexpApp": {
+        "userFinancial" : {
+            "home": {
+                "title": "User Financials",
+                "createLabel": "Thêm mới một User Financial",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật User Financial",
+                "search": "Tìm User Financial"
+            },
+            "created": "Một User Financial mới được tạo với định danh {{ param }}",
+            "updated": "Một User Financial cập nhật với định danh {{ param }}",
+            "deleted": "Một User Financial đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa User Financial {{ id }}?"
+            },
+            "detail": {
+                "title": "User Financial"
+            },
+            "housePrice": "House Price",
+            "houseAcreage": "House Acreage",
+            "loanRate": "Loan Rate",
+            "loanFromPeople": "Loan From People",
+            "customerMoneyHave": "Customer Money Have",
+            "customerMobile": "Customer Mobile",
+            "customerEmail": "Customer Email",
+            "user": "User"
+        }
+    }
+}

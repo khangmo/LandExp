@@ -1,0 +1,38 @@
+
+{
+    "landexpApp": {
+        "searchTracking" : {
+            "home": {
+                "title": "Search Trackings",
+                "createLabel": "Thêm mới một Search Tracking",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Search Tracking",
+                "search": "Tìm Search Tracking"
+            },
+            "created": "Một Search Tracking mới được tạo với định danh {{ param }}",
+            "updated": "Một Search Tracking cập nhật với định danh {{ param }}",
+            "deleted": "Một Search Tracking đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Search Tracking {{ id }}?"
+            },
+            "detail": {
+                "title": "Search Tracking"
+            },
+            "actionType": "Action Type",
+            "keyword": "Keyword",
+            "costFrom": "Cost From",
+            "costTo": "Cost To",
+            "acreageFrom": "Acreage From",
+            "acreageTo": "Acreage To",
+            "direction": "Direction",
+            "floor": "Floor",
+            "bathRoom": "Bath Room",
+            "bedRoom": "Bed Room",
+            "parking": "Parking",
+            "landType": "Land Type",
+            "createAt": "Create At",
+            "user": "User",
+            "city": "City",
+            "street": "Street"
+        }
+    }
+}

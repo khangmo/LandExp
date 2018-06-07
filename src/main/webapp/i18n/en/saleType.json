@@ -1,0 +1,9 @@
+{
+    "landexpApp": {
+        "SaleType" : {
+            "null": "",
+            "SALE_BY_MYSELF": "SALE_BY_MYSELF",
+            "SALE_SUPPORT": "SALE_SUPPORT"
+        }
+    }
+}

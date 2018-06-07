@@ -1,0 +1,25 @@
+
+{
+    "landexpApp": {
+        "userProfile" : {
+            "home": {
+                "title": "User Profiles",
+                "createLabel": "Thêm mới một User Profile",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật User Profile",
+                "search": "Tìm User Profile"
+            },
+            "created": "Một User Profile mới được tạo với định danh {{ param }}",
+            "updated": "Một User Profile cập nhật với định danh {{ param }}",
+            "deleted": "Một User Profile đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa User Profile {{ id }}?"
+            },
+            "detail": {
+                "title": "User Profile"
+            },
+            "name": "Name",
+            "phoneNumber": "Phone Number",
+            "user": "User"
+        }
+    }
+}

@@ -1,0 +1,40 @@
+
+{
+    "landexpApp": {
+        "userSubscription" : {
+            "home": {
+                "title": "User Subscriptions",
+                "createLabel": "Thêm mới một User Subscription",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật User Subscription",
+                "search": "Tìm User Subscription"
+            },
+            "created": "Một User Subscription mới được tạo với định danh {{ param }}",
+            "updated": "Một User Subscription cập nhật với định danh {{ param }}",
+            "deleted": "Một User Subscription đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa User Subscription {{ id }}?"
+            },
+            "detail": {
+                "title": "User Subscription"
+            },
+            "actionType": "Action Type",
+            "keyword": "Keyword",
+            "costFrom": "Cost From",
+            "costTo": "Cost To",
+            "acreageFrom": "Acreage From",
+            "acreageTo": "Acreage To",
+            "direction": "Direction",
+            "floor": "Floor",
+            "bathRoom": "Bath Room",
+            "bedRoom": "Bed Room",
+            "parking": "Parking",
+            "landType": "Land Type",
+            "enabled": "Enabled",
+            "createAt": "Create At",
+            "updateAt": "Update At",
+            "user": "User",
+            "city": "City",
+            "street": "Street"
+        }
+    }
+}

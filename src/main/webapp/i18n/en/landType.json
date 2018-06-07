@@ -1,0 +1,17 @@
+{
+    "landexpApp": {
+        "LandType" : {
+            "null": "",
+            "APARTMENT": "APARTMENT",
+            "PENHOUSE": "PENHOUSE",
+            "HOME": "HOME",
+            "HOME_VILLA": "HOME_VILLA",
+            "HOME_STREET_SIDE": "HOME_STREET_SIDE",
+            "LAND_SCAPE": "LAND_SCAPE",
+            "LAND_OF_PROJECT": "LAND_OF_PROJECT",
+            "WAREHOUSES": "WAREHOUSES",
+            "KIOSKS": "KIOSKS",
+            "OTHER": "OTHER"
+        }
+    }
+}

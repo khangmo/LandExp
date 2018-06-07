@@ -1,0 +1,127 @@
+{
+    "fields": [
+        {
+            "fieldName": "actionType",
+            "fieldType": "UserActionType",
+            "fieldValues": "FOR_BUY,FOR_SELL,FOR_RENT,FOR_HIRE"
+        },
+        {
+            "fieldName": "address",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "money",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "moneyType",
+            "fieldType": "MoneyType",
+            "fieldValues": "MILLION,HUNDRED_MILLION,BILLION"
+        },
+        {
+            "fieldName": "acreage",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "discount",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "direction",
+            "fieldType": "DirectionType",
+            "fieldValues": "NORTH,SOUTH,EAST,WEST,EAST_NORTH,WEST_NORTH,EAST_SOUTH,WEST_SOUTH"
+        },
+        {
+            "fieldName": "floor",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "bathRoom",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "parking",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "bedRoom",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "landType",
+            "fieldType": "LandType",
+            "fieldValues": "APARTMENT,PENHOUSE,HOME,HOME_VILLA,HOME_STREET_SIDE,LAND_SCAPE,LAND_OF_PROJECT,WAREHOUSES,KIOSKS,OTHER"
+        },
+        {
+            "fieldName": "saleType",
+            "fieldType": "SaleType",
+            "fieldValues": "SALE_BY_MYSELF,SALE_SUPPORT"
+        },
+        {
+            "fieldName": "fee",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "feeMax",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "hits",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "statusType",
+            "fieldType": "StatusType",
+            "fieldValues": "PENDING,PAID,APPROVED,CANCELED,EXPIRED,SOLD"
+        },
+        {
+            "fieldName": "createAt",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "updateAt",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "city",
+            "otherEntityName": "city",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "street",
+            "otherEntityName": "street",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "project",
+            "otherEntityName": "landProjects",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "createBy",
+            "otherEntityName": "user",
+            "otherEntityField": "login"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "updateBy",
+            "otherEntityName": "user",
+            "otherEntityField": "login"
+        }
+    ],
+    "changelogDate": "20180607131158",
+    "entityTableName": "house",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

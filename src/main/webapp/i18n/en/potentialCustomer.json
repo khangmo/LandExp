@@ -1,0 +1,29 @@
+
+{
+    "landexpApp": {
+        "potentialCustomer" : {
+            "home": {
+                "title": "Potential Customers",
+                "createLabel": "Create a new Potential Customer",
+                "createOrEditLabel": "Create or edit a Potential Customer",
+                "search": "Search for Potential Customer"
+            },
+            "created": "A new Potential Customer is created with identifier {{ param }}",
+            "updated": "A Potential Customer is updated with identifier {{ param }}",
+            "deleted": "A Potential Customer is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Potential Customer {{ id }}?"
+            },
+            "detail": {
+                "title": "Potential Customer"
+            },
+            "level": "Level",
+            "description": "Description",
+            "createAt": "Create At",
+            "updateAt": "Update At",
+            "customer": "Customer",
+            "createBy": "Create By",
+            "updateBy": "Update By"
+        }
+    }
+}

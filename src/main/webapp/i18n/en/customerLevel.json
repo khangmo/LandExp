@@ -1,0 +1,11 @@
+{
+    "landexpApp": {
+        "CustomerLevel" : {
+            "null": "",
+            "NORMAL": "NORMAL",
+            "SILVER": "SILVER",
+            "GOLD": "GOLD",
+            "PLATIUM": "PLATIUM"
+        }
+    }
+}

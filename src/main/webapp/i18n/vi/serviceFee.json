@@ -1,0 +1,24 @@
+
+{
+    "landexpApp": {
+        "serviceFee" : {
+            "home": {
+                "title": "Service Fees",
+                "createLabel": "Thêm mới một Service Fee",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Service Fee",
+                "search": "Tìm Service Fee"
+            },
+            "created": "Một Service Fee mới được tạo với định danh {{ param }}",
+            "updated": "Một Service Fee cập nhật với định danh {{ param }}",
+            "deleted": "Một Service Fee đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Service Fee {{ id }}?"
+            },
+            "detail": {
+                "title": "Service Fee"
+            },
+            "saleType": "Sale Type",
+            "fee": "Fee"
+        }
+    }
+}

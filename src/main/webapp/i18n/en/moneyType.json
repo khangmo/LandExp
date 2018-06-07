@@ -1,0 +1,10 @@
+{
+    "landexpApp": {
+        "MoneyType" : {
+            "null": "",
+            "MILLION": "MILLION",
+            "HUNDRED_MILLION": "HUNDRED_MILLION",
+            "BILLION": "BILLION"
+        }
+    }
+}

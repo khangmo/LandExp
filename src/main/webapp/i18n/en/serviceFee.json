@@ -1,0 +1,24 @@
+
+{
+    "landexpApp": {
+        "serviceFee" : {
+            "home": {
+                "title": "Service Fees",
+                "createLabel": "Create a new Service Fee",
+                "createOrEditLabel": "Create or edit a Service Fee",
+                "search": "Search for Service Fee"
+            },
+            "created": "A new Service Fee is created with identifier {{ param }}",
+            "updated": "A Service Fee is updated with identifier {{ param }}",
+            "deleted": "A Service Fee is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Service Fee {{ id }}?"
+            },
+            "detail": {
+                "title": "Service Fee"
+            },
+            "saleType": "Sale Type",
+            "fee": "Fee"
+        }
+    }
+}

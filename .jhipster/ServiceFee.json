@@ -1,0 +1,23 @@
+{
+    "fields": [
+        {
+            "fieldName": "saleType",
+            "fieldType": "SaleType",
+            "fieldValues": "SALE_BY_MYSELF,SALE_SUPPORT"
+        },
+        {
+            "fieldName": "fee",
+            "fieldType": "Float"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20180607131159",
+    "entityTableName": "service_fee",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

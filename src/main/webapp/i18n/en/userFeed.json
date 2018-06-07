@@ -1,0 +1,26 @@
+
+{
+    "landexpApp": {
+        "userFeed" : {
+            "home": {
+                "title": "User Feeds",
+                "createLabel": "Create a new User Feed",
+                "createOrEditLabel": "Create or edit a User Feed",
+                "search": "Search for User Feed"
+            },
+            "created": "A new User Feed is created with identifier {{ param }}",
+            "updated": "A User Feed is updated with identifier {{ param }}",
+            "deleted": "A User Feed is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete User Feed {{ id }}?"
+            },
+            "detail": {
+                "title": "User Feed"
+            },
+            "body": "Body",
+            "createAt": "Create At",
+            "updateAt": "Update At",
+            "user": "User"
+        }
+    }
+}

@@ -1,0 +1,24 @@
+
+{
+    "landexpApp": {
+        "housePhoto" : {
+            "home": {
+                "title": "House Photos",
+                "createLabel": "Create a new House Photo",
+                "createOrEditLabel": "Create or edit a House Photo",
+                "search": "Search for House Photo"
+            },
+            "created": "A new House Photo is created with identifier {{ param }}",
+            "updated": "A House Photo is updated with identifier {{ param }}",
+            "deleted": "A House Photo is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete House Photo {{ id }}?"
+            },
+            "detail": {
+                "title": "House Photo"
+            },
+            "name": "Name",
+            "createAt": "Create At"
+        }
+    }
+}

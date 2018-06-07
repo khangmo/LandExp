@@ -1,0 +1,29 @@
+
+{
+    "landexpApp": {
+        "potentialCustomer" : {
+            "home": {
+                "title": "Potential Customers",
+                "createLabel": "Thêm mới một Potential Customer",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Potential Customer",
+                "search": "Tìm Potential Customer"
+            },
+            "created": "Một Potential Customer mới được tạo với định danh {{ param }}",
+            "updated": "Một Potential Customer cập nhật với định danh {{ param }}",
+            "deleted": "Một Potential Customer đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Potential Customer {{ id }}?"
+            },
+            "detail": {
+                "title": "Potential Customer"
+            },
+            "level": "Level",
+            "description": "Description",
+            "createAt": "Create At",
+            "updateAt": "Update At",
+            "customer": "Customer",
+            "createBy": "Create By",
+            "updateBy": "Update By"
+        }
+    }
+}
