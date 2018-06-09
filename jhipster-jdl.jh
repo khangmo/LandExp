@@ -129,21 +129,36 @@ relationship ManyToOne {
 }
 
 entity HousePhoto {
-   name String,
    image ImageBlob,
    createAt LocalDate
 }
 
 relationship ManyToOne {
-   HousePhoto{user(login)} to User
+   HousePhoto{createBy(login)} to User,
+   HousePhoto{updateBy(login)} to User
 }
 
 relationship OneToMany {
    House{photos} to HousePhoto
 }
 
-entity LandProjects {
-   name String
+entity LandProject {
+   name String,
+   image ImageBlob
+}
+
+entity LandProjectPhoto {
+   image ImageBlob,
+   createAt LocalDate
+}
+
+relationship ManyToOne {
+   LandProjectPhoto{createBy(login)} to User,
+   LandProjectPhoto{updateBy(login)} to User
+}
+
+relationship OneToMany {
+   LandProject{photos} to LandProjectPhoto
 }
 
 relationship ManyToOne {
@@ -154,6 +169,7 @@ relationship ManyToOne {
 }
 
 entity Article {
+   avatar ImageBlob,
    title String,
    titleAlias String,
    summary String,
