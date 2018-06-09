@@ -77,6 +77,7 @@ enum MoneyType {
 }
 
 entity House {
+   avatar String,
    actionType UserActionType,
    address String,
    money Float,
@@ -130,6 +131,14 @@ relationship ManyToOne {
 entity HousePhoto {
    name String,
    createAt LocalDate
+}
+
+relationship ManyToOne {
+   HousePhoto{user(login)} to User
+}
+
+relationship OneToMany {
+   House{photos} to HousePhoto
 }
 
 entity LandProjects {
