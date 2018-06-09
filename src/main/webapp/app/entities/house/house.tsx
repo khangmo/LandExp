@@ -242,7 +242,7 @@ export class House extends React.Component<IHouseProps, IHouseState> {
                   </td>
                   <td>{house.cityName ? <Link to={`city/${house.cityId}`}>{house.cityName}</Link> : ''}</td>
                   <td>{house.streetName ? <Link to={`street/${house.streetId}`}>{house.streetName}</Link> : ''}</td>
-                  <td>{house.projectName ? <Link to={`landProjects/${house.projectId}`}>{house.projectName}</Link> : ''}</td>
+                  <td>{house.projectName ? <Link to={`landProject/${house.projectId}`}>{house.projectName}</Link> : ''}</td>
                   <td>{house.createByLogin ? house.createByLogin : ''}</td>
                   <td>{house.updateByLogin ? house.updateByLogin : ''}</td>
                   <td className="text-right">

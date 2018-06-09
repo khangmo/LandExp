@@ -159,7 +159,7 @@ public class HouseQueryService extends QueryService<House> {
                 specification = specification.and(buildReferringEntitySpecification(criteria.getStreetId(), House_.street, Street_.id));
             }
             if (criteria.getProjectId() != null) {
-                specification = specification.and(buildReferringEntitySpecification(criteria.getProjectId(), House_.project, LandProjects_.id));
+                specification = specification.and(buildReferringEntitySpecification(criteria.getProjectId(), House_.project, LandProject_.id));
             }
             if (criteria.getCreateById() != null) {
                 specification = specification.and(buildReferringEntitySpecification(criteria.getCreateById(), House_.createBy, User_.id));

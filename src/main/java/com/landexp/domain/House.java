@@ -127,7 +127,7 @@ public class House implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties("")
-    private LandProjects project;
+    private LandProject project;
 
     @ManyToOne
     @JsonIgnoreProperties("")
@@ -496,17 +496,17 @@ public class House implements Serializable {
         this.street = street;
     }
 
-    public LandProjects getProject() {
+    public LandProject getProject() {
         return project;
     }
 
-    public House project(LandProjects landProjects) {
-        this.project = landProjects;
+    public House project(LandProject landProject) {
+        this.project = landProject;
         return this;
     }
 
-    public void setProject(LandProjects landProjects) {
-        this.project = landProjects;
+    public void setProject(LandProject landProject) {
+        this.project = landProject;
     }
 
     public User getCreateBy() {

@@ -3,6 +3,7 @@ package com.landexp.service.dto;
 import java.time.LocalDate;
 import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.Lob;
 import com.landexp.domain.enumeration.StatusType;
 
 /**
@@ -11,6 +12,10 @@ import com.landexp.domain.enumeration.StatusType;
 public class ArticleDTO implements Serializable {
 
     private Long id;
+
+    @Lob
+    private byte[] avatar;
+    private String avatarContentType;
 
     private String title;
 
@@ -46,6 +51,22 @@ public class ArticleDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public byte[] getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(byte[] avatar) {
+        this.avatar = avatar;
+    }
+
+    public String getAvatarContentType() {
+        return avatarContentType;
+    }
+
+    public void setAvatarContentType(String avatarContentType) {
+        this.avatarContentType = avatarContentType;
     }
 
     public String getTitle() {
@@ -185,6 +206,7 @@ public class ArticleDTO implements Serializable {
     public String toString() {
         return "ArticleDTO{" +
             "id=" + getId() +
+            ", avatar='" + getAvatar() + "'" +
             ", title='" + getTitle() + "'" +
             ", titleAlias='" + getTitleAlias() + "'" +
             ", summary='" + getSummary() + "'" +

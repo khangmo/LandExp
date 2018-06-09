@@ -17,6 +17,7 @@
             "detail": {
                 "title": "Article"
             },
+            "avatar": "Avatar",
             "title": "Title",
             "titleAlias": "Title Alias",
             "summary": "Summary",

@@ -5,6 +5,8 @@ import { Button, InputGroup, Col, Row, Table } from 'reactstrap';
 import { AvForm, AvGroup, AvInput } from 'availity-reactstrap-validation';
 // tslint:disable-next-line:no-unused-variable
 import {
+  openFile,
+  byteSize,
   Translate,
   translate,
   ICrudSearchAction,
@@ -118,6 +120,9 @@ export class Article extends React.Component<IArticleProps, IArticleState> {
                 <th className="hand" onClick={this.sort('id')}>
                   <Translate contentKey="global.field.id">ID</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
+                <th className="hand" onClick={this.sort('avatar')}>
+                  <Translate contentKey="landexpApp.article.avatar">Avatar</Translate> <FontAwesomeIcon icon="sort" />
+                </th>
                 <th className="hand" onClick={this.sort('title')}>
                   <Translate contentKey="landexpApp.article.title">Title</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
@@ -161,6 +166,19 @@ export class Article extends React.Component<IArticleProps, IArticleState> {
                     <Button tag={Link} to={`${match.url}/${article.id}`} color="link" size="sm">
                       {article.id}
                     </Button>
+                  </td>
+                  <td>
+                    {article.avatar ? (
+                      <div>
+                        <a onClick={openFile(article.avatarContentType, article.avatar)}>
+                          <img src={`data:${article.avatarContentType};base64,${article.avatar}`} style={{ maxHeight: '30px' }} />
+                          &nbsp;
+                        </a>
+                        <span>
+                          {article.avatarContentType}, {byteSize(article.avatar)}
+                        </span>
+                      </div>
+                    ) : null}
                   </td>
                   <td>{article.title}</td>
                   <td>{article.titleAlias}</td>

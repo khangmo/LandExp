@@ -25,6 +25,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Base64Utils;
 
 import javax.persistence.EntityManager;
 import java.time.LocalDate;
@@ -50,6 +51,11 @@ import com.landexp.domain.enumeration.StatusType;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = LandexpApp.class)
 public class ArticleResourceIntTest {
+
+    private static final byte[] DEFAULT_AVATAR = TestUtil.createByteArray(1, "0");
+    private static final byte[] UPDATED_AVATAR = TestUtil.createByteArray(2, "1");
+    private static final String DEFAULT_AVATAR_CONTENT_TYPE = "image/jpg";
+    private static final String UPDATED_AVATAR_CONTENT_TYPE = "image/png";
 
     private static final String DEFAULT_TITLE = "AAAAAAAAAA";
     private static final String UPDATED_TITLE = "BBBBBBBBBB";
@@ -129,6 +135,8 @@ public class ArticleResourceIntTest {
      */
     public static Article createEntity(EntityManager em) {
         Article article = new Article()
+            .avatar(DEFAULT_AVATAR)
+            .avatarContentType(DEFAULT_AVATAR_CONTENT_TYPE)
             .title(DEFAULT_TITLE)
             .titleAlias(DEFAULT_TITLE_ALIAS)
             .summary(DEFAULT_SUMMARY)
@@ -161,6 +169,8 @@ public class ArticleResourceIntTest {
         List<Article> articleList = articleRepository.findAll();
         assertThat(articleList).hasSize(databaseSizeBeforeCreate + 1);
         Article testArticle = articleList.get(articleList.size() - 1);
+        assertThat(testArticle.getAvatar()).isEqualTo(DEFAULT_AVATAR);
+        assertThat(testArticle.getAvatarContentType()).isEqualTo(DEFAULT_AVATAR_CONTENT_TYPE);
         assertThat(testArticle.getTitle()).isEqualTo(DEFAULT_TITLE);
         assertThat(testArticle.getTitleAlias()).isEqualTo(DEFAULT_TITLE_ALIAS);
         assertThat(testArticle.getSummary()).isEqualTo(DEFAULT_SUMMARY);
@@ -208,6 +218,8 @@ public class ArticleResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(article.getId().intValue())))
+            .andExpect(jsonPath("$.[*].avatarContentType").value(hasItem(DEFAULT_AVATAR_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].avatar").value(hasItem(Base64Utils.encodeToString(DEFAULT_AVATAR))))
             .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE.toString())))
             .andExpect(jsonPath("$.[*].titleAlias").value(hasItem(DEFAULT_TITLE_ALIAS.toString())))
             .andExpect(jsonPath("$.[*].summary").value(hasItem(DEFAULT_SUMMARY.toString())))
@@ -230,6 +242,8 @@ public class ArticleResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(article.getId().intValue()))
+            .andExpect(jsonPath("$.avatarContentType").value(DEFAULT_AVATAR_CONTENT_TYPE))
+            .andExpect(jsonPath("$.avatar").value(Base64Utils.encodeToString(DEFAULT_AVATAR)))
             .andExpect(jsonPath("$.title").value(DEFAULT_TITLE.toString()))
             .andExpect(jsonPath("$.titleAlias").value(DEFAULT_TITLE_ALIAS.toString()))
             .andExpect(jsonPath("$.summary").value(DEFAULT_SUMMARY.toString()))
@@ -260,6 +274,8 @@ public class ArticleResourceIntTest {
         // Disconnect from session so that the updates on updatedArticle are not directly saved in db
         em.detach(updatedArticle);
         updatedArticle
+            .avatar(UPDATED_AVATAR)
+            .avatarContentType(UPDATED_AVATAR_CONTENT_TYPE)
             .title(UPDATED_TITLE)
             .titleAlias(UPDATED_TITLE_ALIAS)
             .summary(UPDATED_SUMMARY)
@@ -279,6 +295,8 @@ public class ArticleResourceIntTest {
         List<Article> articleList = articleRepository.findAll();
         assertThat(articleList).hasSize(databaseSizeBeforeUpdate);
         Article testArticle = articleList.get(articleList.size() - 1);
+        assertThat(testArticle.getAvatar()).isEqualTo(UPDATED_AVATAR);
+        assertThat(testArticle.getAvatarContentType()).isEqualTo(UPDATED_AVATAR_CONTENT_TYPE);
         assertThat(testArticle.getTitle()).isEqualTo(UPDATED_TITLE);
         assertThat(testArticle.getTitleAlias()).isEqualTo(UPDATED_TITLE_ALIAS);
         assertThat(testArticle.getSummary()).isEqualTo(UPDATED_SUMMARY);
@@ -347,6 +365,8 @@ public class ArticleResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(article.getId().intValue())))
+            .andExpect(jsonPath("$.[*].avatarContentType").value(hasItem(DEFAULT_AVATAR_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].avatar").value(hasItem(Base64Utils.encodeToString(DEFAULT_AVATAR))))
             .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE.toString())))
             .andExpect(jsonPath("$.[*].titleAlias").value(hasItem(DEFAULT_TITLE_ALIAS.toString())))
             .andExpect(jsonPath("$.[*].summary").value(hasItem(DEFAULT_SUMMARY.toString())))

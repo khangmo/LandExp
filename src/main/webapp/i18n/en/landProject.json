@@ -1,0 +1,29 @@
+
+{
+    "landexpApp": {
+        "landProject" : {
+            "home": {
+                "title": "Land Projects",
+                "createLabel": "Create a new Land Project",
+                "createOrEditLabel": "Create or edit a Land Project",
+                "search": "Search for Land Project"
+            },
+            "created": "A new Land Project is created with identifier {{ param }}",
+            "updated": "A Land Project is updated with identifier {{ param }}",
+            "deleted": "A Land Project is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Land Project {{ id }}?"
+            },
+            "detail": {
+                "title": "Land Project"
+            },
+            "name": "Name",
+            "image": "Image",
+            "photos": "Photos",
+            "city": "City",
+            "street": "Street",
+            "createBy": "Create By",
+            "updateBy": "Update By"
+        }
+    }
+}

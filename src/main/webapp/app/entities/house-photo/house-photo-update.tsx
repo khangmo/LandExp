@@ -23,7 +23,8 @@ export interface IHousePhotoUpdateProps extends StateProps, DispatchProps, Route
 export interface IHousePhotoUpdateState {
   isNew: boolean;
   houseId: number;
-  userId: number;
+  createById: number;
+  updateById: number;
 }
 
 export class HousePhotoUpdate extends React.Component<IHousePhotoUpdateProps, IHousePhotoUpdateState> {
@@ -31,7 +32,8 @@ export class HousePhotoUpdate extends React.Component<IHousePhotoUpdateProps, IH
     super(props);
     this.state = {
       houseId: 0,
-      userId: 0,
+      createById: 0,
+      updateById: 0,
       isNew: !this.props.match.params || !this.props.match.params.id
     };
   }
@@ -93,17 +95,34 @@ export class HousePhotoUpdate extends React.Component<IHousePhotoUpdateProps, IH
     }
   };
 
-  userUpdate = element => {
+  createByUpdate = element => {
     const login = element.target.value.toString();
     if (login === '') {
       this.setState({
-        userId: -1
+        createById: -1
       });
     } else {
       for (const i in this.props.users) {
         if (login === this.props.users[i].login.toString()) {
           this.setState({
-            userId: this.props.users[i].id
+            createById: this.props.users[i].id
+          });
+        }
+      }
+    }
+  };
+
+  updateByUpdate = element => {
+    const login = element.target.value.toString();
+    if (login === '') {
+      this.setState({
+        updateById: -1
+      });
+    } else {
+      for (const i in this.props.users) {
+        if (login === this.props.users[i].login.toString()) {
+          this.setState({
+            updateById: this.props.users[i].id
           });
         }
       }
@@ -140,12 +159,6 @@ export class HousePhotoUpdate extends React.Component<IHousePhotoUpdateProps, IH
                     <AvInput id="house-photo-id" type="text" className="form-control" name="id" required readOnly />
                   </AvGroup>
                 ) : null}
-                <AvGroup>
-                  <Label id="nameLabel" for="name">
-                    <Translate contentKey="landexpApp.housePhoto.name">Name</Translate>
-                  </Label>
-                  <AvField id="house-photo-name" type="text" name="name" />
-                </AvGroup>
                 <AvGroup>
                   <AvGroup>
                     <Label id="imageLabel" for="image">
@@ -197,10 +210,37 @@ export class HousePhotoUpdate extends React.Component<IHousePhotoUpdateProps, IH
                   </AvInput>
                 </AvGroup>
                 <AvGroup>
-                  <Label for="user.login">
-                    <Translate contentKey="landexpApp.housePhoto.user">User</Translate>
+                  <Label for="createBy.login">
+                    <Translate contentKey="landexpApp.housePhoto.createBy">Create By</Translate>
                   </Label>
-                  <AvInput id="house-photo-user" type="select" className="form-control" name="userId" onChange={this.userUpdate}>
+                  <AvInput
+                    id="house-photo-createBy"
+                    type="select"
+                    className="form-control"
+                    name="createById"
+                    onChange={this.createByUpdate}
+                  >
+                    <option value="" key="0" />
+                    {users
+                      ? users.map(otherEntity => (
+                          <option value={otherEntity.id} key={otherEntity.id}>
+                            {otherEntity.login}
+                          </option>
+                        ))
+                      : null}
+                  </AvInput>
+                </AvGroup>
+                <AvGroup>
+                  <Label for="updateBy.login">
+                    <Translate contentKey="landexpApp.housePhoto.updateBy">Update By</Translate>
+                  </Label>
+                  <AvInput
+                    id="house-photo-updateBy"
+                    type="select"
+                    className="form-control"
+                    name="updateById"
+                    onChange={this.updateByUpdate}
+                  >
                     <option value="" key="0" />
                     {users
                       ? users.map(otherEntity => (

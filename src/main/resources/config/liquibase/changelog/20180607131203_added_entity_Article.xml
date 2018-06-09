@@ -22,6 +22,13 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
+            <column name="avatar" type="longblob">
+                <constraints nullable="true" />
+            </column>
+            <column name="avatar_content_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
             <column name="title" type="varchar(255)">
                 <constraints nullable="true" />
             </column>

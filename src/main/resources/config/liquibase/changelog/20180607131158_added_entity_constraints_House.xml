@@ -24,7 +24,7 @@
                                  baseTableName="house"
                                  constraintName="fk_house_project_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="land_projects"/>
+                                 referencedTableName="land_project"/>
 
         <addForeignKeyConstraint baseColumnNames="create_by_id"
                                  baseTableName="house"

@@ -27,6 +27,13 @@ public class Article implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Lob
+    @Column(name = "avatar")
+    private byte[] avatar;
+
+    @Column(name = "avatar_content_type")
+    private String avatarContentType;
+
     @Column(name = "title")
     private String title;
 
@@ -73,6 +80,32 @@ public class Article implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public byte[] getAvatar() {
+        return avatar;
+    }
+
+    public Article avatar(byte[] avatar) {
+        this.avatar = avatar;
+        return this;
+    }
+
+    public void setAvatar(byte[] avatar) {
+        this.avatar = avatar;
+    }
+
+    public String getAvatarContentType() {
+        return avatarContentType;
+    }
+
+    public Article avatarContentType(String avatarContentType) {
+        this.avatarContentType = avatarContentType;
+        return this;
+    }
+
+    public void setAvatarContentType(String avatarContentType) {
+        this.avatarContentType = avatarContentType;
     }
 
     public String getTitle() {
@@ -243,6 +276,8 @@ public class Article implements Serializable {
     public String toString() {
         return "Article{" +
             "id=" + getId() +
+            ", avatar='" + getAvatar() + "'" +
+            ", avatarContentType='" + getAvatarContentType() + "'" +
             ", title='" + getTitle() + "'" +
             ", titleAlias='" + getTitleAlias() + "'" +
             ", summary='" + getSummary() + "'" +

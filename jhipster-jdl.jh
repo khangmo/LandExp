@@ -110,7 +110,7 @@ entity ServiceFee {
 relationship ManyToOne {
    House{city(name)} to City,
    House{street(name)} to Street,
-   House{project(name)} to LandProjects,
+   House{project(name)} to LandProject,
    House{createBy(login)} to User,
    House{updateBy(login)} to User
 }
@@ -162,10 +162,10 @@ relationship OneToMany {
 }
 
 relationship ManyToOne {
-   LandProjects{city(name)} to City,
-   LandProjects{street(name)} to Street,
-   LandProjects{createBy(login)} to User,
-   LandProjects{updateBy(login)} to User
+   LandProject{city(name)} to City,
+   LandProject{street(name)} to Street,
+   LandProject{createBy(login)} to User,
+   LandProject{updateBy(login)} to User
 }
 
 entity Article {
@@ -348,7 +348,7 @@ relationship ManyToOne {
 // Set pagination options
 paginate Region, District, Street, UserRegion, House, HouseTracking, HousePhoto with pagination
 
-paginate LandProjects, Article, Category, SearchTracking, Banner with pagination
+paginate LandProject, Article, Category, SearchTracking, Banner with pagination
 
 paginate UserProfile, UserSubscription, UserTracking, UserFeed, UserFinancial, PotentialCustomer, Payment with pagination
 

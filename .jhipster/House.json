@@ -122,7 +122,7 @@
         {
             "relationshipType": "many-to-one",
             "relationshipName": "project",
-            "otherEntityName": "landProjects",
+            "otherEntityName": "landProject",
             "otherEntityField": "name"
         },
         {

@@ -12,8 +12,8 @@ import { ICity } from 'app/shared/model/city.model';
 import { getEntities as getCities } from 'app/entities/city/city.reducer';
 import { IStreet } from 'app/shared/model/street.model';
 import { getEntities as getStreets } from 'app/entities/street/street.reducer';
-import { ILandProjects } from 'app/shared/model/land-projects.model';
-import { getEntities as getLandProjects } from 'app/entities/land-projects/land-projects.reducer';
+import { ILandProject } from 'app/shared/model/land-project.model';
+import { getEntities as getLandProjects } from 'app/entities/land-project/land-project.reducer';
 import { IUser } from 'app/shared/model/user.model';
 import { getUsers } from 'app/modules/administration/user-management/user-management.reducer';
 import { getEntity, updateEntity, createEntity, reset } from './house.reducer';
@@ -523,7 +523,7 @@ export class HouseUpdate extends React.Component<IHouseUpdateProps, IHouseUpdate
 const mapStateToProps = (storeState: IRootState) => ({
   cities: storeState.city.entities,
   streets: storeState.street.entities,
-  landProjects: storeState.landProjects.entities,
+  landProjects: storeState.landProject.entities,
   users: storeState.userManagement.users,
   house: storeState.house.entity,
   loading: storeState.house.loading,

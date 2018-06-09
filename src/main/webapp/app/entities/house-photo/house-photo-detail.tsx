@@ -29,12 +29,6 @@ export class HousePhotoDetail extends React.Component<IHousePhotoDetailProps> {
           </h2>
           <dl className="jh-entity-details">
             <dt>
-              <span id="name">
-                <Translate contentKey="landexpApp.housePhoto.name">Name</Translate>
-              </span>
-            </dt>
-            <dd>{housePhoto.name}</dd>
-            <dt>
               <span id="image">
                 <Translate contentKey="landexpApp.housePhoto.image">Image</Translate>
               </span>
@@ -64,9 +58,13 @@ export class HousePhotoDetail extends React.Component<IHousePhotoDetailProps> {
             </dt>
             <dd>{housePhoto.houseId ? housePhoto.houseId : ''}</dd>
             <dt>
-              <Translate contentKey="landexpApp.housePhoto.user">User</Translate>
+              <Translate contentKey="landexpApp.housePhoto.createBy">Create By</Translate>
             </dt>
-            <dd>{housePhoto.userLogin ? housePhoto.userLogin : ''}</dd>
+            <dd>{housePhoto.createByLogin ? housePhoto.createByLogin : ''}</dd>
+            <dt>
+              <Translate contentKey="landexpApp.housePhoto.updateBy">Update By</Translate>
+            </dt>
+            <dd>{housePhoto.updateByLogin ? housePhoto.updateByLogin : ''}</dd>
           </dl>
           <Button tag={Link} to="/entity/house-photo" replace color="info">
             <FontAwesomeIcon icon="arrow-left" />{' '}

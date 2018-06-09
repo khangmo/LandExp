@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, Row, Col } from 'reactstrap';
 // tslint:disable-next-line:no-unused-variable
-import { Translate, ICrudGetAction, TextFormat } from 'react-jhipster';
+import { Translate, ICrudGetAction, openFile, byteSize, TextFormat } from 'react-jhipster';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 
 import { IRootState } from 'app/shared/reducers';
@@ -28,6 +28,23 @@ export class ArticleDetail extends React.Component<IArticleDetailProps> {
             <Translate contentKey="landexpApp.article.detail.title">Article</Translate> [<b>{article.id}</b>]
           </h2>
           <dl className="jh-entity-details">
+            <dt>
+              <span id="avatar">
+                <Translate contentKey="landexpApp.article.avatar">Avatar</Translate>
+              </span>
+            </dt>
+            <dd>
+              {article.avatar ? (
+                <div>
+                  <a onClick={openFile(article.avatarContentType, article.avatar)}>
+                    <img src={`data:${article.avatarContentType};base64,${article.avatar}`} style={{ maxHeight: '30px' }} />
+                  </a>
+                  <span>
+                    {article.avatarContentType}, {byteSize(article.avatar)}
+                  </span>
+                </div>
+              ) : null}
+            </dd>
             <dt>
               <span id="title">
                 <Translate contentKey="landexpApp.article.title">Title</Translate>

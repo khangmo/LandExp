@@ -26,6 +26,8 @@
     <include file="config/liquibase/changelog/20180607131211_added_entity_PotentialCustomer.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180607131212_added_entity_Banner.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180607131213_added_entity_Payment.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180609031328_added_entity_LandProject.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180609031329_added_entity_LandProjectPhoto.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20180607131155_added_entity_constraints_District.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180607131156_added_entity_constraints_Street.xml" relativeToChangelogFile="false"/>
@@ -44,5 +46,7 @@
     <include file="config/liquibase/changelog/20180607131212_added_entity_constraints_Banner.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180607131213_added_entity_constraints_Payment.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180607131201_added_entity_constraints_HousePhoto.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180609031328_added_entity_constraints_LandProject.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180609031329_added_entity_constraints_LandProjectPhoto.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

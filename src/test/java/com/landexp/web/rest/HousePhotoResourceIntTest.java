@@ -51,9 +51,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = LandexpApp.class)
 public class HousePhotoResourceIntTest {
 
-    private static final String DEFAULT_NAME = "AAAAAAAAAA";
-    private static final String UPDATED_NAME = "BBBBBBBBBB";
-
     private static final byte[] DEFAULT_IMAGE = TestUtil.createByteArray(1, "0");
     private static final byte[] UPDATED_IMAGE = TestUtil.createByteArray(2, "1");
     private static final String DEFAULT_IMAGE_CONTENT_TYPE = "image/jpg";
@@ -116,7 +113,6 @@ public class HousePhotoResourceIntTest {
      */
     public static HousePhoto createEntity(EntityManager em) {
         HousePhoto housePhoto = new HousePhoto()
-            .name(DEFAULT_NAME)
             .image(DEFAULT_IMAGE)
             .imageContentType(DEFAULT_IMAGE_CONTENT_TYPE)
             .createAt(DEFAULT_CREATE_AT);
@@ -144,7 +140,6 @@ public class HousePhotoResourceIntTest {
         List<HousePhoto> housePhotoList = housePhotoRepository.findAll();
         assertThat(housePhotoList).hasSize(databaseSizeBeforeCreate + 1);
         HousePhoto testHousePhoto = housePhotoList.get(housePhotoList.size() - 1);
-        assertThat(testHousePhoto.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testHousePhoto.getImage()).isEqualTo(DEFAULT_IMAGE);
         assertThat(testHousePhoto.getImageContentType()).isEqualTo(DEFAULT_IMAGE_CONTENT_TYPE);
         assertThat(testHousePhoto.getCreateAt()).isEqualTo(DEFAULT_CREATE_AT);
@@ -187,7 +182,6 @@ public class HousePhotoResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(housePhoto.getId().intValue())))
-            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
             .andExpect(jsonPath("$.[*].imageContentType").value(hasItem(DEFAULT_IMAGE_CONTENT_TYPE)))
             .andExpect(jsonPath("$.[*].image").value(hasItem(Base64Utils.encodeToString(DEFAULT_IMAGE))))
             .andExpect(jsonPath("$.[*].createAt").value(hasItem(DEFAULT_CREATE_AT.toString())));
@@ -205,7 +199,6 @@ public class HousePhotoResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(housePhoto.getId().intValue()))
-            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
             .andExpect(jsonPath("$.imageContentType").value(DEFAULT_IMAGE_CONTENT_TYPE))
             .andExpect(jsonPath("$.image").value(Base64Utils.encodeToString(DEFAULT_IMAGE)))
             .andExpect(jsonPath("$.createAt").value(DEFAULT_CREATE_AT.toString()));
@@ -231,7 +224,6 @@ public class HousePhotoResourceIntTest {
         // Disconnect from session so that the updates on updatedHousePhoto are not directly saved in db
         em.detach(updatedHousePhoto);
         updatedHousePhoto
-            .name(UPDATED_NAME)
             .image(UPDATED_IMAGE)
             .imageContentType(UPDATED_IMAGE_CONTENT_TYPE)
             .createAt(UPDATED_CREATE_AT);
@@ -246,7 +238,6 @@ public class HousePhotoResourceIntTest {
         List<HousePhoto> housePhotoList = housePhotoRepository.findAll();
         assertThat(housePhotoList).hasSize(databaseSizeBeforeUpdate);
         HousePhoto testHousePhoto = housePhotoList.get(housePhotoList.size() - 1);
-        assertThat(testHousePhoto.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testHousePhoto.getImage()).isEqualTo(UPDATED_IMAGE);
         assertThat(testHousePhoto.getImageContentType()).isEqualTo(UPDATED_IMAGE_CONTENT_TYPE);
         assertThat(testHousePhoto.getCreateAt()).isEqualTo(UPDATED_CREATE_AT);
@@ -310,7 +301,6 @@ public class HousePhotoResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(housePhoto.getId().intValue())))
-            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
             .andExpect(jsonPath("$.[*].imageContentType").value(hasItem(DEFAULT_IMAGE_CONTENT_TYPE)))
             .andExpect(jsonPath("$.[*].image").value(hasItem(Base64Utils.encodeToString(DEFAULT_IMAGE))))
             .andExpect(jsonPath("$.[*].createAt").value(hasItem(DEFAULT_CREATE_AT.toString())));

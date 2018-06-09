@@ -12,12 +12,15 @@ import org.mapstruct.*;
 public interface HousePhotoMapper extends EntityMapper<HousePhotoDTO, HousePhoto> {
 
     @Mapping(source = "house.id", target = "houseId")
-    @Mapping(source = "user.id", target = "userId")
-    @Mapping(source = "user.login", target = "userLogin")
+    @Mapping(source = "createBy.id", target = "createById")
+    @Mapping(source = "createBy.login", target = "createByLogin")
+    @Mapping(source = "updateBy.id", target = "updateById")
+    @Mapping(source = "updateBy.login", target = "updateByLogin")
     HousePhotoDTO toDto(HousePhoto housePhoto);
 
     @Mapping(source = "houseId", target = "house")
-    @Mapping(source = "userId", target = "user")
+    @Mapping(source = "createById", target = "createBy")
+    @Mapping(source = "updateById", target = "updateBy")
     HousePhoto toEntity(HousePhotoDTO housePhotoDTO);
 
     default HousePhoto fromId(Long id) {

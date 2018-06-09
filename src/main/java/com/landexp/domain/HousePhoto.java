@@ -25,9 +25,6 @@ public class HousePhoto implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
-    private String name;
-
     @Lob
     @Column(name = "image")
     private byte[] image;
@@ -45,7 +42,11 @@ public class HousePhoto implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties("")
-    private User user;
+    private User createBy;
+
+    @ManyToOne
+    @JsonIgnoreProperties("")
+    private User updateBy;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -54,19 +55,6 @@ public class HousePhoto implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public HousePhoto name(String name) {
-        this.name = name;
-        return this;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public byte[] getImage() {
@@ -121,17 +109,30 @@ public class HousePhoto implements Serializable {
         this.house = house;
     }
 
-    public User getUser() {
-        return user;
+    public User getCreateBy() {
+        return createBy;
     }
 
-    public HousePhoto user(User user) {
-        this.user = user;
+    public HousePhoto createBy(User user) {
+        this.createBy = user;
         return this;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setCreateBy(User user) {
+        this.createBy = user;
+    }
+
+    public User getUpdateBy() {
+        return updateBy;
+    }
+
+    public HousePhoto updateBy(User user) {
+        this.updateBy = user;
+        return this;
+    }
+
+    public void setUpdateBy(User user) {
+        this.updateBy = user;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -159,7 +160,6 @@ public class HousePhoto implements Serializable {
     public String toString() {
         return "HousePhoto{" +
             "id=" + getId() +
-            ", name='" + getName() + "'" +
             ", image='" + getImage() + "'" +
             ", imageContentType='" + getImageContentType() + "'" +
             ", createAt='" + getCreateAt() + "'" +

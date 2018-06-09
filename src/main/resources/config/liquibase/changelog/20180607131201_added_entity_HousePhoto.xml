@@ -22,10 +22,6 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="name" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
             <column name="image" type="longblob">
                 <constraints nullable="true" />
             </column>
@@ -41,7 +37,11 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="user_id" type="bigint">
+            <column name="create_by_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="update_by_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 

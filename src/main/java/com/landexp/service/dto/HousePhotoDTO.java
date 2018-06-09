@@ -12,8 +12,6 @@ public class HousePhotoDTO implements Serializable {
 
     private Long id;
 
-    private String name;
-
     @Lob
     private byte[] image;
     private String imageContentType;
@@ -22,9 +20,13 @@ public class HousePhotoDTO implements Serializable {
 
     private Long houseId;
 
-    private Long userId;
+    private Long createById;
 
-    private String userLogin;
+    private String createByLogin;
+
+    private Long updateById;
+
+    private String updateByLogin;
 
     public Long getId() {
         return id;
@@ -32,14 +34,6 @@ public class HousePhotoDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public byte[] getImage() {
@@ -74,20 +68,36 @@ public class HousePhotoDTO implements Serializable {
         this.houseId = houseId;
     }
 
-    public Long getUserId() {
-        return userId;
+    public Long getCreateById() {
+        return createById;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setCreateById(Long userId) {
+        this.createById = userId;
     }
 
-    public String getUserLogin() {
-        return userLogin;
+    public String getCreateByLogin() {
+        return createByLogin;
     }
 
-    public void setUserLogin(String userLogin) {
-        this.userLogin = userLogin;
+    public void setCreateByLogin(String userLogin) {
+        this.createByLogin = userLogin;
+    }
+
+    public Long getUpdateById() {
+        return updateById;
+    }
+
+    public void setUpdateById(Long userId) {
+        this.updateById = userId;
+    }
+
+    public String getUpdateByLogin() {
+        return updateByLogin;
+    }
+
+    public void setUpdateByLogin(String userLogin) {
+        this.updateByLogin = userLogin;
     }
 
     @Override
@@ -115,12 +125,13 @@ public class HousePhotoDTO implements Serializable {
     public String toString() {
         return "HousePhotoDTO{" +
             "id=" + getId() +
-            ", name='" + getName() + "'" +
             ", image='" + getImage() + "'" +
             ", createAt='" + getCreateAt() + "'" +
             ", house=" + getHouseId() +
-            ", user=" + getUserId() +
-            ", user='" + getUserLogin() + "'" +
+            ", createBy=" + getCreateById() +
+            ", createBy='" + getCreateByLogin() + "'" +
+            ", updateBy=" + getUpdateById() +
+            ", updateBy='" + getUpdateByLogin() + "'" +
             "}";
     }
 }

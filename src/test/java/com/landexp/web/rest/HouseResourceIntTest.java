@@ -6,7 +6,7 @@ import com.landexp.domain.House;
 import com.landexp.domain.HousePhoto;
 import com.landexp.domain.City;
 import com.landexp.domain.Street;
-import com.landexp.domain.LandProjects;
+import com.landexp.domain.LandProject;
 import com.landexp.domain.User;
 import com.landexp.domain.User;
 import com.landexp.repository.HouseRepository;
@@ -1455,7 +1455,7 @@ public class HouseResourceIntTest {
     @Transactional
     public void getAllHousesByProjectIsEqualToSomething() throws Exception {
         // Initialize the database
-        LandProjects project = LandProjectsResourceIntTest.createEntity(em);
+        LandProject project = LandProjectResourceIntTest.createEntity(em);
         em.persist(project);
         em.flush();
         house.setProject(project);

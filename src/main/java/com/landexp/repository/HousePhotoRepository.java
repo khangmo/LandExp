@@ -13,7 +13,10 @@ import java.util.List;
 @Repository
 public interface HousePhotoRepository extends JpaRepository<HousePhoto, Long> {
 
-    @Query("select house_photo from HousePhoto house_photo where house_photo.user.login = ?#{principal.username}")
-    List<HousePhoto> findByUserIsCurrentUser();
+    @Query("select house_photo from HousePhoto house_photo where house_photo.createBy.login = ?#{principal.username}")
+    List<HousePhoto> findByCreateByIsCurrentUser();
+
+    @Query("select house_photo from HousePhoto house_photo where house_photo.updateBy.login = ?#{principal.username}")
+    List<HousePhoto> findByUpdateByIsCurrentUser();
 
 }

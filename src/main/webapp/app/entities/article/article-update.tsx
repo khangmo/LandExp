@@ -4,7 +4,7 @@ import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, Row, Col, Label } from 'reactstrap';
 import { AvForm, AvGroup, AvInput, AvField } from 'availity-reactstrap-validation';
 // tslint:disable-next-line:no-unused-variable
-import { Translate, translate, ICrudGetAction, ICrudGetAllAction, ICrudPutAction } from 'react-jhipster';
+import { Translate, translate, ICrudGetAction, ICrudGetAllAction, setFileData, openFile, byteSize, ICrudPutAction } from 'react-jhipster';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { IRootState } from 'app/shared/reducers';
 
@@ -12,7 +12,7 @@ import { ICategory } from 'app/shared/model/category.model';
 import { getEntities as getCategories } from 'app/entities/category/category.reducer';
 import { IUser } from 'app/shared/model/user.model';
 import { getUsers } from 'app/modules/administration/user-management/user-management.reducer';
-import { getEntity, updateEntity, createEntity, reset } from './article.reducer';
+import { getEntity, updateEntity, createEntity, setBlob, reset } from './article.reducer';
 import { IArticle } from 'app/shared/model/article.model';
 // tslint:disable-next-line:no-unused-variable
 import { convertDateTimeFromServer } from 'app/shared/util/date-utils';
@@ -48,6 +48,14 @@ export class ArticleUpdate extends React.Component<IArticleUpdateProps, IArticle
     this.props.getCategories();
     this.props.getUsers();
   }
+
+  onBlobChange = (isAnImage, name) => event => {
+    setFileData(event, (contentType, data) => this.props.setBlob(name, data, contentType), isAnImage);
+  };
+
+  clearBlob = name => () => {
+    this.props.setBlob(name, undefined, undefined);
+  };
 
   saveEntity = (event, errors, values) => {
     if (errors.length === 0) {
@@ -126,6 +134,8 @@ export class ArticleUpdate extends React.Component<IArticleUpdateProps, IArticle
     const { article, categories, users, loading, updating } = this.props;
     const { isNew } = this.state;
 
+    const { avatar, avatarContentType } = article;
+
     return (
       <div>
         <Row className="justify-content-center">
@@ -149,6 +159,35 @@ export class ArticleUpdate extends React.Component<IArticleUpdateProps, IArticle
                     <AvInput id="article-id" type="text" className="form-control" name="id" required readOnly />
                   </AvGroup>
                 ) : null}
+                <AvGroup>
+                  <AvGroup>
+                    <Label id="avatarLabel" for="avatar">
+                      <Translate contentKey="landexpApp.article.avatar">Avatar</Translate>
+                    </Label>
+                    <br />
+                    {avatar ? (
+                      <div>
+                        <a onClick={openFile(avatarContentType, avatar)}>
+                          <img src={`data:${avatarContentType};base64,${avatar}`} style={{ maxHeight: '100px' }} />
+                        </a>
+                        <br />
+                        <Row>
+                          <Col md="11">
+                            <span>
+                              {avatarContentType}, {byteSize(avatar)}
+                            </span>
+                          </Col>
+                          <Col md="1">
+                            <Button color="danger" onClick={this.clearBlob('avatar')}>
+                              <FontAwesomeIcon icon="times-circle" />
+                            </Button>
+                          </Col>
+                        </Row>
+                      </div>
+                    ) : null}
+                    <input id="file_avatar" type="file" onChange={this.onBlobChange(true, 'avatar')} accept="image/*" />
+                  </AvGroup>
+                </AvGroup>
                 <AvGroup>
                   <Label id="titleLabel" for="title">
                     <Translate contentKey="landexpApp.article.title">Title</Translate>
@@ -288,6 +327,7 @@ const mapDispatchToProps = {
   getUsers,
   getEntity,
   updateEntity,
+  setBlob,
   createEntity,
   reset
 };

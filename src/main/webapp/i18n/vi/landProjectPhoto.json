@@ -1,0 +1,27 @@
+
+{
+    "landexpApp": {
+        "landProjectPhoto" : {
+            "home": {
+                "title": "Land Project Photos",
+                "createLabel": "Thêm mới một Land Project Photo",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Land Project Photo",
+                "search": "Tìm Land Project Photo"
+            },
+            "created": "Một Land Project Photo mới được tạo với định danh {{ param }}",
+            "updated": "Một Land Project Photo cập nhật với định danh {{ param }}",
+            "deleted": "Một Land Project Photo đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Land Project Photo {{ id }}?"
+            },
+            "detail": {
+                "title": "Land Project Photo"
+            },
+            "image": "Image",
+            "createAt": "Create At",
+            "landProject": "Land Project",
+            "createBy": "Create By",
+            "updateBy": "Update By"
+        }
+    }
+}

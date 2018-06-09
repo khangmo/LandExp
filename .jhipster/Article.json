@@ -1,6 +1,11 @@
 {
     "fields": [
         {
+            "fieldName": "avatar",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
             "fieldName": "title",
             "fieldType": "String"
         },

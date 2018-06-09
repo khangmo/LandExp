@@ -312,16 +312,16 @@ public class HouseDTO implements Serializable {
         return projectId;
     }
 
-    public void setProjectId(Long landProjectsId) {
-        this.projectId = landProjectsId;
+    public void setProjectId(Long landProjectId) {
+        this.projectId = landProjectId;
     }
 
     public String getProjectName() {
         return projectName;
     }
 
-    public void setProjectName(String landProjectsName) {
-        this.projectName = landProjectsName;
+    public void setProjectName(String landProjectName) {
+        this.projectName = landProjectName;
     }
 
     public Long getCreateById() {

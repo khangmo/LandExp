@@ -11,6 +11,8 @@ export const enum StatusType {
 
 export interface IArticle {
   id?: number;
+  avatarContentType?: string;
+  avatar?: any;
   title?: string;
   titleAlias?: string;
   summary?: string;

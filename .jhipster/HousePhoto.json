@@ -1,10 +1,6 @@
 {
     "fields": [
         {
-            "fieldName": "name",
-            "fieldType": "String"
-        },
-        {
             "fieldName": "image",
             "fieldType": "byte[]",
             "fieldTypeBlobContent": "image"
@@ -23,7 +19,13 @@
         },
         {
             "relationshipType": "many-to-one",
-            "relationshipName": "user",
+            "relationshipName": "createBy",
+            "otherEntityName": "user",
+            "otherEntityField": "login"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "updateBy",
             "otherEntityName": "user",
             "otherEntityField": "login"
         }

@@ -120,9 +120,6 @@ export class HousePhoto extends React.Component<IHousePhotoProps, IHousePhotoSta
                 <th className="hand" onClick={this.sort('id')}>
                   <Translate contentKey="global.field.id">ID</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
-                <th className="hand" onClick={this.sort('name')}>
-                  <Translate contentKey="landexpApp.housePhoto.name">Name</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
                 <th className="hand" onClick={this.sort('image')}>
                   <Translate contentKey="landexpApp.housePhoto.image">Image</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
@@ -133,7 +130,10 @@ export class HousePhoto extends React.Component<IHousePhotoProps, IHousePhotoSta
                   <Translate contentKey="landexpApp.housePhoto.house">House</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th>
-                  <Translate contentKey="landexpApp.housePhoto.user">User</Translate> <FontAwesomeIcon icon="sort" />
+                  <Translate contentKey="landexpApp.housePhoto.createBy">Create By</Translate> <FontAwesomeIcon icon="sort" />
+                </th>
+                <th>
+                  <Translate contentKey="landexpApp.housePhoto.updateBy">Update By</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th />
               </tr>
@@ -146,7 +146,6 @@ export class HousePhoto extends React.Component<IHousePhotoProps, IHousePhotoSta
                       {housePhoto.id}
                     </Button>
                   </td>
-                  <td>{housePhoto.name}</td>
                   <td>
                     {housePhoto.image ? (
                       <div>
@@ -164,7 +163,8 @@ export class HousePhoto extends React.Component<IHousePhotoProps, IHousePhotoSta
                     <TextFormat type="date" value={housePhoto.createAt} format={APP_LOCAL_DATE_FORMAT} />
                   </td>
                   <td>{housePhoto.houseId ? <Link to={`house/${housePhoto.houseId}`}>{housePhoto.houseId}</Link> : ''}</td>
-                  <td>{housePhoto.userLogin ? housePhoto.userLogin : ''}</td>
+                  <td>{housePhoto.createByLogin ? housePhoto.createByLogin : ''}</td>
+                  <td>{housePhoto.updateByLogin ? housePhoto.updateByLogin : ''}</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`${match.url}/${housePhoto.id}`} color="info" size="sm">

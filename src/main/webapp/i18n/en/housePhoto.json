@@ -17,11 +17,11 @@
             "detail": {
                 "title": "House Photo"
             },
-            "name": "Name",
             "image": "Image",
             "createAt": "Create At",
             "house": "House",
-            "user": "User"
+            "createBy": "Create By",
+            "updateBy": "Update By"
         }
     }
 }
