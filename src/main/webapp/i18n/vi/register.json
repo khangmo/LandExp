@@ -13,11 +13,11 @@
                     "pattern": "Tên tài khoản chỉ có thể chứa các ký tự in thường và số."
                 }
             },
-            "success": "<strong>Đăng ký thành công!</strong> Bạn vui lòng kiểm tra hộp thư để xác nhận tài khoản.",
+            "success": "<strong>Đăng ký thành công!</strong> Đăng nhập để sử dụng dịch vụ.",
             "error": {
                 "fail": "<strong>Đăng ký thất bại!</strong> Vui lòng thử lại sau.",
                 "userexists": "<strong>Tên tài khoản này đã được sử dụng!</strong> Bạn vui lòng chọn tên tài khoản khác.",
-                "emailexists": "<strong>Email này đã được sử dụng!</strong> Bạn vui lòng nhập email khác."
+                "emailexists": "<strong>Số điện thoại này đã được sử dụng!</strong> Bạn vui lòng nhập số điện thoại khác."
             }
         }
     }
