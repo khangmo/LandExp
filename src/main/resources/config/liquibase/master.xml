@@ -14,7 +14,6 @@
     <include file="config/liquibase/changelog/20180607131159_added_entity_ServiceFee.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180607131200_added_entity_HouseTracking.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180607131201_added_entity_HousePhoto.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20180607131202_added_entity_LandProjects.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180607131203_added_entity_Article.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180607131204_added_entity_Category.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180607131205_added_entity_UserProfile.xml" relativeToChangelogFile="false"/>
@@ -34,7 +33,6 @@
     <include file="config/liquibase/changelog/20180607131157_added_entity_constraints_UserRegion.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180607131158_added_entity_constraints_House.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180607131200_added_entity_constraints_HouseTracking.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20180607131202_added_entity_constraints_LandProjects.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180607131203_added_entity_constraints_Article.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180607131205_added_entity_constraints_UserProfile.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180607131206_added_entity_constraints_UserSubscription.xml" relativeToChangelogFile="false"/>

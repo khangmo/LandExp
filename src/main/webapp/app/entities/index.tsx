@@ -11,7 +11,6 @@ import House from './house';
 import ServiceFee from './service-fee';
 import HouseTracking from './house-tracking';
 import HousePhoto from './house-photo';
-import LandProjects from './land-projects';
 import Article from './article';
 import Category from './category';
 import UserProfile from './user-profile';
@@ -40,7 +39,6 @@ const Routes = ({ match }) => (
       <Route path={`${match.url}/service-fee`} component={ServiceFee} />
       <Route path={`${match.url}/house-tracking`} component={HouseTracking} />
       <Route path={`${match.url}/house-photo`} component={HousePhoto} />
-      <Route path={`${match.url}/land-projects`} component={LandProjects} />
       <Route path={`${match.url}/article`} component={Article} />
       <Route path={`${match.url}/category`} component={Category} />
       <Route path={`${match.url}/user-profile`} component={UserProfile} />

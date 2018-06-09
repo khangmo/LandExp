@@ -49,10 +49,6 @@ import housePhoto, {
   HousePhotoState
 } from 'app/entities/house-photo/house-photo.reducer';
 // prettier-ignore
-import landProjects, {
-  LandProjectsState
-} from 'app/entities/land-projects/land-projects.reducer';
-// prettier-ignore
 import article, {
   ArticleState
 } from 'app/entities/article/article.reducer';
@@ -126,7 +122,6 @@ export interface IRootState {
   readonly serviceFee: ServiceFeeState;
   readonly houseTracking: HouseTrackingState;
   readonly housePhoto: HousePhotoState;
-  readonly landProjects: LandProjectsState;
   readonly article: ArticleState;
   readonly category: CategoryState;
   readonly userProfile: UserProfileState;
@@ -164,7 +159,6 @@ const rootReducer = combineReducers<IRootState>({
   serviceFee,
   houseTracking,
   housePhoto,
-  landProjects,
   article,
   category,
   userProfile,

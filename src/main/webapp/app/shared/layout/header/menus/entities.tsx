@@ -34,9 +34,6 @@ export const EntitiesMenu = props => (
     <DropdownItem tag={Link} to="/entity/house-photo">
       <FontAwesomeIcon icon="asterisk" />&nbsp; House Photo
     </DropdownItem>
-    <DropdownItem tag={Link} to="/entity/land-projects">
-      <FontAwesomeIcon icon="asterisk" />&nbsp; Land Projects
-    </DropdownItem>
     <DropdownItem tag={Link} to="/entity/article">
       <FontAwesomeIcon icon="asterisk" />&nbsp; Article
     </DropdownItem>
