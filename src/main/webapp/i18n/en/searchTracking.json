@@ -32,6 +32,7 @@
             "createAt": "Create At",
             "user": "User",
             "city": "City",
+            "district": "District",
             "street": "Street"
         }
     }

@@ -7,6 +7,7 @@ import com.landexp.domain.enumeration.DirectionType;
 import com.landexp.domain.enumeration.DirectionType;
 import com.landexp.domain.enumeration.LandType;
 import com.landexp.domain.enumeration.SaleType;
+import com.landexp.domain.enumeration.PresentType;
 import com.landexp.domain.enumeration.StatusType;
 import io.github.jhipster.service.filter.BooleanFilter;
 import io.github.jhipster.service.filter.DoubleFilter;
@@ -61,6 +62,12 @@ public class HouseCriteria implements Serializable {
     }
 
     /**
+     * Class for filtering PresentType
+     */
+    public static class PresentTypeFilter extends Filter<PresentType> {
+    }
+
+    /**
      * Class for filtering StatusType
      */
     public static class StatusTypeFilter extends Filter<StatusType> {
@@ -95,11 +102,11 @@ public class HouseCriteria implements Serializable {
 
     private IntegerFilter bathRoom;
 
+    private IntegerFilter bedRoom;
+
     private BooleanFilter parking;
 
     private BooleanFilter furniture;
-
-    private IntegerFilter bedRoom;
 
     private LandTypeFilter landType;
 
@@ -108,6 +115,8 @@ public class HouseCriteria implements Serializable {
     private FloatFilter fee;
 
     private FloatFilter feeMax;
+
+    private PresentTypeFilter present;
 
     private IntegerFilter hits;
 
@@ -120,6 +129,8 @@ public class HouseCriteria implements Serializable {
     private LongFilter photosId;
 
     private LongFilter cityId;
+
+    private LongFilter districtId;
 
     private LongFilter streetId;
 
@@ -236,6 +247,14 @@ public class HouseCriteria implements Serializable {
         this.bathRoom = bathRoom;
     }
 
+    public IntegerFilter getBedRoom() {
+        return bedRoom;
+    }
+
+    public void setBedRoom(IntegerFilter bedRoom) {
+        this.bedRoom = bedRoom;
+    }
+
     public BooleanFilter getParking() {
         return parking;
     }
@@ -250,14 +269,6 @@ public class HouseCriteria implements Serializable {
 
     public void setFurniture(BooleanFilter furniture) {
         this.furniture = furniture;
-    }
-
-    public IntegerFilter getBedRoom() {
-        return bedRoom;
-    }
-
-    public void setBedRoom(IntegerFilter bedRoom) {
-        this.bedRoom = bedRoom;
     }
 
     public LandTypeFilter getLandType() {
@@ -290,6 +301,14 @@ public class HouseCriteria implements Serializable {
 
     public void setFeeMax(FloatFilter feeMax) {
         this.feeMax = feeMax;
+    }
+
+    public PresentTypeFilter getPresent() {
+        return present;
+    }
+
+    public void setPresent(PresentTypeFilter present) {
+        this.present = present;
     }
 
     public IntegerFilter getHits() {
@@ -340,6 +359,14 @@ public class HouseCriteria implements Serializable {
         this.cityId = cityId;
     }
 
+    public LongFilter getDistrictId() {
+        return districtId;
+    }
+
+    public void setDistrictId(LongFilter districtId) {
+        this.districtId = districtId;
+    }
+
     public LongFilter getStreetId() {
         return streetId;
     }
@@ -388,19 +415,21 @@ public class HouseCriteria implements Serializable {
                 (floor != null ? "floor=" + floor + ", " : "") +
                 (numberOfFloor != null ? "numberOfFloor=" + numberOfFloor + ", " : "") +
                 (bathRoom != null ? "bathRoom=" + bathRoom + ", " : "") +
+                (bedRoom != null ? "bedRoom=" + bedRoom + ", " : "") +
                 (parking != null ? "parking=" + parking + ", " : "") +
                 (furniture != null ? "furniture=" + furniture + ", " : "") +
-                (bedRoom != null ? "bedRoom=" + bedRoom + ", " : "") +
                 (landType != null ? "landType=" + landType + ", " : "") +
                 (saleType != null ? "saleType=" + saleType + ", " : "") +
                 (fee != null ? "fee=" + fee + ", " : "") +
                 (feeMax != null ? "feeMax=" + feeMax + ", " : "") +
+                (present != null ? "present=" + present + ", " : "") +
                 (hits != null ? "hits=" + hits + ", " : "") +
                 (statusType != null ? "statusType=" + statusType + ", " : "") +
                 (createAt != null ? "createAt=" + createAt + ", " : "") +
                 (updateAt != null ? "updateAt=" + updateAt + ", " : "") +
                 (photosId != null ? "photosId=" + photosId + ", " : "") +
                 (cityId != null ? "cityId=" + cityId + ", " : "") +
+                (districtId != null ? "districtId=" + districtId + ", " : "") +
                 (streetId != null ? "streetId=" + streetId + ", " : "") +
                 (projectId != null ? "projectId=" + projectId + ", " : "") +
                 (createById != null ? "createById=" + createById + ", " : "") +

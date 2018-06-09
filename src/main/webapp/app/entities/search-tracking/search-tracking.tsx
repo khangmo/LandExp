@@ -164,6 +164,9 @@ export class SearchTracking extends React.Component<ISearchTrackingProps, ISearc
                   <Translate contentKey="landexpApp.searchTracking.city">City</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th>
+                  <Translate contentKey="landexpApp.searchTracking.district">District</Translate> <FontAwesomeIcon icon="sort" />
+                </th>
+                <th>
                   <Translate contentKey="landexpApp.searchTracking.street">Street</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th />
@@ -194,6 +197,13 @@ export class SearchTracking extends React.Component<ISearchTrackingProps, ISearc
                   </td>
                   <td>{searchTracking.userLogin ? searchTracking.userLogin : ''}</td>
                   <td>{searchTracking.cityName ? <Link to={`city/${searchTracking.cityId}`}>{searchTracking.cityName}</Link> : ''}</td>
+                  <td>
+                    {searchTracking.districtName ? (
+                      <Link to={`district/${searchTracking.districtId}`}>{searchTracking.districtName}</Link>
+                    ) : (
+                      ''
+                    )}
+                  </td>
                   <td>
                     {searchTracking.streetName ? <Link to={`street/${searchTracking.streetId}`}>{searchTracking.streetName}</Link> : ''}
                   </td>

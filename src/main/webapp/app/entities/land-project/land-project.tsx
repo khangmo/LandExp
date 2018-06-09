@@ -129,6 +129,9 @@ export class LandProject extends React.Component<ILandProjectProps, ILandProject
                   <Translate contentKey="landexpApp.landProject.city">City</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th>
+                  <Translate contentKey="landexpApp.landProject.district">District</Translate> <FontAwesomeIcon icon="sort" />
+                </th>
+                <th>
                   <Translate contentKey="landexpApp.landProject.street">Street</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th>
@@ -163,6 +166,9 @@ export class LandProject extends React.Component<ILandProjectProps, ILandProject
                     ) : null}
                   </td>
                   <td>{landProject.cityName ? <Link to={`city/${landProject.cityId}`}>{landProject.cityName}</Link> : ''}</td>
+                  <td>
+                    {landProject.districtName ? <Link to={`district/${landProject.districtId}`}>{landProject.districtName}</Link> : ''}
+                  </td>
                   <td>{landProject.streetName ? <Link to={`street/${landProject.streetId}`}>{landProject.streetName}</Link> : ''}</td>
                   <td>{landProject.createByLogin ? landProject.createByLogin : ''}</td>
                   <td>{landProject.updateByLogin ? landProject.updateByLogin : ''}</td>

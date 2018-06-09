@@ -52,6 +52,10 @@ public class UserSubscriptionDTO implements Serializable {
 
     private String cityName;
 
+    private Long districtId;
+
+    private String districtName;
+
     private Long streetId;
 
     private String streetName;
@@ -216,6 +220,22 @@ public class UserSubscriptionDTO implements Serializable {
         this.cityName = cityName;
     }
 
+    public Long getDistrictId() {
+        return districtId;
+    }
+
+    public void setDistrictId(Long districtId) {
+        this.districtId = districtId;
+    }
+
+    public String getDistrictName() {
+        return districtName;
+    }
+
+    public void setDistrictName(String districtName) {
+        this.districtName = districtName;
+    }
+
     public Long getStreetId() {
         return streetId;
     }
@@ -276,6 +296,8 @@ public class UserSubscriptionDTO implements Serializable {
             ", user='" + getUserLogin() + "'" +
             ", city=" + getCityId() +
             ", city='" + getCityName() + "'" +
+            ", district=" + getDistrictId() +
+            ", district='" + getDistrictName() + "'" +
             ", street=" + getStreetId() +
             ", street='" + getStreetName() + "'" +
             "}";

@@ -5,6 +5,7 @@ import com.landexp.LandexpApp;
 import com.landexp.domain.UserSubscription;
 import com.landexp.domain.User;
 import com.landexp.domain.City;
+import com.landexp.domain.District;
 import com.landexp.domain.Street;
 import com.landexp.repository.UserSubscriptionRepository;
 import com.landexp.repository.search.UserSubscriptionSearchRepository;
@@ -1027,6 +1028,25 @@ public class UserSubscriptionResourceIntTest {
 
         // Get all the userSubscriptionList where city equals to cityId + 1
         defaultUserSubscriptionShouldNotBeFound("cityId.equals=" + (cityId + 1));
+    }
+
+
+    @Test
+    @Transactional
+    public void getAllUserSubscriptionsByDistrictIsEqualToSomething() throws Exception {
+        // Initialize the database
+        District district = DistrictResourceIntTest.createEntity(em);
+        em.persist(district);
+        em.flush();
+        userSubscription.setDistrict(district);
+        userSubscriptionRepository.saveAndFlush(userSubscription);
+        Long districtId = district.getId();
+
+        // Get all the userSubscriptionList where district equals to districtId
+        defaultUserSubscriptionShouldBeFound("districtId.equals=" + districtId);
+
+        // Get all the userSubscriptionList where district equals to districtId + 1
+        defaultUserSubscriptionShouldNotBeFound("districtId.equals=" + (districtId + 1));
     }
 
 

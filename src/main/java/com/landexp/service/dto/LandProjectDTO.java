@@ -21,6 +21,10 @@ public class LandProjectDTO implements Serializable {
 
     private String cityName;
 
+    private Long districtId;
+
+    private String districtName;
+
     private Long streetId;
 
     private String streetName;
@@ -79,6 +83,22 @@ public class LandProjectDTO implements Serializable {
 
     public void setCityName(String cityName) {
         this.cityName = cityName;
+    }
+
+    public Long getDistrictId() {
+        return districtId;
+    }
+
+    public void setDistrictId(Long districtId) {
+        this.districtId = districtId;
+    }
+
+    public String getDistrictName() {
+        return districtName;
+    }
+
+    public void setDistrictName(String districtName) {
+        this.districtName = districtName;
     }
 
     public Long getStreetId() {
@@ -158,6 +178,8 @@ public class LandProjectDTO implements Serializable {
             ", image='" + getImage() + "'" +
             ", city=" + getCityId() +
             ", city='" + getCityName() + "'" +
+            ", district=" + getDistrictId() +
+            ", district='" + getDistrictName() + "'" +
             ", street=" + getStreetId() +
             ", street='" + getStreetName() + "'" +
             ", createBy=" + getCreateById() +

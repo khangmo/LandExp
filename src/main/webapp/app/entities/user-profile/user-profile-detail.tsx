@@ -43,7 +43,7 @@ export class UserProfileDetail extends React.Component<IUserProfileDetailProps> 
             <dt>
               <Translate contentKey="landexpApp.userProfile.user">User</Translate>
             </dt>
-            <dd>{userProfile.userLogin ? userProfile.userLogin : ''}</dd>
+            <dd>{userProfile.userEmail ? userProfile.userEmail : ''}</dd>
           </dl>
           <Button tag={Link} to="/entity/user-profile" replace color="info">
             <FontAwesomeIcon icon="arrow-left" />{' '}

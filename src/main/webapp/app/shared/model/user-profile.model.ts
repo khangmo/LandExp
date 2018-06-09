@@ -2,7 +2,7 @@ export interface IUserProfile {
   id?: number;
   name?: string;
   phoneNumber?: string;
-  userLogin?: string;
+  userEmail?: string;
   userId?: number;
 }
 

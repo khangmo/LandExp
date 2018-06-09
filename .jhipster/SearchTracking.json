@@ -71,6 +71,12 @@
         },
         {
             "relationshipType": "many-to-one",
+            "relationshipName": "district",
+            "otherEntityName": "district",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "many-to-one",
             "relationshipName": "street",
             "otherEntityName": "street",
             "otherEntityField": "name"

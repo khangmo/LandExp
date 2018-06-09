@@ -10,6 +10,8 @@ import { IRootState } from 'app/shared/reducers';
 
 import { ICity } from 'app/shared/model/city.model';
 import { getEntities as getCities } from 'app/entities/city/city.reducer';
+import { IDistrict } from 'app/shared/model/district.model';
+import { getEntities as getDistricts } from 'app/entities/district/district.reducer';
 import { IStreet } from 'app/shared/model/street.model';
 import { getEntities as getStreets } from 'app/entities/street/street.reducer';
 import { ILandProject } from 'app/shared/model/land-project.model';
@@ -27,6 +29,7 @@ export interface IHouseUpdateProps extends StateProps, DispatchProps, RouteCompo
 export interface IHouseUpdateState {
   isNew: boolean;
   cityId: number;
+  districtId: number;
   streetId: number;
   projectId: number;
   createById: number;
@@ -38,6 +41,7 @@ export class HouseUpdate extends React.Component<IHouseUpdateProps, IHouseUpdate
     super(props);
     this.state = {
       cityId: 0,
+      districtId: 0,
       streetId: 0,
       projectId: 0,
       createById: 0,
@@ -54,6 +58,7 @@ export class HouseUpdate extends React.Component<IHouseUpdateProps, IHouseUpdate
     }
 
     this.props.getCities();
+    this.props.getDistricts();
     this.props.getStreets();
     this.props.getLandProjects();
     this.props.getUsers();
@@ -91,6 +96,23 @@ export class HouseUpdate extends React.Component<IHouseUpdateProps, IHouseUpdate
         if (name === this.props.cities[i].name.toString()) {
           this.setState({
             cityId: this.props.cities[i].id
+          });
+        }
+      }
+    }
+  };
+
+  districtUpdate = element => {
+    const name = element.target.value.toString();
+    if (name === '') {
+      this.setState({
+        districtId: -1
+      });
+    } else {
+      for (const i in this.props.districts) {
+        if (name === this.props.districts[i].name.toString()) {
+          this.setState({
+            districtId: this.props.districts[i].id
           });
         }
       }
@@ -167,7 +189,7 @@ export class HouseUpdate extends React.Component<IHouseUpdateProps, IHouseUpdate
 
   render() {
     const isInvalid = false;
-    const { house, cities, streets, landProjects, users, loading, updating } = this.props;
+    const { house, cities, districts, streets, landProjects, users, loading, updating } = this.props;
     const { isNew } = this.state;
 
     return (
@@ -240,7 +262,6 @@ export class HouseUpdate extends React.Component<IHouseUpdateProps, IHouseUpdate
                     value={(!isNew && house.moneyType) || 'MILLION'}
                   >
                     <option value="MILLION">MILLION</option>
-                    <option value="HUNDRED_MILLION">HUNDRED_MILLION</option>
                     <option value="BILLION">BILLION</option>
                   </AvInput>
                 </AvGroup>
@@ -317,6 +338,12 @@ export class HouseUpdate extends React.Component<IHouseUpdateProps, IHouseUpdate
                   <AvField id="house-bathRoom" type="number" className="form-control" name="bathRoom" />
                 </AvGroup>
                 <AvGroup>
+                  <Label id="bedRoomLabel" for="bedRoom">
+                    <Translate contentKey="landexpApp.house.bedRoom">Bed Room</Translate>
+                  </Label>
+                  <AvField id="house-bedRoom" type="number" className="form-control" name="bedRoom" />
+                </AvGroup>
+                <AvGroup>
                   <Label id="parkingLabel" check>
                     <AvInput id="house-parking" type="checkbox" className="form-control" name="parking" />
                     <Translate contentKey="landexpApp.house.parking">Parking</Translate>
@@ -327,12 +354,6 @@ export class HouseUpdate extends React.Component<IHouseUpdateProps, IHouseUpdate
                     <AvInput id="house-furniture" type="checkbox" className="form-control" name="furniture" />
                     <Translate contentKey="landexpApp.house.furniture">Furniture</Translate>
                   </Label>
-                </AvGroup>
-                <AvGroup>
-                  <Label id="bedRoomLabel" for="bedRoom">
-                    <Translate contentKey="landexpApp.house.bedRoom">Bed Room</Translate>
-                  </Label>
-                  <AvField id="house-bedRoom" type="number" className="form-control" name="bedRoom" />
                 </AvGroup>
                 <AvGroup>
                   <Label id="landTypeLabel">
@@ -389,6 +410,21 @@ export class HouseUpdate extends React.Component<IHouseUpdateProps, IHouseUpdate
                   <AvField id="house-feeMax" type="number" className="form-control" name="feeMax" />
                 </AvGroup>
                 <AvGroup>
+                  <Label id="presentLabel">
+                    <Translate contentKey="landexpApp.house.present">Present</Translate>
+                  </Label>
+                  <AvInput
+                    id="house-present"
+                    type="select"
+                    className="form-control"
+                    name="present"
+                    value={(!isNew && house.present) || 'FURNITURE'}
+                  >
+                    <option value="FURNITURE">FURNITURE</option>
+                    <option value="DISCOUNT_PRICE">DISCOUNT_PRICE</option>
+                  </AvInput>
+                </AvGroup>
+                <AvGroup>
                   <Label id="hitsLabel" for="hits">
                     <Translate contentKey="landexpApp.house.hits">Hits</Translate>
                   </Label>
@@ -433,6 +469,21 @@ export class HouseUpdate extends React.Component<IHouseUpdateProps, IHouseUpdate
                     <option value="" key="0" />
                     {cities
                       ? cities.map(otherEntity => (
+                          <option value={otherEntity.id} key={otherEntity.id}>
+                            {otherEntity.name}
+                          </option>
+                        ))
+                      : null}
+                  </AvInput>
+                </AvGroup>
+                <AvGroup>
+                  <Label for="district.name">
+                    <Translate contentKey="landexpApp.house.district">District</Translate>
+                  </Label>
+                  <AvInput id="house-district" type="select" className="form-control" name="districtId" onChange={this.districtUpdate}>
+                    <option value="" key="0" />
+                    {districts
+                      ? districts.map(otherEntity => (
                           <option value={otherEntity.id} key={otherEntity.id}>
                             {otherEntity.name}
                           </option>
@@ -522,6 +573,7 @@ export class HouseUpdate extends React.Component<IHouseUpdateProps, IHouseUpdate
 
 const mapStateToProps = (storeState: IRootState) => ({
   cities: storeState.city.entities,
+  districts: storeState.district.entities,
   streets: storeState.street.entities,
   landProjects: storeState.landProject.entities,
   users: storeState.userManagement.users,
@@ -532,6 +584,7 @@ const mapStateToProps = (storeState: IRootState) => ({
 
 const mapDispatchToProps = {
   getCities,
+  getDistricts,
   getStreets,
   getLandProjects,
   getUsers,

@@ -70,15 +70,15 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="bed_room" type="integer">
+                <constraints nullable="true" />
+            </column>
+
             <column name="parking" type="bit">
                 <constraints nullable="true" />
             </column>
 
             <column name="furniture" type="bit">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="bed_room" type="integer">
                 <constraints nullable="true" />
             </column>
 
@@ -95,6 +95,10 @@
             </column>
 
             <column name="fee_max" type="${floatType}">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="present" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
@@ -115,6 +119,10 @@
             </column>
 
             <column name="city_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="district_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 

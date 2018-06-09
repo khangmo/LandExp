@@ -154,14 +154,14 @@ export class House extends React.Component<IHouseProps, IHouseState> {
                 <th className="hand" onClick={this.sort('bathRoom')}>
                   <Translate contentKey="landexpApp.house.bathRoom">Bath Room</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
+                <th className="hand" onClick={this.sort('bedRoom')}>
+                  <Translate contentKey="landexpApp.house.bedRoom">Bed Room</Translate> <FontAwesomeIcon icon="sort" />
+                </th>
                 <th className="hand" onClick={this.sort('parking')}>
                   <Translate contentKey="landexpApp.house.parking">Parking</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th className="hand" onClick={this.sort('furniture')}>
                   <Translate contentKey="landexpApp.house.furniture">Furniture</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
-                <th className="hand" onClick={this.sort('bedRoom')}>
-                  <Translate contentKey="landexpApp.house.bedRoom">Bed Room</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th className="hand" onClick={this.sort('landType')}>
                   <Translate contentKey="landexpApp.house.landType">Land Type</Translate> <FontAwesomeIcon icon="sort" />
@@ -174,6 +174,9 @@ export class House extends React.Component<IHouseProps, IHouseState> {
                 </th>
                 <th className="hand" onClick={this.sort('feeMax')}>
                   <Translate contentKey="landexpApp.house.feeMax">Fee Max</Translate> <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={this.sort('present')}>
+                  <Translate contentKey="landexpApp.house.present">Present</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th className="hand" onClick={this.sort('hits')}>
                   <Translate contentKey="landexpApp.house.hits">Hits</Translate> <FontAwesomeIcon icon="sort" />
@@ -189,6 +192,9 @@ export class House extends React.Component<IHouseProps, IHouseState> {
                 </th>
                 <th>
                   <Translate contentKey="landexpApp.house.city">City</Translate> <FontAwesomeIcon icon="sort" />
+                </th>
+                <th>
+                  <Translate contentKey="landexpApp.house.district">District</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th>
                   <Translate contentKey="landexpApp.house.street">Street</Translate> <FontAwesomeIcon icon="sort" />
@@ -225,13 +231,14 @@ export class House extends React.Component<IHouseProps, IHouseState> {
                   <td>{house.floor}</td>
                   <td>{house.numberOfFloor}</td>
                   <td>{house.bathRoom}</td>
+                  <td>{house.bedRoom}</td>
                   <td>{house.parking ? 'true' : 'false'}</td>
                   <td>{house.furniture ? 'true' : 'false'}</td>
-                  <td>{house.bedRoom}</td>
                   <td>{house.landType}</td>
                   <td>{house.saleType}</td>
                   <td>{house.fee}</td>
                   <td>{house.feeMax}</td>
+                  <td>{house.present}</td>
                   <td>{house.hits}</td>
                   <td>{house.statusType}</td>
                   <td>
@@ -241,6 +248,7 @@ export class House extends React.Component<IHouseProps, IHouseState> {
                     <TextFormat type="date" value={house.updateAt} format={APP_LOCAL_DATE_FORMAT} />
                   </td>
                   <td>{house.cityName ? <Link to={`city/${house.cityId}`}>{house.cityName}</Link> : ''}</td>
+                  <td>{house.districtName ? <Link to={`district/${house.districtId}`}>{house.districtName}</Link> : ''}</td>
                   <td>{house.streetName ? <Link to={`street/${house.streetId}`}>{house.streetName}</Link> : ''}</td>
                   <td>{house.projectName ? <Link to={`landProject/${house.projectId}`}>{house.projectName}</Link> : ''}</td>
                   <td>{house.createByLogin ? house.createByLogin : ''}</td>

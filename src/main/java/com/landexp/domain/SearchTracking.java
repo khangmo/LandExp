@@ -83,6 +83,10 @@ public class SearchTracking implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties("")
+    private District district;
+
+    @ManyToOne
+    @JsonIgnoreProperties("")
     private Street street;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
@@ -287,6 +291,19 @@ public class SearchTracking implements Serializable {
 
     public void setCity(City city) {
         this.city = city;
+    }
+
+    public District getDistrict() {
+        return district;
+    }
+
+    public SearchTracking district(District district) {
+        this.district = district;
+        return this;
+    }
+
+    public void setDistrict(District district) {
+        this.district = district;
     }
 
     public Street getStreet() {

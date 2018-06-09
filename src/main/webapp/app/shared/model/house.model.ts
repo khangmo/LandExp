@@ -10,7 +10,6 @@ export const enum UserActionType {
 
 export const enum MoneyType {
   MILLION = 'MILLION',
-  HUNDRED_MILLION = 'HUNDRED_MILLION',
   BILLION = 'BILLION'
 }
 
@@ -47,6 +46,11 @@ export const enum SaleType {
   SALE_SUPPORT = 'SALE_SUPPORT'
 }
 
+export const enum PresentType {
+  FURNITURE = 'FURNITURE',
+  DISCOUNT_PRICE = 'DISCOUNT_PRICE'
+}
+
 export const enum StatusType {
   PENDING = 'PENDING',
   PAID = 'PAID',
@@ -70,13 +74,14 @@ export interface IHouse {
   floor?: string;
   numberOfFloor?: number;
   bathRoom?: number;
+  bedRoom?: number;
   parking?: boolean;
   furniture?: boolean;
-  bedRoom?: number;
   landType?: LandType;
   saleType?: SaleType;
   fee?: number;
   feeMax?: number;
+  present?: PresentType;
   hits?: number;
   statusType?: StatusType;
   createAt?: Moment;
@@ -84,6 +89,8 @@ export interface IHouse {
   photos?: IHousePhoto[];
   cityName?: string;
   cityId?: number;
+  districtName?: string;
+  districtId?: number;
   streetName?: string;
   streetId?: number;
   projectName?: string;

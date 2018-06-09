@@ -3,7 +3,7 @@
         {
             "fieldName": "level",
             "fieldType": "CustomerLevel",
-            "fieldValues": "NORMAL,SILVER,GOLD,PLATIUM"
+            "fieldValues": "NORMAL,SILVER,GOLD,PLATINUM"
         },
         {
             "fieldName": "description",

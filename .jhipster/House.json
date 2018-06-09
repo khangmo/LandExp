@@ -20,7 +20,7 @@
         {
             "fieldName": "moneyType",
             "fieldType": "MoneyType",
-            "fieldValues": "MILLION,HUNDRED_MILLION,BILLION"
+            "fieldValues": "MILLION,BILLION"
         },
         {
             "fieldName": "acreage",
@@ -53,16 +53,16 @@
             "fieldType": "Integer"
         },
         {
+            "fieldName": "bedRoom",
+            "fieldType": "Integer"
+        },
+        {
             "fieldName": "parking",
             "fieldType": "Boolean"
         },
         {
             "fieldName": "furniture",
             "fieldType": "Boolean"
-        },
-        {
-            "fieldName": "bedRoom",
-            "fieldType": "Integer"
         },
         {
             "fieldName": "landType",
@@ -81,6 +81,11 @@
         {
             "fieldName": "feeMax",
             "fieldType": "Float"
+        },
+        {
+            "fieldName": "present",
+            "fieldType": "PresentType",
+            "fieldValues": "FURNITURE,DISCOUNT_PRICE"
         },
         {
             "fieldName": "hits",
@@ -111,6 +116,12 @@
             "relationshipType": "many-to-one",
             "relationshipName": "city",
             "otherEntityName": "city",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "district",
+            "otherEntityName": "district",
             "otherEntityField": "name"
         },
         {

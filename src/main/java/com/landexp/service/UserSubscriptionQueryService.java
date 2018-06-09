@@ -131,6 +131,9 @@ public class UserSubscriptionQueryService extends QueryService<UserSubscription>
             if (criteria.getCityId() != null) {
                 specification = specification.and(buildReferringEntitySpecification(criteria.getCityId(), UserSubscription_.city, City_.id));
             }
+            if (criteria.getDistrictId() != null) {
+                specification = specification.and(buildReferringEntitySpecification(criteria.getDistrictId(), UserSubscription_.district, District_.id));
+            }
             if (criteria.getStreetId() != null) {
                 specification = specification.and(buildReferringEntitySpecification(criteria.getStreetId(), UserSubscription_.street, Street_.id));
             }

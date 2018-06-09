@@ -44,6 +44,10 @@ public class LandProject implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties("")
+    private District district;
+
+    @ManyToOne
+    @JsonIgnoreProperties("")
     private Street street;
 
     @ManyToOne
@@ -138,6 +142,19 @@ public class LandProject implements Serializable {
 
     public void setCity(City city) {
         this.city = city;
+    }
+
+    public District getDistrict() {
+        return district;
+    }
+
+    public LandProject district(District district) {
+        this.district = district;
+        return this;
+    }
+
+    public void setDistrict(District district) {
+        this.district = district;
     }
 
     public Street getStreet() {

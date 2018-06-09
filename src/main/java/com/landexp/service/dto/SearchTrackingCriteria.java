@@ -79,6 +79,8 @@ public class SearchTrackingCriteria implements Serializable {
 
     private LongFilter cityId;
 
+    private LongFilter districtId;
+
     private LongFilter streetId;
 
     public SearchTrackingCriteria() {
@@ -212,6 +214,14 @@ public class SearchTrackingCriteria implements Serializable {
         this.cityId = cityId;
     }
 
+    public LongFilter getDistrictId() {
+        return districtId;
+    }
+
+    public void setDistrictId(LongFilter districtId) {
+        this.districtId = districtId;
+    }
+
     public LongFilter getStreetId() {
         return streetId;
     }
@@ -239,6 +249,7 @@ public class SearchTrackingCriteria implements Serializable {
                 (createAt != null ? "createAt=" + createAt + ", " : "") +
                 (userId != null ? "userId=" + userId + ", " : "") +
                 (cityId != null ? "cityId=" + cityId + ", " : "") +
+                (districtId != null ? "districtId=" + districtId + ", " : "") +
                 (streetId != null ? "streetId=" + streetId + ", " : "") +
             "}";
     }

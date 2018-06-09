@@ -5,6 +5,7 @@ import com.landexp.LandexpApp;
 import com.landexp.domain.House;
 import com.landexp.domain.HousePhoto;
 import com.landexp.domain.City;
+import com.landexp.domain.District;
 import com.landexp.domain.Street;
 import com.landexp.domain.LandProject;
 import com.landexp.domain.User;
@@ -55,6 +56,7 @@ import com.landexp.domain.enumeration.DirectionType;
 import com.landexp.domain.enumeration.DirectionType;
 import com.landexp.domain.enumeration.LandType;
 import com.landexp.domain.enumeration.SaleType;
+import com.landexp.domain.enumeration.PresentType;
 import com.landexp.domain.enumeration.StatusType;
 /**
  * Test class for the HouseResource REST controller.
@@ -78,7 +80,7 @@ public class HouseResourceIntTest {
     private static final Float UPDATED_MONEY = 2F;
 
     private static final MoneyType DEFAULT_MONEY_TYPE = MoneyType.MILLION;
-    private static final MoneyType UPDATED_MONEY_TYPE = MoneyType.HUNDRED_MILLION;
+    private static final MoneyType UPDATED_MONEY_TYPE = MoneyType.BILLION;
 
     private static final Float DEFAULT_ACREAGE = 1F;
     private static final Float UPDATED_ACREAGE = 2F;
@@ -101,14 +103,14 @@ public class HouseResourceIntTest {
     private static final Integer DEFAULT_BATH_ROOM = 1;
     private static final Integer UPDATED_BATH_ROOM = 2;
 
+    private static final Integer DEFAULT_BED_ROOM = 1;
+    private static final Integer UPDATED_BED_ROOM = 2;
+
     private static final Boolean DEFAULT_PARKING = false;
     private static final Boolean UPDATED_PARKING = true;
 
     private static final Boolean DEFAULT_FURNITURE = false;
     private static final Boolean UPDATED_FURNITURE = true;
-
-    private static final Integer DEFAULT_BED_ROOM = 1;
-    private static final Integer UPDATED_BED_ROOM = 2;
 
     private static final LandType DEFAULT_LAND_TYPE = LandType.APARTMENT;
     private static final LandType UPDATED_LAND_TYPE = LandType.PEN_HOUSE;
@@ -121,6 +123,9 @@ public class HouseResourceIntTest {
 
     private static final Float DEFAULT_FEE_MAX = 1F;
     private static final Float UPDATED_FEE_MAX = 2F;
+
+    private static final PresentType DEFAULT_PRESENT = PresentType.FURNITURE;
+    private static final PresentType UPDATED_PRESENT = PresentType.DISCOUNT_PRICE;
 
     private static final Integer DEFAULT_HITS = 1;
     private static final Integer UPDATED_HITS = 2;
@@ -203,13 +208,14 @@ public class HouseResourceIntTest {
             .floor(DEFAULT_FLOOR)
             .numberOfFloor(DEFAULT_NUMBER_OF_FLOOR)
             .bathRoom(DEFAULT_BATH_ROOM)
+            .bedRoom(DEFAULT_BED_ROOM)
             .parking(DEFAULT_PARKING)
             .furniture(DEFAULT_FURNITURE)
-            .bedRoom(DEFAULT_BED_ROOM)
             .landType(DEFAULT_LAND_TYPE)
             .saleType(DEFAULT_SALE_TYPE)
             .fee(DEFAULT_FEE)
             .feeMax(DEFAULT_FEE_MAX)
+            .present(DEFAULT_PRESENT)
             .hits(DEFAULT_HITS)
             .statusType(DEFAULT_STATUS_TYPE)
             .createAt(DEFAULT_CREATE_AT)
@@ -250,13 +256,14 @@ public class HouseResourceIntTest {
         assertThat(testHouse.getFloor()).isEqualTo(DEFAULT_FLOOR);
         assertThat(testHouse.getNumberOfFloor()).isEqualTo(DEFAULT_NUMBER_OF_FLOOR);
         assertThat(testHouse.getBathRoom()).isEqualTo(DEFAULT_BATH_ROOM);
+        assertThat(testHouse.getBedRoom()).isEqualTo(DEFAULT_BED_ROOM);
         assertThat(testHouse.isParking()).isEqualTo(DEFAULT_PARKING);
         assertThat(testHouse.isFurniture()).isEqualTo(DEFAULT_FURNITURE);
-        assertThat(testHouse.getBedRoom()).isEqualTo(DEFAULT_BED_ROOM);
         assertThat(testHouse.getLandType()).isEqualTo(DEFAULT_LAND_TYPE);
         assertThat(testHouse.getSaleType()).isEqualTo(DEFAULT_SALE_TYPE);
         assertThat(testHouse.getFee()).isEqualTo(DEFAULT_FEE);
         assertThat(testHouse.getFeeMax()).isEqualTo(DEFAULT_FEE_MAX);
+        assertThat(testHouse.getPresent()).isEqualTo(DEFAULT_PRESENT);
         assertThat(testHouse.getHits()).isEqualTo(DEFAULT_HITS);
         assertThat(testHouse.getStatusType()).isEqualTo(DEFAULT_STATUS_TYPE);
         assertThat(testHouse.getCreateAt()).isEqualTo(DEFAULT_CREATE_AT);
@@ -312,13 +319,14 @@ public class HouseResourceIntTest {
             .andExpect(jsonPath("$.[*].floor").value(hasItem(DEFAULT_FLOOR.toString())))
             .andExpect(jsonPath("$.[*].numberOfFloor").value(hasItem(DEFAULT_NUMBER_OF_FLOOR.doubleValue())))
             .andExpect(jsonPath("$.[*].bathRoom").value(hasItem(DEFAULT_BATH_ROOM)))
+            .andExpect(jsonPath("$.[*].bedRoom").value(hasItem(DEFAULT_BED_ROOM)))
             .andExpect(jsonPath("$.[*].parking").value(hasItem(DEFAULT_PARKING.booleanValue())))
             .andExpect(jsonPath("$.[*].furniture").value(hasItem(DEFAULT_FURNITURE.booleanValue())))
-            .andExpect(jsonPath("$.[*].bedRoom").value(hasItem(DEFAULT_BED_ROOM)))
             .andExpect(jsonPath("$.[*].landType").value(hasItem(DEFAULT_LAND_TYPE.toString())))
             .andExpect(jsonPath("$.[*].saleType").value(hasItem(DEFAULT_SALE_TYPE.toString())))
             .andExpect(jsonPath("$.[*].fee").value(hasItem(DEFAULT_FEE.doubleValue())))
             .andExpect(jsonPath("$.[*].feeMax").value(hasItem(DEFAULT_FEE_MAX.doubleValue())))
+            .andExpect(jsonPath("$.[*].present").value(hasItem(DEFAULT_PRESENT.toString())))
             .andExpect(jsonPath("$.[*].hits").value(hasItem(DEFAULT_HITS)))
             .andExpect(jsonPath("$.[*].statusType").value(hasItem(DEFAULT_STATUS_TYPE.toString())))
             .andExpect(jsonPath("$.[*].createAt").value(hasItem(DEFAULT_CREATE_AT.toString())))
@@ -349,13 +357,14 @@ public class HouseResourceIntTest {
             .andExpect(jsonPath("$.floor").value(DEFAULT_FLOOR.toString()))
             .andExpect(jsonPath("$.numberOfFloor").value(DEFAULT_NUMBER_OF_FLOOR.doubleValue()))
             .andExpect(jsonPath("$.bathRoom").value(DEFAULT_BATH_ROOM))
+            .andExpect(jsonPath("$.bedRoom").value(DEFAULT_BED_ROOM))
             .andExpect(jsonPath("$.parking").value(DEFAULT_PARKING.booleanValue()))
             .andExpect(jsonPath("$.furniture").value(DEFAULT_FURNITURE.booleanValue()))
-            .andExpect(jsonPath("$.bedRoom").value(DEFAULT_BED_ROOM))
             .andExpect(jsonPath("$.landType").value(DEFAULT_LAND_TYPE.toString()))
             .andExpect(jsonPath("$.saleType").value(DEFAULT_SALE_TYPE.toString()))
             .andExpect(jsonPath("$.fee").value(DEFAULT_FEE.doubleValue()))
             .andExpect(jsonPath("$.feeMax").value(DEFAULT_FEE_MAX.doubleValue()))
+            .andExpect(jsonPath("$.present").value(DEFAULT_PRESENT.toString()))
             .andExpect(jsonPath("$.hits").value(DEFAULT_HITS))
             .andExpect(jsonPath("$.statusType").value(DEFAULT_STATUS_TYPE.toString()))
             .andExpect(jsonPath("$.createAt").value(DEFAULT_CREATE_AT.toString()))
@@ -859,6 +868,72 @@ public class HouseResourceIntTest {
 
     @Test
     @Transactional
+    public void getAllHousesByBedRoomIsEqualToSomething() throws Exception {
+        // Initialize the database
+        houseRepository.saveAndFlush(house);
+
+        // Get all the houseList where bedRoom equals to DEFAULT_BED_ROOM
+        defaultHouseShouldBeFound("bedRoom.equals=" + DEFAULT_BED_ROOM);
+
+        // Get all the houseList where bedRoom equals to UPDATED_BED_ROOM
+        defaultHouseShouldNotBeFound("bedRoom.equals=" + UPDATED_BED_ROOM);
+    }
+
+    @Test
+    @Transactional
+    public void getAllHousesByBedRoomIsInShouldWork() throws Exception {
+        // Initialize the database
+        houseRepository.saveAndFlush(house);
+
+        // Get all the houseList where bedRoom in DEFAULT_BED_ROOM or UPDATED_BED_ROOM
+        defaultHouseShouldBeFound("bedRoom.in=" + DEFAULT_BED_ROOM + "," + UPDATED_BED_ROOM);
+
+        // Get all the houseList where bedRoom equals to UPDATED_BED_ROOM
+        defaultHouseShouldNotBeFound("bedRoom.in=" + UPDATED_BED_ROOM);
+    }
+
+    @Test
+    @Transactional
+    public void getAllHousesByBedRoomIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        houseRepository.saveAndFlush(house);
+
+        // Get all the houseList where bedRoom is not null
+        defaultHouseShouldBeFound("bedRoom.specified=true");
+
+        // Get all the houseList where bedRoom is null
+        defaultHouseShouldNotBeFound("bedRoom.specified=false");
+    }
+
+    @Test
+    @Transactional
+    public void getAllHousesByBedRoomIsGreaterThanOrEqualToSomething() throws Exception {
+        // Initialize the database
+        houseRepository.saveAndFlush(house);
+
+        // Get all the houseList where bedRoom greater than or equals to DEFAULT_BED_ROOM
+        defaultHouseShouldBeFound("bedRoom.greaterOrEqualThan=" + DEFAULT_BED_ROOM);
+
+        // Get all the houseList where bedRoom greater than or equals to UPDATED_BED_ROOM
+        defaultHouseShouldNotBeFound("bedRoom.greaterOrEqualThan=" + UPDATED_BED_ROOM);
+    }
+
+    @Test
+    @Transactional
+    public void getAllHousesByBedRoomIsLessThanSomething() throws Exception {
+        // Initialize the database
+        houseRepository.saveAndFlush(house);
+
+        // Get all the houseList where bedRoom less than or equals to DEFAULT_BED_ROOM
+        defaultHouseShouldNotBeFound("bedRoom.lessThan=" + DEFAULT_BED_ROOM);
+
+        // Get all the houseList where bedRoom less than or equals to UPDATED_BED_ROOM
+        defaultHouseShouldBeFound("bedRoom.lessThan=" + UPDATED_BED_ROOM);
+    }
+
+
+    @Test
+    @Transactional
     public void getAllHousesByParkingIsEqualToSomething() throws Exception {
         // Initialize the database
         houseRepository.saveAndFlush(house);
@@ -934,72 +1009,6 @@ public class HouseResourceIntTest {
         // Get all the houseList where furniture is null
         defaultHouseShouldNotBeFound("furniture.specified=false");
     }
-
-    @Test
-    @Transactional
-    public void getAllHousesByBedRoomIsEqualToSomething() throws Exception {
-        // Initialize the database
-        houseRepository.saveAndFlush(house);
-
-        // Get all the houseList where bedRoom equals to DEFAULT_BED_ROOM
-        defaultHouseShouldBeFound("bedRoom.equals=" + DEFAULT_BED_ROOM);
-
-        // Get all the houseList where bedRoom equals to UPDATED_BED_ROOM
-        defaultHouseShouldNotBeFound("bedRoom.equals=" + UPDATED_BED_ROOM);
-    }
-
-    @Test
-    @Transactional
-    public void getAllHousesByBedRoomIsInShouldWork() throws Exception {
-        // Initialize the database
-        houseRepository.saveAndFlush(house);
-
-        // Get all the houseList where bedRoom in DEFAULT_BED_ROOM or UPDATED_BED_ROOM
-        defaultHouseShouldBeFound("bedRoom.in=" + DEFAULT_BED_ROOM + "," + UPDATED_BED_ROOM);
-
-        // Get all the houseList where bedRoom equals to UPDATED_BED_ROOM
-        defaultHouseShouldNotBeFound("bedRoom.in=" + UPDATED_BED_ROOM);
-    }
-
-    @Test
-    @Transactional
-    public void getAllHousesByBedRoomIsNullOrNotNull() throws Exception {
-        // Initialize the database
-        houseRepository.saveAndFlush(house);
-
-        // Get all the houseList where bedRoom is not null
-        defaultHouseShouldBeFound("bedRoom.specified=true");
-
-        // Get all the houseList where bedRoom is null
-        defaultHouseShouldNotBeFound("bedRoom.specified=false");
-    }
-
-    @Test
-    @Transactional
-    public void getAllHousesByBedRoomIsGreaterThanOrEqualToSomething() throws Exception {
-        // Initialize the database
-        houseRepository.saveAndFlush(house);
-
-        // Get all the houseList where bedRoom greater than or equals to DEFAULT_BED_ROOM
-        defaultHouseShouldBeFound("bedRoom.greaterOrEqualThan=" + DEFAULT_BED_ROOM);
-
-        // Get all the houseList where bedRoom greater than or equals to UPDATED_BED_ROOM
-        defaultHouseShouldNotBeFound("bedRoom.greaterOrEqualThan=" + UPDATED_BED_ROOM);
-    }
-
-    @Test
-    @Transactional
-    public void getAllHousesByBedRoomIsLessThanSomething() throws Exception {
-        // Initialize the database
-        houseRepository.saveAndFlush(house);
-
-        // Get all the houseList where bedRoom less than or equals to DEFAULT_BED_ROOM
-        defaultHouseShouldNotBeFound("bedRoom.lessThan=" + DEFAULT_BED_ROOM);
-
-        // Get all the houseList where bedRoom less than or equals to UPDATED_BED_ROOM
-        defaultHouseShouldBeFound("bedRoom.lessThan=" + UPDATED_BED_ROOM);
-    }
-
 
     @Test
     @Transactional
@@ -1155,6 +1164,45 @@ public class HouseResourceIntTest {
 
         // Get all the houseList where feeMax is null
         defaultHouseShouldNotBeFound("feeMax.specified=false");
+    }
+
+    @Test
+    @Transactional
+    public void getAllHousesByPresentIsEqualToSomething() throws Exception {
+        // Initialize the database
+        houseRepository.saveAndFlush(house);
+
+        // Get all the houseList where present equals to DEFAULT_PRESENT
+        defaultHouseShouldBeFound("present.equals=" + DEFAULT_PRESENT);
+
+        // Get all the houseList where present equals to UPDATED_PRESENT
+        defaultHouseShouldNotBeFound("present.equals=" + UPDATED_PRESENT);
+    }
+
+    @Test
+    @Transactional
+    public void getAllHousesByPresentIsInShouldWork() throws Exception {
+        // Initialize the database
+        houseRepository.saveAndFlush(house);
+
+        // Get all the houseList where present in DEFAULT_PRESENT or UPDATED_PRESENT
+        defaultHouseShouldBeFound("present.in=" + DEFAULT_PRESENT + "," + UPDATED_PRESENT);
+
+        // Get all the houseList where present equals to UPDATED_PRESENT
+        defaultHouseShouldNotBeFound("present.in=" + UPDATED_PRESENT);
+    }
+
+    @Test
+    @Transactional
+    public void getAllHousesByPresentIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        houseRepository.saveAndFlush(house);
+
+        // Get all the houseList where present is not null
+        defaultHouseShouldBeFound("present.specified=true");
+
+        // Get all the houseList where present is null
+        defaultHouseShouldNotBeFound("present.specified=false");
     }
 
     @Test
@@ -1434,6 +1482,25 @@ public class HouseResourceIntTest {
 
     @Test
     @Transactional
+    public void getAllHousesByDistrictIsEqualToSomething() throws Exception {
+        // Initialize the database
+        District district = DistrictResourceIntTest.createEntity(em);
+        em.persist(district);
+        em.flush();
+        house.setDistrict(district);
+        houseRepository.saveAndFlush(house);
+        Long districtId = district.getId();
+
+        // Get all the houseList where district equals to districtId
+        defaultHouseShouldBeFound("districtId.equals=" + districtId);
+
+        // Get all the houseList where district equals to districtId + 1
+        defaultHouseShouldNotBeFound("districtId.equals=" + (districtId + 1));
+    }
+
+
+    @Test
+    @Transactional
     public void getAllHousesByStreetIsEqualToSomething() throws Exception {
         // Initialize the database
         Street street = StreetResourceIntTest.createEntity(em);
@@ -1527,13 +1594,14 @@ public class HouseResourceIntTest {
             .andExpect(jsonPath("$.[*].floor").value(hasItem(DEFAULT_FLOOR.toString())))
             .andExpect(jsonPath("$.[*].numberOfFloor").value(hasItem(DEFAULT_NUMBER_OF_FLOOR.doubleValue())))
             .andExpect(jsonPath("$.[*].bathRoom").value(hasItem(DEFAULT_BATH_ROOM)))
+            .andExpect(jsonPath("$.[*].bedRoom").value(hasItem(DEFAULT_BED_ROOM)))
             .andExpect(jsonPath("$.[*].parking").value(hasItem(DEFAULT_PARKING.booleanValue())))
             .andExpect(jsonPath("$.[*].furniture").value(hasItem(DEFAULT_FURNITURE.booleanValue())))
-            .andExpect(jsonPath("$.[*].bedRoom").value(hasItem(DEFAULT_BED_ROOM)))
             .andExpect(jsonPath("$.[*].landType").value(hasItem(DEFAULT_LAND_TYPE.toString())))
             .andExpect(jsonPath("$.[*].saleType").value(hasItem(DEFAULT_SALE_TYPE.toString())))
             .andExpect(jsonPath("$.[*].fee").value(hasItem(DEFAULT_FEE.doubleValue())))
             .andExpect(jsonPath("$.[*].feeMax").value(hasItem(DEFAULT_FEE_MAX.doubleValue())))
+            .andExpect(jsonPath("$.[*].present").value(hasItem(DEFAULT_PRESENT.toString())))
             .andExpect(jsonPath("$.[*].hits").value(hasItem(DEFAULT_HITS)))
             .andExpect(jsonPath("$.[*].statusType").value(hasItem(DEFAULT_STATUS_TYPE.toString())))
             .andExpect(jsonPath("$.[*].createAt").value(hasItem(DEFAULT_CREATE_AT.toString())))
@@ -1584,13 +1652,14 @@ public class HouseResourceIntTest {
             .floor(UPDATED_FLOOR)
             .numberOfFloor(UPDATED_NUMBER_OF_FLOOR)
             .bathRoom(UPDATED_BATH_ROOM)
+            .bedRoom(UPDATED_BED_ROOM)
             .parking(UPDATED_PARKING)
             .furniture(UPDATED_FURNITURE)
-            .bedRoom(UPDATED_BED_ROOM)
             .landType(UPDATED_LAND_TYPE)
             .saleType(UPDATED_SALE_TYPE)
             .fee(UPDATED_FEE)
             .feeMax(UPDATED_FEE_MAX)
+            .present(UPDATED_PRESENT)
             .hits(UPDATED_HITS)
             .statusType(UPDATED_STATUS_TYPE)
             .createAt(UPDATED_CREATE_AT)
@@ -1618,13 +1687,14 @@ public class HouseResourceIntTest {
         assertThat(testHouse.getFloor()).isEqualTo(UPDATED_FLOOR);
         assertThat(testHouse.getNumberOfFloor()).isEqualTo(UPDATED_NUMBER_OF_FLOOR);
         assertThat(testHouse.getBathRoom()).isEqualTo(UPDATED_BATH_ROOM);
+        assertThat(testHouse.getBedRoom()).isEqualTo(UPDATED_BED_ROOM);
         assertThat(testHouse.isParking()).isEqualTo(UPDATED_PARKING);
         assertThat(testHouse.isFurniture()).isEqualTo(UPDATED_FURNITURE);
-        assertThat(testHouse.getBedRoom()).isEqualTo(UPDATED_BED_ROOM);
         assertThat(testHouse.getLandType()).isEqualTo(UPDATED_LAND_TYPE);
         assertThat(testHouse.getSaleType()).isEqualTo(UPDATED_SALE_TYPE);
         assertThat(testHouse.getFee()).isEqualTo(UPDATED_FEE);
         assertThat(testHouse.getFeeMax()).isEqualTo(UPDATED_FEE_MAX);
+        assertThat(testHouse.getPresent()).isEqualTo(UPDATED_PRESENT);
         assertThat(testHouse.getHits()).isEqualTo(UPDATED_HITS);
         assertThat(testHouse.getStatusType()).isEqualTo(UPDATED_STATUS_TYPE);
         assertThat(testHouse.getCreateAt()).isEqualTo(UPDATED_CREATE_AT);
@@ -1701,13 +1771,14 @@ public class HouseResourceIntTest {
             .andExpect(jsonPath("$.[*].floor").value(hasItem(DEFAULT_FLOOR.toString())))
             .andExpect(jsonPath("$.[*].numberOfFloor").value(hasItem(DEFAULT_NUMBER_OF_FLOOR.doubleValue())))
             .andExpect(jsonPath("$.[*].bathRoom").value(hasItem(DEFAULT_BATH_ROOM)))
+            .andExpect(jsonPath("$.[*].bedRoom").value(hasItem(DEFAULT_BED_ROOM)))
             .andExpect(jsonPath("$.[*].parking").value(hasItem(DEFAULT_PARKING.booleanValue())))
             .andExpect(jsonPath("$.[*].furniture").value(hasItem(DEFAULT_FURNITURE.booleanValue())))
-            .andExpect(jsonPath("$.[*].bedRoom").value(hasItem(DEFAULT_BED_ROOM)))
             .andExpect(jsonPath("$.[*].landType").value(hasItem(DEFAULT_LAND_TYPE.toString())))
             .andExpect(jsonPath("$.[*].saleType").value(hasItem(DEFAULT_SALE_TYPE.toString())))
             .andExpect(jsonPath("$.[*].fee").value(hasItem(DEFAULT_FEE.doubleValue())))
             .andExpect(jsonPath("$.[*].feeMax").value(hasItem(DEFAULT_FEE_MAX.doubleValue())))
+            .andExpect(jsonPath("$.[*].present").value(hasItem(DEFAULT_PRESENT.toString())))
             .andExpect(jsonPath("$.[*].hits").value(hasItem(DEFAULT_HITS)))
             .andExpect(jsonPath("$.[*].statusType").value(hasItem(DEFAULT_STATUS_TYPE.toString())))
             .andExpect(jsonPath("$.[*].createAt").value(hasItem(DEFAULT_CREATE_AT.toString())))

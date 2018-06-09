@@ -8,6 +8,8 @@ export interface ILandProject {
   photos?: ILandProjectPhoto[];
   cityName?: string;
   cityId?: number;
+  districtName?: string;
+  districtId?: number;
   streetName?: string;
   streetId?: number;
   createByLogin?: string;

@@ -34,6 +34,7 @@
             "updateAt": "Update At",
             "user": "User",
             "city": "City",
+            "district": "District",
             "street": "Street"
         }
     }

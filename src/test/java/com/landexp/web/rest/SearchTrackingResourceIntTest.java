@@ -5,6 +5,7 @@ import com.landexp.LandexpApp;
 import com.landexp.domain.SearchTracking;
 import com.landexp.domain.User;
 import com.landexp.domain.City;
+import com.landexp.domain.District;
 import com.landexp.domain.Street;
 import com.landexp.repository.SearchTrackingRepository;
 import com.landexp.repository.search.SearchTrackingSearchRepository;
@@ -908,6 +909,25 @@ public class SearchTrackingResourceIntTest {
 
         // Get all the searchTrackingList where city equals to cityId + 1
         defaultSearchTrackingShouldNotBeFound("cityId.equals=" + (cityId + 1));
+    }
+
+
+    @Test
+    @Transactional
+    public void getAllSearchTrackingsByDistrictIsEqualToSomething() throws Exception {
+        // Initialize the database
+        District district = DistrictResourceIntTest.createEntity(em);
+        em.persist(district);
+        em.flush();
+        searchTracking.setDistrict(district);
+        searchTrackingRepository.saveAndFlush(searchTracking);
+        Long districtId = district.getId();
+
+        // Get all the searchTrackingList where district equals to districtId
+        defaultSearchTrackingShouldBeFound("districtId.equals=" + districtId);
+
+        // Get all the searchTrackingList where district equals to districtId + 1
+        defaultSearchTrackingShouldNotBeFound("districtId.equals=" + (districtId + 1));
     }
 
 

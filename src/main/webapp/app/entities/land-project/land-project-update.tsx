@@ -10,6 +10,8 @@ import { IRootState } from 'app/shared/reducers';
 
 import { ICity } from 'app/shared/model/city.model';
 import { getEntities as getCities } from 'app/entities/city/city.reducer';
+import { IDistrict } from 'app/shared/model/district.model';
+import { getEntities as getDistricts } from 'app/entities/district/district.reducer';
 import { IStreet } from 'app/shared/model/street.model';
 import { getEntities as getStreets } from 'app/entities/street/street.reducer';
 import { IUser } from 'app/shared/model/user.model';
@@ -25,6 +27,7 @@ export interface ILandProjectUpdateProps extends StateProps, DispatchProps, Rout
 export interface ILandProjectUpdateState {
   isNew: boolean;
   cityId: number;
+  districtId: number;
   streetId: number;
   createById: number;
   updateById: number;
@@ -35,6 +38,7 @@ export class LandProjectUpdate extends React.Component<ILandProjectUpdateProps, 
     super(props);
     this.state = {
       cityId: 0,
+      districtId: 0,
       streetId: 0,
       createById: 0,
       updateById: 0,
@@ -50,6 +54,7 @@ export class LandProjectUpdate extends React.Component<ILandProjectUpdateProps, 
     }
 
     this.props.getCities();
+    this.props.getDistricts();
     this.props.getStreets();
     this.props.getUsers();
   }
@@ -94,6 +99,23 @@ export class LandProjectUpdate extends React.Component<ILandProjectUpdateProps, 
         if (name === this.props.cities[i].name.toString()) {
           this.setState({
             cityId: this.props.cities[i].id
+          });
+        }
+      }
+    }
+  };
+
+  districtUpdate = element => {
+    const name = element.target.value.toString();
+    if (name === '') {
+      this.setState({
+        districtId: -1
+      });
+    } else {
+      for (const i in this.props.districts) {
+        if (name === this.props.districts[i].name.toString()) {
+          this.setState({
+            districtId: this.props.districts[i].id
           });
         }
       }
@@ -153,7 +175,7 @@ export class LandProjectUpdate extends React.Component<ILandProjectUpdateProps, 
 
   render() {
     const isInvalid = false;
-    const { landProject, cities, streets, users, loading, updating } = this.props;
+    const { landProject, cities, districts, streets, users, loading, updating } = this.props;
     const { isNew } = this.state;
 
     const { image, imageContentType } = landProject;
@@ -224,6 +246,27 @@ export class LandProjectUpdate extends React.Component<ILandProjectUpdateProps, 
                     <option value="" key="0" />
                     {cities
                       ? cities.map(otherEntity => (
+                          <option value={otherEntity.id} key={otherEntity.id}>
+                            {otherEntity.name}
+                          </option>
+                        ))
+                      : null}
+                  </AvInput>
+                </AvGroup>
+                <AvGroup>
+                  <Label for="district.name">
+                    <Translate contentKey="landexpApp.landProject.district">District</Translate>
+                  </Label>
+                  <AvInput
+                    id="land-project-district"
+                    type="select"
+                    className="form-control"
+                    name="districtId"
+                    onChange={this.districtUpdate}
+                  >
+                    <option value="" key="0" />
+                    {districts
+                      ? districts.map(otherEntity => (
                           <option value={otherEntity.id} key={otherEntity.id}>
                             {otherEntity.name}
                           </option>
@@ -310,6 +353,7 @@ export class LandProjectUpdate extends React.Component<ILandProjectUpdateProps, 
 
 const mapStateToProps = (storeState: IRootState) => ({
   cities: storeState.city.entities,
+  districts: storeState.district.entities,
   streets: storeState.street.entities,
   users: storeState.userManagement.users,
   landProject: storeState.landProject.entity,
@@ -319,6 +363,7 @@ const mapStateToProps = (storeState: IRootState) => ({
 
 const mapDispatchToProps = {
   getCities,
+  getDistricts,
   getStreets,
   getUsers,
   getEntity,

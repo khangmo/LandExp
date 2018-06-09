@@ -16,7 +16,7 @@ public class UserProfileDTO implements Serializable {
 
     private Long userId;
 
-    private String userLogin;
+    private String userEmail;
 
     public Long getId() {
         return id;
@@ -50,12 +50,12 @@ public class UserProfileDTO implements Serializable {
         this.userId = userId;
     }
 
-    public String getUserLogin() {
-        return userLogin;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public void setUserLogin(String userLogin) {
-        this.userLogin = userLogin;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
     @Override
@@ -86,7 +86,7 @@ public class UserProfileDTO implements Serializable {
             ", name='" + getName() + "'" +
             ", phoneNumber='" + getPhoneNumber() + "'" +
             ", user=" + getUserId() +
-            ", user='" + getUserLogin() + "'" +
+            ", user='" + getUserEmail() + "'" +
             "}";
     }
 }

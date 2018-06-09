@@ -117,6 +117,10 @@ export class SearchTrackingDetail extends React.Component<ISearchTrackingDetailP
             </dt>
             <dd>{searchTracking.cityName ? searchTracking.cityName : ''}</dd>
             <dt>
+              <Translate contentKey="landexpApp.searchTracking.district">District</Translate>
+            </dt>
+            <dd>{searchTracking.districtName ? searchTracking.districtName : ''}</dd>
+            <dt>
               <Translate contentKey="landexpApp.searchTracking.street">Street</Translate>
             </dt>
             <dd>{searchTracking.streetName ? searchTracking.streetName : ''}</dd>

@@ -170,6 +170,9 @@ export class UserSubscription extends React.Component<IUserSubscriptionProps, IU
                   <Translate contentKey="landexpApp.userSubscription.city">City</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th>
+                  <Translate contentKey="landexpApp.userSubscription.district">District</Translate> <FontAwesomeIcon icon="sort" />
+                </th>
+                <th>
                   <Translate contentKey="landexpApp.userSubscription.street">Street</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th />
@@ -205,6 +208,13 @@ export class UserSubscription extends React.Component<IUserSubscriptionProps, IU
                   <td>{userSubscription.userLogin ? userSubscription.userLogin : ''}</td>
                   <td>
                     {userSubscription.cityName ? <Link to={`city/${userSubscription.cityId}`}>{userSubscription.cityName}</Link> : ''}
+                  </td>
+                  <td>
+                    {userSubscription.districtName ? (
+                      <Link to={`district/${userSubscription.districtId}`}>{userSubscription.districtName}</Link>
+                    ) : (
+                      ''
+                    )}
                   </td>
                   <td>
                     {userSubscription.streetName ? (

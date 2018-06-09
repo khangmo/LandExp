@@ -12,7 +12,7 @@ import org.mapstruct.*;
 public interface UserProfileMapper extends EntityMapper<UserProfileDTO, UserProfile> {
 
     @Mapping(source = "user.id", target = "userId")
-    @Mapping(source = "user.login", target = "userLogin")
+    @Mapping(source = "user.email", target = "userEmail")
     UserProfileDTO toDto(UserProfile userProfile);
 
     @Mapping(source = "userId", target = "user")

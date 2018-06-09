@@ -64,14 +64,14 @@ export class UserProfileUpdate extends React.Component<IUserProfileUpdateProps, 
   };
 
   userUpdate = element => {
-    const login = element.target.value.toString();
-    if (login === '') {
+    const email = element.target.value.toString();
+    if (email === '') {
       this.setState({
         userId: -1
       });
     } else {
       for (const i in this.props.users) {
-        if (login === this.props.users[i].login.toString()) {
+        if (email === this.props.users[i].email.toString()) {
           this.setState({
             userId: this.props.users[i].id
           });
@@ -121,7 +121,7 @@ export class UserProfileUpdate extends React.Component<IUserProfileUpdateProps, 
                   <AvField id="user-profile-phoneNumber" type="text" name="phoneNumber" />
                 </AvGroup>
                 <AvGroup>
-                  <Label for="user.login">
+                  <Label for="user.email">
                     <Translate contentKey="landexpApp.userProfile.user">User</Translate>
                   </Label>
                   <AvInput id="user-profile-user" type="select" className="form-control" name="userId" onChange={this.userUpdate}>
@@ -129,7 +129,7 @@ export class UserProfileUpdate extends React.Component<IUserProfileUpdateProps, 
                     {users
                       ? users.map(otherEntity => (
                           <option value={otherEntity.id} key={otherEntity.id}>
-                            {otherEntity.login}
+                            {otherEntity.email}
                           </option>
                         ))
                       : null}

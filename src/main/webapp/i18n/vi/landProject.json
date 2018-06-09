@@ -21,6 +21,7 @@
             "image": "Image",
             "photos": "Photos",
             "city": "City",
+            "district": "District",
             "street": "Street",
             "createBy": "Create By",
             "updateBy": "Update By"

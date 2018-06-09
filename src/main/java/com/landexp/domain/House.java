@@ -22,6 +22,8 @@ import com.landexp.domain.enumeration.LandType;
 
 import com.landexp.domain.enumeration.SaleType;
 
+import com.landexp.domain.enumeration.PresentType;
+
 import com.landexp.domain.enumeration.StatusType;
 
 /**
@@ -78,14 +80,14 @@ public class House implements Serializable {
     @Column(name = "bath_room")
     private Integer bathRoom;
 
+    @Column(name = "bed_room")
+    private Integer bedRoom;
+
     @Column(name = "parking")
     private Boolean parking;
 
     @Column(name = "furniture")
     private Boolean furniture;
-
-    @Column(name = "bed_room")
-    private Integer bedRoom;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "land_type")
@@ -100,6 +102,10 @@ public class House implements Serializable {
 
     @Column(name = "fee_max")
     private Float feeMax;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "present")
+    private PresentType present;
 
     @Column(name = "hits")
     private Integer hits;
@@ -120,6 +126,10 @@ public class House implements Serializable {
     @ManyToOne
     @JsonIgnoreProperties("")
     private City city;
+
+    @ManyToOne
+    @JsonIgnoreProperties("")
+    private District district;
 
     @ManyToOne
     @JsonIgnoreProperties("")
@@ -302,6 +312,19 @@ public class House implements Serializable {
         this.bathRoom = bathRoom;
     }
 
+    public Integer getBedRoom() {
+        return bedRoom;
+    }
+
+    public House bedRoom(Integer bedRoom) {
+        this.bedRoom = bedRoom;
+        return this;
+    }
+
+    public void setBedRoom(Integer bedRoom) {
+        this.bedRoom = bedRoom;
+    }
+
     public Boolean isParking() {
         return parking;
     }
@@ -326,19 +349,6 @@ public class House implements Serializable {
 
     public void setFurniture(Boolean furniture) {
         this.furniture = furniture;
-    }
-
-    public Integer getBedRoom() {
-        return bedRoom;
-    }
-
-    public House bedRoom(Integer bedRoom) {
-        this.bedRoom = bedRoom;
-        return this;
-    }
-
-    public void setBedRoom(Integer bedRoom) {
-        this.bedRoom = bedRoom;
     }
 
     public LandType getLandType() {
@@ -391,6 +401,19 @@ public class House implements Serializable {
 
     public void setFeeMax(Float feeMax) {
         this.feeMax = feeMax;
+    }
+
+    public PresentType getPresent() {
+        return present;
+    }
+
+    public House present(PresentType present) {
+        this.present = present;
+        return this;
+    }
+
+    public void setPresent(PresentType present) {
+        this.present = present;
     }
 
     public Integer getHits() {
@@ -483,6 +506,19 @@ public class House implements Serializable {
         this.city = city;
     }
 
+    public District getDistrict() {
+        return district;
+    }
+
+    public House district(District district) {
+        this.district = district;
+        return this;
+    }
+
+    public void setDistrict(District district) {
+        this.district = district;
+    }
+
     public Street getStreet() {
         return street;
     }
@@ -572,13 +608,14 @@ public class House implements Serializable {
             ", floor='" + getFloor() + "'" +
             ", numberOfFloor=" + getNumberOfFloor() +
             ", bathRoom=" + getBathRoom() +
+            ", bedRoom=" + getBedRoom() +
             ", parking='" + isParking() + "'" +
             ", furniture='" + isFurniture() + "'" +
-            ", bedRoom=" + getBedRoom() +
             ", landType='" + getLandType() + "'" +
             ", saleType='" + getSaleType() + "'" +
             ", fee=" + getFee() +
             ", feeMax=" + getFeeMax() +
+            ", present='" + getPresent() + "'" +
             ", hits=" + getHits() +
             ", statusType='" + getStatusType() + "'" +
             ", createAt='" + getCreateAt() + "'" +

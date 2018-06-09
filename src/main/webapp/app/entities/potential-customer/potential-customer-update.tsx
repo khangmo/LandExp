@@ -160,7 +160,7 @@ export class PotentialCustomerUpdate extends React.Component<IPotentialCustomerU
                     <option value="NORMAL">NORMAL</option>
                     <option value="SILVER">SILVER</option>
                     <option value="GOLD">GOLD</option>
-                    <option value="PLATIUM">PLATIUM</option>
+                    <option value="PLATINUM">PLATINUM</option>
                   </AvInput>
                 </AvGroup>
                 <AvGroup>

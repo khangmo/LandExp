@@ -56,6 +56,10 @@ export class LandProjectDetail extends React.Component<ILandProjectDetailProps> 
             </dt>
             <dd>{landProject.cityName ? landProject.cityName : ''}</dd>
             <dt>
+              <Translate contentKey="landexpApp.landProject.district">District</Translate>
+            </dt>
+            <dd>{landProject.districtName ? landProject.districtName : ''}</dd>
+            <dt>
               <Translate contentKey="landexpApp.landProject.street">Street</Translate>
             </dt>
             <dd>{landProject.streetName ? landProject.streetName : ''}</dd>

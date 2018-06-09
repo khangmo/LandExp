@@ -14,6 +14,12 @@
                                  referencedColumnNames="id"
                                  referencedTableName="city"/>
 
+        <addForeignKeyConstraint baseColumnNames="district_id"
+                                 baseTableName="land_project"
+                                 constraintName="fk_land_project_district_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="district"/>
+
         <addForeignKeyConstraint baseColumnNames="street_id"
                                  baseTableName="land_project"
                                  constraintName="fk_land_project_street_id"

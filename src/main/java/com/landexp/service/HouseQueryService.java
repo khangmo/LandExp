@@ -116,14 +116,14 @@ public class HouseQueryService extends QueryService<House> {
             if (criteria.getBathRoom() != null) {
                 specification = specification.and(buildRangeSpecification(criteria.getBathRoom(), House_.bathRoom));
             }
+            if (criteria.getBedRoom() != null) {
+                specification = specification.and(buildRangeSpecification(criteria.getBedRoom(), House_.bedRoom));
+            }
             if (criteria.getParking() != null) {
                 specification = specification.and(buildSpecification(criteria.getParking(), House_.parking));
             }
             if (criteria.getFurniture() != null) {
                 specification = specification.and(buildSpecification(criteria.getFurniture(), House_.furniture));
-            }
-            if (criteria.getBedRoom() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getBedRoom(), House_.bedRoom));
             }
             if (criteria.getLandType() != null) {
                 specification = specification.and(buildSpecification(criteria.getLandType(), House_.landType));
@@ -136,6 +136,9 @@ public class HouseQueryService extends QueryService<House> {
             }
             if (criteria.getFeeMax() != null) {
                 specification = specification.and(buildRangeSpecification(criteria.getFeeMax(), House_.feeMax));
+            }
+            if (criteria.getPresent() != null) {
+                specification = specification.and(buildSpecification(criteria.getPresent(), House_.present));
             }
             if (criteria.getHits() != null) {
                 specification = specification.and(buildRangeSpecification(criteria.getHits(), House_.hits));
@@ -154,6 +157,9 @@ public class HouseQueryService extends QueryService<House> {
             }
             if (criteria.getCityId() != null) {
                 specification = specification.and(buildReferringEntitySpecification(criteria.getCityId(), House_.city, City_.id));
+            }
+            if (criteria.getDistrictId() != null) {
+                specification = specification.and(buildReferringEntitySpecification(criteria.getDistrictId(), House_.district, District_.id));
             }
             if (criteria.getStreetId() != null) {
                 specification = specification.and(buildReferringEntitySpecification(criteria.getStreetId(), House_.street, Street_.id));

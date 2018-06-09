@@ -101,6 +101,12 @@ export class HouseDetail extends React.Component<IHouseDetailProps> {
             </dt>
             <dd>{house.bathRoom}</dd>
             <dt>
+              <span id="bedRoom">
+                <Translate contentKey="landexpApp.house.bedRoom">Bed Room</Translate>
+              </span>
+            </dt>
+            <dd>{house.bedRoom}</dd>
+            <dt>
               <span id="parking">
                 <Translate contentKey="landexpApp.house.parking">Parking</Translate>
               </span>
@@ -112,12 +118,6 @@ export class HouseDetail extends React.Component<IHouseDetailProps> {
               </span>
             </dt>
             <dd>{house.furniture ? 'true' : 'false'}</dd>
-            <dt>
-              <span id="bedRoom">
-                <Translate contentKey="landexpApp.house.bedRoom">Bed Room</Translate>
-              </span>
-            </dt>
-            <dd>{house.bedRoom}</dd>
             <dt>
               <span id="landType">
                 <Translate contentKey="landexpApp.house.landType">Land Type</Translate>
@@ -142,6 +142,12 @@ export class HouseDetail extends React.Component<IHouseDetailProps> {
               </span>
             </dt>
             <dd>{house.feeMax}</dd>
+            <dt>
+              <span id="present">
+                <Translate contentKey="landexpApp.house.present">Present</Translate>
+              </span>
+            </dt>
+            <dd>{house.present}</dd>
             <dt>
               <span id="hits">
                 <Translate contentKey="landexpApp.house.hits">Hits</Translate>
@@ -174,6 +180,10 @@ export class HouseDetail extends React.Component<IHouseDetailProps> {
               <Translate contentKey="landexpApp.house.city">City</Translate>
             </dt>
             <dd>{house.cityName ? house.cityName : ''}</dd>
+            <dt>
+              <Translate contentKey="landexpApp.house.district">District</Translate>
+            </dt>
+            <dd>{house.districtName ? house.districtName : ''}</dd>
             <dt>
               <Translate contentKey="landexpApp.house.street">Street</Translate>
             </dt>

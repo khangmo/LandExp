@@ -65,6 +65,8 @@ export interface ISearchTracking {
   userId?: number;
   cityName?: string;
   cityId?: number;
+  districtName?: string;
+  districtId?: number;
   streetName?: string;
   streetId?: number;
 }

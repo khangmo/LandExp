@@ -9,6 +9,7 @@ import com.landexp.domain.enumeration.DirectionType;
 import com.landexp.domain.enumeration.DirectionType;
 import com.landexp.domain.enumeration.LandType;
 import com.landexp.domain.enumeration.SaleType;
+import com.landexp.domain.enumeration.PresentType;
 import com.landexp.domain.enumeration.StatusType;
 
 /**
@@ -42,11 +43,11 @@ public class HouseDTO implements Serializable {
 
     private Integer bathRoom;
 
+    private Integer bedRoom;
+
     private Boolean parking;
 
     private Boolean furniture;
-
-    private Integer bedRoom;
 
     private LandType landType;
 
@@ -55,6 +56,8 @@ public class HouseDTO implements Serializable {
     private Float fee;
 
     private Float feeMax;
+
+    private PresentType present;
 
     private Integer hits;
 
@@ -67,6 +70,10 @@ public class HouseDTO implements Serializable {
     private Long cityId;
 
     private String cityName;
+
+    private Long districtId;
+
+    private String districtName;
 
     private Long streetId;
 
@@ -188,6 +195,14 @@ public class HouseDTO implements Serializable {
         this.bathRoom = bathRoom;
     }
 
+    public Integer getBedRoom() {
+        return bedRoom;
+    }
+
+    public void setBedRoom(Integer bedRoom) {
+        this.bedRoom = bedRoom;
+    }
+
     public Boolean isParking() {
         return parking;
     }
@@ -202,14 +217,6 @@ public class HouseDTO implements Serializable {
 
     public void setFurniture(Boolean furniture) {
         this.furniture = furniture;
-    }
-
-    public Integer getBedRoom() {
-        return bedRoom;
-    }
-
-    public void setBedRoom(Integer bedRoom) {
-        this.bedRoom = bedRoom;
     }
 
     public LandType getLandType() {
@@ -242,6 +249,14 @@ public class HouseDTO implements Serializable {
 
     public void setFeeMax(Float feeMax) {
         this.feeMax = feeMax;
+    }
+
+    public PresentType getPresent() {
+        return present;
+    }
+
+    public void setPresent(PresentType present) {
+        this.present = present;
     }
 
     public Integer getHits() {
@@ -290,6 +305,22 @@ public class HouseDTO implements Serializable {
 
     public void setCityName(String cityName) {
         this.cityName = cityName;
+    }
+
+    public Long getDistrictId() {
+        return districtId;
+    }
+
+    public void setDistrictId(Long districtId) {
+        this.districtId = districtId;
+    }
+
+    public String getDistrictName() {
+        return districtName;
+    }
+
+    public void setDistrictName(String districtName) {
+        this.districtName = districtName;
     }
 
     public Long getStreetId() {
@@ -393,19 +424,22 @@ public class HouseDTO implements Serializable {
             ", floor='" + getFloor() + "'" +
             ", numberOfFloor=" + getNumberOfFloor() +
             ", bathRoom=" + getBathRoom() +
+            ", bedRoom=" + getBedRoom() +
             ", parking='" + isParking() + "'" +
             ", furniture='" + isFurniture() + "'" +
-            ", bedRoom=" + getBedRoom() +
             ", landType='" + getLandType() + "'" +
             ", saleType='" + getSaleType() + "'" +
             ", fee=" + getFee() +
             ", feeMax=" + getFeeMax() +
+            ", present='" + getPresent() + "'" +
             ", hits=" + getHits() +
             ", statusType='" + getStatusType() + "'" +
             ", createAt='" + getCreateAt() + "'" +
             ", updateAt='" + getUpdateAt() + "'" +
             ", city=" + getCityId() +
             ", city='" + getCityName() + "'" +
+            ", district=" + getDistrictId() +
+            ", district='" + getDistrictName() + "'" +
             ", street=" + getStreetId() +
             ", street='" + getStreetName() + "'" +
             ", project=" + getProjectId() +

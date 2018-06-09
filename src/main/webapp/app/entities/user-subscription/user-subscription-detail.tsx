@@ -131,6 +131,10 @@ export class UserSubscriptionDetail extends React.Component<IUserSubscriptionDet
             </dt>
             <dd>{userSubscription.cityName ? userSubscription.cityName : ''}</dd>
             <dt>
+              <Translate contentKey="landexpApp.userSubscription.district">District</Translate>
+            </dt>
+            <dd>{userSubscription.districtName ? userSubscription.districtName : ''}</dd>
+            <dt>
               <Translate contentKey="landexpApp.userSubscription.street">Street</Translate>
             </dt>
             <dd>{userSubscription.streetName ? userSubscription.streetName : ''}</dd>

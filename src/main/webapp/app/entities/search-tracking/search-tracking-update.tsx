@@ -12,6 +12,8 @@ import { IUser } from 'app/shared/model/user.model';
 import { getUsers } from 'app/modules/administration/user-management/user-management.reducer';
 import { ICity } from 'app/shared/model/city.model';
 import { getEntities as getCities } from 'app/entities/city/city.reducer';
+import { IDistrict } from 'app/shared/model/district.model';
+import { getEntities as getDistricts } from 'app/entities/district/district.reducer';
 import { IStreet } from 'app/shared/model/street.model';
 import { getEntities as getStreets } from 'app/entities/street/street.reducer';
 import { getEntity, updateEntity, createEntity, reset } from './search-tracking.reducer';
@@ -26,6 +28,7 @@ export interface ISearchTrackingUpdateState {
   isNew: boolean;
   userId: number;
   cityId: number;
+  districtId: number;
   streetId: number;
 }
 
@@ -35,6 +38,7 @@ export class SearchTrackingUpdate extends React.Component<ISearchTrackingUpdateP
     this.state = {
       userId: 0,
       cityId: 0,
+      districtId: 0,
       streetId: 0,
       isNew: !this.props.match.params || !this.props.match.params.id
     };
@@ -49,6 +53,7 @@ export class SearchTrackingUpdate extends React.Component<ISearchTrackingUpdateP
 
     this.props.getUsers();
     this.props.getCities();
+    this.props.getDistricts();
     this.props.getStreets();
   }
 
@@ -107,6 +112,23 @@ export class SearchTrackingUpdate extends React.Component<ISearchTrackingUpdateP
     }
   };
 
+  districtUpdate = element => {
+    const name = element.target.value.toString();
+    if (name === '') {
+      this.setState({
+        districtId: -1
+      });
+    } else {
+      for (const i in this.props.districts) {
+        if (name === this.props.districts[i].name.toString()) {
+          this.setState({
+            districtId: this.props.districts[i].id
+          });
+        }
+      }
+    }
+  };
+
   streetUpdate = element => {
     const name = element.target.value.toString();
     if (name === '') {
@@ -126,7 +148,7 @@ export class SearchTrackingUpdate extends React.Component<ISearchTrackingUpdateP
 
   render() {
     const isInvalid = false;
-    const { searchTracking, users, cities, streets, loading, updating } = this.props;
+    const { searchTracking, users, cities, districts, streets, loading, updating } = this.props;
     const { isNew } = this.state;
 
     return (
@@ -319,6 +341,27 @@ export class SearchTrackingUpdate extends React.Component<ISearchTrackingUpdateP
                   </AvInput>
                 </AvGroup>
                 <AvGroup>
+                  <Label for="district.name">
+                    <Translate contentKey="landexpApp.searchTracking.district">District</Translate>
+                  </Label>
+                  <AvInput
+                    id="search-tracking-district"
+                    type="select"
+                    className="form-control"
+                    name="districtId"
+                    onChange={this.districtUpdate}
+                  >
+                    <option value="" key="0" />
+                    {districts
+                      ? districts.map(otherEntity => (
+                          <option value={otherEntity.id} key={otherEntity.id}>
+                            {otherEntity.name}
+                          </option>
+                        ))
+                      : null}
+                  </AvInput>
+                </AvGroup>
+                <AvGroup>
                   <Label for="street.name">
                     <Translate contentKey="landexpApp.searchTracking.street">Street</Translate>
                   </Label>
@@ -356,6 +399,7 @@ export class SearchTrackingUpdate extends React.Component<ISearchTrackingUpdateP
 const mapStateToProps = (storeState: IRootState) => ({
   users: storeState.userManagement.users,
   cities: storeState.city.entities,
+  districts: storeState.district.entities,
   streets: storeState.street.entities,
   searchTracking: storeState.searchTracking.entity,
   loading: storeState.searchTracking.loading,
@@ -365,6 +409,7 @@ const mapStateToProps = (storeState: IRootState) => ({
 const mapDispatchToProps = {
   getUsers,
   getCities,
+  getDistricts,
   getStreets,
   getEntity,
   updateEntity,

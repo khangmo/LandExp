@@ -139,7 +139,7 @@ export class UserProfile extends React.Component<IUserProfileProps, IUserProfile
                   </td>
                   <td>{userProfile.name}</td>
                   <td>{userProfile.phoneNumber}</td>
-                  <td>{userProfile.userLogin ? userProfile.userLogin : ''}</td>
+                  <td>{userProfile.userEmail ? userProfile.userEmail : ''}</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`${match.url}/${userProfile.id}`} color="info" size="sm">

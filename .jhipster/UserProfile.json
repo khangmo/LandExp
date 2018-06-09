@@ -14,7 +14,7 @@
             "relationshipType": "many-to-one",
             "relationshipName": "user",
             "otherEntityName": "user",
-            "otherEntityField": "login"
+            "otherEntityField": "email"
         }
     ],
     "changelogDate": "20180607131205",

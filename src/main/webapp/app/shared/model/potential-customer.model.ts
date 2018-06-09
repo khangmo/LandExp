@@ -4,7 +4,7 @@ export const enum CustomerLevel {
   NORMAL = 'NORMAL',
   SILVER = 'SILVER',
   GOLD = 'GOLD',
-  PLATIUM = 'PLATIUM'
+  PLATINUM = 'PLATINUM'
 }
 
 export interface IPotentialCustomer {

@@ -125,6 +125,9 @@ public class SearchTrackingQueryService extends QueryService<SearchTracking> {
             if (criteria.getCityId() != null) {
                 specification = specification.and(buildReferringEntitySpecification(criteria.getCityId(), SearchTracking_.city, City_.id));
             }
+            if (criteria.getDistrictId() != null) {
+                specification = specification.and(buildReferringEntitySpecification(criteria.getDistrictId(), SearchTracking_.district, District_.id));
+            }
             if (criteria.getStreetId() != null) {
                 specification = specification.and(buildReferringEntitySpecification(criteria.getStreetId(), SearchTracking_.street, Street_.id));
             }
