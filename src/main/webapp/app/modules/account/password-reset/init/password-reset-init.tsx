@@ -37,11 +37,11 @@ export class PasswordResetInit extends React.Component<IPasswordResetInitProps> 
                 name="email"
                 label={translate('global.form.email')}
                 placeholder={translate('global.form.email.placeholder')}
-                type="email"
                 validate={{
                   required: { value: true, errorMessage: translate('global.messages.validate.email.required') },
-                  minLength: { value: 5, errorMessage: translate('global.messages.validate.email.minlength') },
-                  maxLength: { value: 254, errorMessage: translate('global.messages.validate.email.maxlength') }
+                  pattern: { value: '^0[0-9-]*$', errorMessage: translate('register.messages.validate.login.pattern') },
+                  minLength: { value: 10, errorMessage: translate('global.messages.validate.email.minlength') },
+                  maxLength: { value: 11, errorMessage: translate('global.messages.validate.email.maxlength') }
                 }}
               />
               <Button color="primary" type="submit">
