@@ -28,6 +28,13 @@ public class HousePhoto implements Serializable {
     @Column(name = "name")
     private String name;
 
+    @Lob
+    @Column(name = "image")
+    private byte[] image;
+
+    @Column(name = "image_content_type")
+    private String imageContentType;
+
     @CreationTimestamp
     @Column(name = "create_at")
     private LocalDate createAt;
@@ -60,6 +67,32 @@ public class HousePhoto implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public HousePhoto image(byte[] image) {
+        this.image = image;
+        return this;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    public String getImageContentType() {
+        return imageContentType;
+    }
+
+    public HousePhoto imageContentType(String imageContentType) {
+        this.imageContentType = imageContentType;
+        return this;
+    }
+
+    public void setImageContentType(String imageContentType) {
+        this.imageContentType = imageContentType;
     }
 
     public LocalDate getCreateAt() {
@@ -127,6 +160,8 @@ public class HousePhoto implements Serializable {
         return "HousePhoto{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
+            ", image='" + getImage() + "'" +
+            ", imageContentType='" + getImageContentType() + "'" +
             ", createAt='" + getCreateAt() + "'" +
             "}";
     }

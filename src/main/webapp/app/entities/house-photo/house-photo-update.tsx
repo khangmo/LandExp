@@ -4,7 +4,7 @@ import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, Row, Col, Label } from 'reactstrap';
 import { AvForm, AvGroup, AvInput, AvField } from 'availity-reactstrap-validation';
 // tslint:disable-next-line:no-unused-variable
-import { Translate, translate, ICrudGetAction, ICrudGetAllAction, ICrudPutAction } from 'react-jhipster';
+import { Translate, translate, ICrudGetAction, ICrudGetAllAction, setFileData, openFile, byteSize, ICrudPutAction } from 'react-jhipster';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { IRootState } from 'app/shared/reducers';
 
@@ -12,7 +12,7 @@ import { IHouse } from 'app/shared/model/house.model';
 import { getEntities as getHouses } from 'app/entities/house/house.reducer';
 import { IUser } from 'app/shared/model/user.model';
 import { getUsers } from 'app/modules/administration/user-management/user-management.reducer';
-import { getEntity, updateEntity, createEntity, reset } from './house-photo.reducer';
+import { getEntity, updateEntity, createEntity, setBlob, reset } from './house-photo.reducer';
 import { IHousePhoto } from 'app/shared/model/house-photo.model';
 // tslint:disable-next-line:no-unused-variable
 import { convertDateTimeFromServer } from 'app/shared/util/date-utils';
@@ -46,6 +46,14 @@ export class HousePhotoUpdate extends React.Component<IHousePhotoUpdateProps, IH
     this.props.getHouses();
     this.props.getUsers();
   }
+
+  onBlobChange = (isAnImage, name) => event => {
+    setFileData(event, (contentType, data) => this.props.setBlob(name, data, contentType), isAnImage);
+  };
+
+  clearBlob = name => () => {
+    this.props.setBlob(name, undefined, undefined);
+  };
 
   saveEntity = (event, errors, values) => {
     if (errors.length === 0) {
@@ -107,6 +115,8 @@ export class HousePhotoUpdate extends React.Component<IHousePhotoUpdateProps, IH
     const { housePhoto, houses, users, loading, updating } = this.props;
     const { isNew } = this.state;
 
+    const { image, imageContentType } = housePhoto;
+
     return (
       <div>
         <Row className="justify-content-center">
@@ -135,6 +145,35 @@ export class HousePhotoUpdate extends React.Component<IHousePhotoUpdateProps, IH
                     <Translate contentKey="landexpApp.housePhoto.name">Name</Translate>
                   </Label>
                   <AvField id="house-photo-name" type="text" name="name" />
+                </AvGroup>
+                <AvGroup>
+                  <AvGroup>
+                    <Label id="imageLabel" for="image">
+                      <Translate contentKey="landexpApp.housePhoto.image">Image</Translate>
+                    </Label>
+                    <br />
+                    {image ? (
+                      <div>
+                        <a onClick={openFile(imageContentType, image)}>
+                          <img src={`data:${imageContentType};base64,${image}`} style={{ maxHeight: '100px' }} />
+                        </a>
+                        <br />
+                        <Row>
+                          <Col md="11">
+                            <span>
+                              {imageContentType}, {byteSize(image)}
+                            </span>
+                          </Col>
+                          <Col md="1">
+                            <Button color="danger" onClick={this.clearBlob('image')}>
+                              <FontAwesomeIcon icon="times-circle" />
+                            </Button>
+                          </Col>
+                        </Row>
+                      </div>
+                    ) : null}
+                    <input id="file_image" type="file" onChange={this.onBlobChange(true, 'image')} accept="image/*" />
+                  </AvGroup>
                 </AvGroup>
                 <AvGroup>
                   <Label id="createAtLabel" for="createAt">
@@ -205,6 +244,7 @@ const mapDispatchToProps = {
   getUsers,
   getEntity,
   updateEntity,
+  setBlob,
   createEntity,
   reset
 };

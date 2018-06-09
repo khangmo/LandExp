@@ -130,6 +130,7 @@ relationship ManyToOne {
 
 entity HousePhoto {
    name String,
+   image ImageBlob,
    createAt LocalDate
 }
 

@@ -5,6 +5,8 @@ import { Button, InputGroup, Col, Row, Table } from 'reactstrap';
 import { AvForm, AvGroup, AvInput } from 'availity-reactstrap-validation';
 // tslint:disable-next-line:no-unused-variable
 import {
+  openFile,
+  byteSize,
   Translate,
   translate,
   ICrudSearchAction,
@@ -121,6 +123,9 @@ export class HousePhoto extends React.Component<IHousePhotoProps, IHousePhotoSta
                 <th className="hand" onClick={this.sort('name')}>
                   <Translate contentKey="landexpApp.housePhoto.name">Name</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
+                <th className="hand" onClick={this.sort('image')}>
+                  <Translate contentKey="landexpApp.housePhoto.image">Image</Translate> <FontAwesomeIcon icon="sort" />
+                </th>
                 <th className="hand" onClick={this.sort('createAt')}>
                   <Translate contentKey="landexpApp.housePhoto.createAt">Create At</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
@@ -142,6 +147,19 @@ export class HousePhoto extends React.Component<IHousePhotoProps, IHousePhotoSta
                     </Button>
                   </td>
                   <td>{housePhoto.name}</td>
+                  <td>
+                    {housePhoto.image ? (
+                      <div>
+                        <a onClick={openFile(housePhoto.imageContentType, housePhoto.image)}>
+                          <img src={`data:${housePhoto.imageContentType};base64,${housePhoto.image}`} style={{ maxHeight: '30px' }} />
+                          &nbsp;
+                        </a>
+                        <span>
+                          {housePhoto.imageContentType}, {byteSize(housePhoto.image)}
+                        </span>
+                      </div>
+                    ) : null}
+                  </td>
                   <td>
                     <TextFormat type="date" value={housePhoto.createAt} format={APP_LOCAL_DATE_FORMAT} />
                   </td>

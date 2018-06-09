@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, Row, Col } from 'reactstrap';
 // tslint:disable-next-line:no-unused-variable
-import { Translate, ICrudGetAction, TextFormat } from 'react-jhipster';
+import { Translate, ICrudGetAction, openFile, byteSize, TextFormat } from 'react-jhipster';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 
 import { IRootState } from 'app/shared/reducers';
@@ -34,6 +34,23 @@ export class HousePhotoDetail extends React.Component<IHousePhotoDetailProps> {
               </span>
             </dt>
             <dd>{housePhoto.name}</dd>
+            <dt>
+              <span id="image">
+                <Translate contentKey="landexpApp.housePhoto.image">Image</Translate>
+              </span>
+            </dt>
+            <dd>
+              {housePhoto.image ? (
+                <div>
+                  <a onClick={openFile(housePhoto.imageContentType, housePhoto.image)}>
+                    <img src={`data:${housePhoto.imageContentType};base64,${housePhoto.image}`} style={{ maxHeight: '30px' }} />
+                  </a>
+                  <span>
+                    {housePhoto.imageContentType}, {byteSize(housePhoto.image)}
+                  </span>
+                </div>
+              ) : null}
+            </dd>
             <dt>
               <span id="createAt">
                 <Translate contentKey="landexpApp.housePhoto.createAt">Create At</Translate>

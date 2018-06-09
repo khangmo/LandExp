@@ -5,6 +5,11 @@
             "fieldType": "String"
         },
         {
+            "fieldName": "image",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
             "fieldName": "createAt",
             "fieldType": "LocalDate"
         }

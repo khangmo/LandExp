@@ -3,6 +3,7 @@ package com.landexp.service.dto;
 import java.time.LocalDate;
 import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.Lob;
 
 /**
  * A DTO for the HousePhoto entity.
@@ -12,6 +13,10 @@ public class HousePhotoDTO implements Serializable {
     private Long id;
 
     private String name;
+
+    @Lob
+    private byte[] image;
+    private String imageContentType;
 
     private LocalDate createAt;
 
@@ -35,6 +40,22 @@ public class HousePhotoDTO implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    public String getImageContentType() {
+        return imageContentType;
+    }
+
+    public void setImageContentType(String imageContentType) {
+        this.imageContentType = imageContentType;
     }
 
     public LocalDate getCreateAt() {
@@ -95,6 +116,7 @@ public class HousePhotoDTO implements Serializable {
         return "HousePhotoDTO{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
+            ", image='" + getImage() + "'" +
             ", createAt='" + getCreateAt() + "'" +
             ", house=" + getHouseId() +
             ", user=" + getUserId() +
