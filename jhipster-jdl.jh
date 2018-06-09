@@ -73,7 +73,7 @@ enum SaleType {
 }
 
 enum MoneyType {
-   MILLION, HUNDRED_MILLION, BILLION
+   MILLION, BILLION
 }
 
 entity House {
@@ -109,6 +109,7 @@ entity ServiceFee {
 
 relationship ManyToOne {
    House{city(name)} to City,
+   House{district(name)} to District,
    House{street(name)} to Street,
    House{project(name)} to LandProject,
    House{createBy(login)} to User,
@@ -163,6 +164,7 @@ relationship OneToMany {
 
 relationship ManyToOne {
    LandProject{city(name)} to City,
+   LandProject{district(name)} to District,
    LandProject{street(name)} to Street,
    LandProject{createBy(login)} to User,
    LandProject{updateBy(login)} to User
