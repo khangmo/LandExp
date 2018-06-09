@@ -76,6 +76,10 @@ enum MoneyType {
    MILLION, BILLION
 }
 
+enum PresentType {
+   FURNITURE, DISCOUNT_PRICE
+}
+
 entity House {
    avatar String,
    actionType UserActionType,
@@ -96,6 +100,7 @@ entity House {
    saleType SaleType,
    fee Float,
    feeMax Float,
+   present PresentType,
    hits Integer,
    statusType StatusType,
    createAt LocalDate,
@@ -201,7 +206,7 @@ entity UserProfile {
 }
 
 relationship ManyToOne {
-   UserProfile{user(login)} to User
+   UserProfile{user(email)} to User
 }
 
 enum UserActivityType {
@@ -229,6 +234,7 @@ entity UserSubscription {
 relationship ManyToOne {
    UserSubscription{user(login)} to User
    UserSubscription{city(name)} to City,
+   UserSubscription{district(name)} to District,
    UserSubscription{street(name)} to Street
 }
 
@@ -273,6 +279,7 @@ entity SearchTracking {
 relationship ManyToOne {
    SearchTracking{user(login)} to User
    SearchTracking{city(name)} to City,
+   SearchTracking{district(name)} to District,
    SearchTracking{street(name)} to Street
 }
 
@@ -291,7 +298,7 @@ relationship ManyToOne {
 }
 
 enum CustomerLevel {
-   NORMAL, SILVER, GOLD, PLATIUM
+   NORMAL, SILVER, GOLD, PLATINUM
 }
 
 entity PotentialCustomer {
