@@ -18,6 +18,8 @@ public class HouseDTO implements Serializable {
 
     private Long id;
 
+    private String avatar;
+
     private UserActionType actionType;
 
     private String address;
@@ -88,6 +90,14 @@ public class HouseDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public UserActionType getActionType() {
@@ -371,6 +381,7 @@ public class HouseDTO implements Serializable {
     public String toString() {
         return "HouseDTO{" +
             "id=" + getId() +
+            ", avatar='" + getAvatar() + "'" +
             ", actionType='" + getActionType() + "'" +
             ", address='" + getAddress() + "'" +
             ", money=" + getMoney() +

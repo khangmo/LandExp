@@ -80,6 +80,9 @@ public class HouseQueryService extends QueryService<House> {
             if (criteria.getId() != null) {
                 specification = specification.and(buildSpecification(criteria.getId(), House_.id));
             }
+            if (criteria.getAvatar() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getAvatar(), House_.avatar));
+            }
             if (criteria.getActionType() != null) {
                 specification = specification.and(buildSpecification(criteria.getActionType(), House_.actionType));
             }
@@ -145,6 +148,9 @@ public class HouseQueryService extends QueryService<House> {
             }
             if (criteria.getUpdateAt() != null) {
                 specification = specification.and(buildRangeSpecification(criteria.getUpdateAt(), House_.updateAt));
+            }
+            if (criteria.getPhotosId() != null) {
+                specification = specification.and(buildReferringEntitySpecification(criteria.getPhotosId(), House_.photos, HousePhoto_.id));
             }
             if (criteria.getCityId() != null) {
                 specification = specification.and(buildReferringEntitySpecification(criteria.getCityId(), House_.city, City_.id));

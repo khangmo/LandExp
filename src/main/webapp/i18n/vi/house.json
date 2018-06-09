@@ -17,6 +17,7 @@
             "detail": {
                 "title": "House"
             },
+            "avatar": "Avatar",
             "actionType": "Action Type",
             "address": "Address",
             "money": "Money",
@@ -39,6 +40,7 @@
             "statusType": "Status Type",
             "createAt": "Create At",
             "updateAt": "Update At",
+            "photos": "Photos",
             "city": "City",
             "street": "Street",
             "project": "Project",

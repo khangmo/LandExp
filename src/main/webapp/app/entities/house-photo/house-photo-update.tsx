@@ -8,6 +8,10 @@ import { Translate, translate, ICrudGetAction, ICrudGetAllAction, ICrudPutAction
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { IRootState } from 'app/shared/reducers';
 
+import { IHouse } from 'app/shared/model/house.model';
+import { getEntities as getHouses } from 'app/entities/house/house.reducer';
+import { IUser } from 'app/shared/model/user.model';
+import { getUsers } from 'app/modules/administration/user-management/user-management.reducer';
 import { getEntity, updateEntity, createEntity, reset } from './house-photo.reducer';
 import { IHousePhoto } from 'app/shared/model/house-photo.model';
 // tslint:disable-next-line:no-unused-variable
@@ -18,12 +22,16 @@ export interface IHousePhotoUpdateProps extends StateProps, DispatchProps, Route
 
 export interface IHousePhotoUpdateState {
   isNew: boolean;
+  houseId: number;
+  userId: number;
 }
 
 export class HousePhotoUpdate extends React.Component<IHousePhotoUpdateProps, IHousePhotoUpdateState> {
   constructor(props) {
     super(props);
     this.state = {
+      houseId: 0,
+      userId: 0,
       isNew: !this.props.match.params || !this.props.match.params.id
     };
   }
@@ -34,6 +42,9 @@ export class HousePhotoUpdate extends React.Component<IHousePhotoUpdateProps, IH
     } else {
       this.props.getEntity(this.props.match.params.id);
     }
+
+    this.props.getHouses();
+    this.props.getUsers();
   }
 
   saveEntity = (event, errors, values) => {
@@ -57,9 +68,43 @@ export class HousePhotoUpdate extends React.Component<IHousePhotoUpdateProps, IH
     this.props.history.push('/entity/house-photo');
   };
 
+  houseUpdate = element => {
+    const id = element.target.value.toString();
+    if (id === '') {
+      this.setState({
+        houseId: -1
+      });
+    } else {
+      for (const i in this.props.houses) {
+        if (id === this.props.houses[i].id.toString()) {
+          this.setState({
+            houseId: this.props.houses[i].id
+          });
+        }
+      }
+    }
+  };
+
+  userUpdate = element => {
+    const login = element.target.value.toString();
+    if (login === '') {
+      this.setState({
+        userId: -1
+      });
+    } else {
+      for (const i in this.props.users) {
+        if (login === this.props.users[i].login.toString()) {
+          this.setState({
+            userId: this.props.users[i].id
+          });
+        }
+      }
+    }
+  };
+
   render() {
     const isInvalid = false;
-    const { housePhoto, loading, updating } = this.props;
+    const { housePhoto, houses, users, loading, updating } = this.props;
     const { isNew } = this.state;
 
     return (
@@ -97,6 +142,36 @@ export class HousePhotoUpdate extends React.Component<IHousePhotoUpdateProps, IH
                   </Label>
                   <AvField id="house-photo-createAt" type="date" className="form-control" name="createAt" />
                 </AvGroup>
+                <AvGroup>
+                  <Label for="house.id">
+                    <Translate contentKey="landexpApp.housePhoto.house">House</Translate>
+                  </Label>
+                  <AvInput id="house-photo-house" type="select" className="form-control" name="houseId" onChange={this.houseUpdate}>
+                    <option value="" key="0" />
+                    {houses
+                      ? houses.map(otherEntity => (
+                          <option value={otherEntity.id} key={otherEntity.id}>
+                            {otherEntity.id}
+                          </option>
+                        ))
+                      : null}
+                  </AvInput>
+                </AvGroup>
+                <AvGroup>
+                  <Label for="user.login">
+                    <Translate contentKey="landexpApp.housePhoto.user">User</Translate>
+                  </Label>
+                  <AvInput id="house-photo-user" type="select" className="form-control" name="userId" onChange={this.userUpdate}>
+                    <option value="" key="0" />
+                    {users
+                      ? users.map(otherEntity => (
+                          <option value={otherEntity.id} key={otherEntity.id}>
+                            {otherEntity.login}
+                          </option>
+                        ))
+                      : null}
+                  </AvInput>
+                </AvGroup>
                 <Button tag={Link} id="cancel-save" to="/entity/house-photo" replace color="info">
                   <FontAwesomeIcon icon="arrow-left" />&nbsp;
                   <span className="d-none d-md-inline">
@@ -118,12 +193,16 @@ export class HousePhotoUpdate extends React.Component<IHousePhotoUpdateProps, IH
 }
 
 const mapStateToProps = (storeState: IRootState) => ({
+  houses: storeState.house.entities,
+  users: storeState.userManagement.users,
   housePhoto: storeState.housePhoto.entity,
   loading: storeState.housePhoto.loading,
   updating: storeState.housePhoto.updating
 });
 
 const mapDispatchToProps = {
+  getHouses,
+  getUsers,
   getEntity,
   updateEntity,
   createEntity,

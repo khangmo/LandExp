@@ -1,6 +1,10 @@
 {
     "fields": [
         {
+            "fieldName": "avatar",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "actionType",
             "fieldType": "UserActionType",
             "fieldValues": "FOR_BUY,FOR_SELL,FOR_RENT,FOR_HIRE"
@@ -97,6 +101,12 @@
         }
     ],
     "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "photos",
+            "otherEntityName": "housePhoto",
+            "otherEntityRelationshipName": "house"
+        },
         {
             "relationshipType": "many-to-one",
             "relationshipName": "city",

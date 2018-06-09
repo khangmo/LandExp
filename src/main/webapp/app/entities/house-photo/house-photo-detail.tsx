@@ -42,6 +42,14 @@ export class HousePhotoDetail extends React.Component<IHousePhotoDetailProps> {
             <dd>
               <TextFormat value={housePhoto.createAt} type="date" format={APP_LOCAL_DATE_FORMAT} />
             </dd>
+            <dt>
+              <Translate contentKey="landexpApp.housePhoto.house">House</Translate>
+            </dt>
+            <dd>{housePhoto.houseId ? housePhoto.houseId : ''}</dd>
+            <dt>
+              <Translate contentKey="landexpApp.housePhoto.user">User</Translate>
+            </dt>
+            <dd>{housePhoto.userLogin ? housePhoto.userLogin : ''}</dd>
           </dl>
           <Button tag={Link} to="/entity/house-photo" replace color="info">
             <FontAwesomeIcon icon="arrow-left" />{' '}

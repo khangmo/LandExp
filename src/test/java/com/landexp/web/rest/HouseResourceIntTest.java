@@ -3,6 +3,7 @@ package com.landexp.web.rest;
 import com.landexp.LandexpApp;
 
 import com.landexp.domain.House;
+import com.landexp.domain.HousePhoto;
 import com.landexp.domain.City;
 import com.landexp.domain.Street;
 import com.landexp.domain.LandProjects;
@@ -63,6 +64,9 @@ import com.landexp.domain.enumeration.StatusType;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = LandexpApp.class)
 public class HouseResourceIntTest {
+
+    private static final String DEFAULT_AVATAR = "AAAAAAAAAA";
+    private static final String UPDATED_AVATAR = "BBBBBBBBBB";
 
     private static final UserActionType DEFAULT_ACTION_TYPE = UserActionType.FOR_BUY;
     private static final UserActionType UPDATED_ACTION_TYPE = UserActionType.FOR_SELL;
@@ -187,6 +191,7 @@ public class HouseResourceIntTest {
      */
     public static House createEntity(EntityManager em) {
         House house = new House()
+            .avatar(DEFAULT_AVATAR)
             .actionType(DEFAULT_ACTION_TYPE)
             .address(DEFAULT_ADDRESS)
             .money(DEFAULT_MONEY)
@@ -233,6 +238,7 @@ public class HouseResourceIntTest {
         List<House> houseList = houseRepository.findAll();
         assertThat(houseList).hasSize(databaseSizeBeforeCreate + 1);
         House testHouse = houseList.get(houseList.size() - 1);
+        assertThat(testHouse.getAvatar()).isEqualTo(DEFAULT_AVATAR);
         assertThat(testHouse.getActionType()).isEqualTo(DEFAULT_ACTION_TYPE);
         assertThat(testHouse.getAddress()).isEqualTo(DEFAULT_ADDRESS);
         assertThat(testHouse.getMoney()).isEqualTo(DEFAULT_MONEY);
@@ -294,6 +300,7 @@ public class HouseResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(house.getId().intValue())))
+            .andExpect(jsonPath("$.[*].avatar").value(hasItem(DEFAULT_AVATAR.toString())))
             .andExpect(jsonPath("$.[*].actionType").value(hasItem(DEFAULT_ACTION_TYPE.toString())))
             .andExpect(jsonPath("$.[*].address").value(hasItem(DEFAULT_ADDRESS.toString())))
             .andExpect(jsonPath("$.[*].money").value(hasItem(DEFAULT_MONEY.doubleValue())))
@@ -330,6 +337,7 @@ public class HouseResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(house.getId().intValue()))
+            .andExpect(jsonPath("$.avatar").value(DEFAULT_AVATAR.toString()))
             .andExpect(jsonPath("$.actionType").value(DEFAULT_ACTION_TYPE.toString()))
             .andExpect(jsonPath("$.address").value(DEFAULT_ADDRESS.toString()))
             .andExpect(jsonPath("$.money").value(DEFAULT_MONEY.doubleValue()))
@@ -352,6 +360,45 @@ public class HouseResourceIntTest {
             .andExpect(jsonPath("$.statusType").value(DEFAULT_STATUS_TYPE.toString()))
             .andExpect(jsonPath("$.createAt").value(DEFAULT_CREATE_AT.toString()))
             .andExpect(jsonPath("$.updateAt").value(DEFAULT_UPDATE_AT.toString()));
+    }
+
+    @Test
+    @Transactional
+    public void getAllHousesByAvatarIsEqualToSomething() throws Exception {
+        // Initialize the database
+        houseRepository.saveAndFlush(house);
+
+        // Get all the houseList where avatar equals to DEFAULT_AVATAR
+        defaultHouseShouldBeFound("avatar.equals=" + DEFAULT_AVATAR);
+
+        // Get all the houseList where avatar equals to UPDATED_AVATAR
+        defaultHouseShouldNotBeFound("avatar.equals=" + UPDATED_AVATAR);
+    }
+
+    @Test
+    @Transactional
+    public void getAllHousesByAvatarIsInShouldWork() throws Exception {
+        // Initialize the database
+        houseRepository.saveAndFlush(house);
+
+        // Get all the houseList where avatar in DEFAULT_AVATAR or UPDATED_AVATAR
+        defaultHouseShouldBeFound("avatar.in=" + DEFAULT_AVATAR + "," + UPDATED_AVATAR);
+
+        // Get all the houseList where avatar equals to UPDATED_AVATAR
+        defaultHouseShouldNotBeFound("avatar.in=" + UPDATED_AVATAR);
+    }
+
+    @Test
+    @Transactional
+    public void getAllHousesByAvatarIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        houseRepository.saveAndFlush(house);
+
+        // Get all the houseList where avatar is not null
+        defaultHouseShouldBeFound("avatar.specified=true");
+
+        // Get all the houseList where avatar is null
+        defaultHouseShouldNotBeFound("avatar.specified=false");
     }
 
     @Test
@@ -1349,6 +1396,25 @@ public class HouseResourceIntTest {
 
     @Test
     @Transactional
+    public void getAllHousesByPhotosIsEqualToSomething() throws Exception {
+        // Initialize the database
+        HousePhoto photos = HousePhotoResourceIntTest.createEntity(em);
+        em.persist(photos);
+        em.flush();
+        house.addPhotos(photos);
+        houseRepository.saveAndFlush(house);
+        Long photosId = photos.getId();
+
+        // Get all the houseList where photos equals to photosId
+        defaultHouseShouldBeFound("photosId.equals=" + photosId);
+
+        // Get all the houseList where photos equals to photosId + 1
+        defaultHouseShouldNotBeFound("photosId.equals=" + (photosId + 1));
+    }
+
+
+    @Test
+    @Transactional
     public void getAllHousesByCityIsEqualToSomething() throws Exception {
         // Initialize the database
         City city = CityResourceIntTest.createEntity(em);
@@ -1449,6 +1515,7 @@ public class HouseResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(house.getId().intValue())))
+            .andExpect(jsonPath("$.[*].avatar").value(hasItem(DEFAULT_AVATAR.toString())))
             .andExpect(jsonPath("$.[*].actionType").value(hasItem(DEFAULT_ACTION_TYPE.toString())))
             .andExpect(jsonPath("$.[*].address").value(hasItem(DEFAULT_ADDRESS.toString())))
             .andExpect(jsonPath("$.[*].money").value(hasItem(DEFAULT_MONEY.doubleValue())))
@@ -1505,6 +1572,7 @@ public class HouseResourceIntTest {
         // Disconnect from session so that the updates on updatedHouse are not directly saved in db
         em.detach(updatedHouse);
         updatedHouse
+            .avatar(UPDATED_AVATAR)
             .actionType(UPDATED_ACTION_TYPE)
             .address(UPDATED_ADDRESS)
             .money(UPDATED_MONEY)
@@ -1538,6 +1606,7 @@ public class HouseResourceIntTest {
         List<House> houseList = houseRepository.findAll();
         assertThat(houseList).hasSize(databaseSizeBeforeUpdate);
         House testHouse = houseList.get(houseList.size() - 1);
+        assertThat(testHouse.getAvatar()).isEqualTo(UPDATED_AVATAR);
         assertThat(testHouse.getActionType()).isEqualTo(UPDATED_ACTION_TYPE);
         assertThat(testHouse.getAddress()).isEqualTo(UPDATED_ADDRESS);
         assertThat(testHouse.getMoney()).isEqualTo(UPDATED_MONEY);
@@ -1620,6 +1689,7 @@ public class HouseResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(house.getId().intValue())))
+            .andExpect(jsonPath("$.[*].avatar").value(hasItem(DEFAULT_AVATAR.toString())))
             .andExpect(jsonPath("$.[*].actionType").value(hasItem(DEFAULT_ACTION_TYPE.toString())))
             .andExpect(jsonPath("$.[*].address").value(hasItem(DEFAULT_ADDRESS.toString())))
             .andExpect(jsonPath("$.[*].money").value(hasItem(DEFAULT_MONEY.doubleValue())))

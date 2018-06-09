@@ -124,6 +124,12 @@ export class HousePhoto extends React.Component<IHousePhotoProps, IHousePhotoSta
                 <th className="hand" onClick={this.sort('createAt')}>
                   <Translate contentKey="landexpApp.housePhoto.createAt">Create At</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
+                <th>
+                  <Translate contentKey="landexpApp.housePhoto.house">House</Translate> <FontAwesomeIcon icon="sort" />
+                </th>
+                <th>
+                  <Translate contentKey="landexpApp.housePhoto.user">User</Translate> <FontAwesomeIcon icon="sort" />
+                </th>
                 <th />
               </tr>
             </thead>
@@ -139,6 +145,8 @@ export class HousePhoto extends React.Component<IHousePhotoProps, IHousePhotoSta
                   <td>
                     <TextFormat type="date" value={housePhoto.createAt} format={APP_LOCAL_DATE_FORMAT} />
                   </td>
+                  <td>{housePhoto.houseId ? <Link to={`house/${housePhoto.houseId}`}>{housePhoto.houseId}</Link> : ''}</td>
+                  <td>{housePhoto.userLogin ? housePhoto.userLogin : ''}</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`${match.url}/${housePhoto.id}`} color="info" size="sm">

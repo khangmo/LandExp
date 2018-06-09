@@ -1,4 +1,5 @@
 import { Moment } from 'moment';
+import { IHousePhoto } from './house-photo.model';
 
 export const enum UserActionType {
   FOR_BUY = 'FOR_BUY',
@@ -57,6 +58,7 @@ export const enum StatusType {
 
 export interface IHouse {
   id?: number;
+  avatar?: string;
   actionType?: UserActionType;
   address?: string;
   money?: number;
@@ -79,6 +81,7 @@ export interface IHouse {
   statusType?: StatusType;
   createAt?: Moment;
   updateAt?: Moment;
+  photos?: IHousePhoto[];
   cityName?: string;
   cityId?: number;
   streetName?: string;

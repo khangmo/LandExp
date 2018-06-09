@@ -23,6 +23,7 @@ public interface HouseMapper extends EntityMapper<HouseDTO, House> {
     @Mapping(source = "updateBy.login", target = "updateByLogin")
     HouseDTO toDto(House house);
 
+    @Mapping(target = "photos", ignore = true)
     @Mapping(source = "cityId", target = "city")
     @Mapping(source = "streetId", target = "street")
     @Mapping(source = "projectId", target = "project")

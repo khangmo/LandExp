@@ -1,14 +1,15 @@
 package com.landexp.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 
 import org.springframework.data.elasticsearch.annotations.Document;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 import com.landexp.domain.enumeration.UserActionType;
@@ -36,6 +37,9 @@ public class House implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "avatar")
+    private String avatar;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "action_type")
@@ -104,13 +108,14 @@ public class House implements Serializable {
     @Column(name = "status_type")
     private StatusType statusType;
 
-    @CreationTimestamp
     @Column(name = "create_at")
     private LocalDate createAt;
 
-    @UpdateTimestamp
     @Column(name = "update_at")
     private LocalDate updateAt;
+
+    @OneToMany(mappedBy = "house")
+    private Set<HousePhoto> photos = new HashSet<>();
 
     @ManyToOne
     @JsonIgnoreProperties("")
@@ -139,6 +144,19 @@ public class House implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public House avatar(String avatar) {
+        this.avatar = avatar;
+        return this;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public UserActionType getActionType() {
@@ -427,6 +445,31 @@ public class House implements Serializable {
         this.updateAt = updateAt;
     }
 
+    public Set<HousePhoto> getPhotos() {
+        return photos;
+    }
+
+    public House photos(Set<HousePhoto> housePhotos) {
+        this.photos = housePhotos;
+        return this;
+    }
+
+    public House addPhotos(HousePhoto housePhoto) {
+        this.photos.add(housePhoto);
+        housePhoto.setHouse(this);
+        return this;
+    }
+
+    public House removePhotos(HousePhoto housePhoto) {
+        this.photos.remove(housePhoto);
+        housePhoto.setHouse(null);
+        return this;
+    }
+
+    public void setPhotos(Set<HousePhoto> housePhotos) {
+        this.photos = housePhotos;
+    }
+
     public City getCity() {
         return city;
     }
@@ -517,6 +560,7 @@ public class House implements Serializable {
     public String toString() {
         return "House{" +
             "id=" + getId() +
+            ", avatar='" + getAvatar() + "'" +
             ", actionType='" + getActionType() + "'" +
             ", address='" + getAddress() + "'" +
             ", money=" + getMoney() +

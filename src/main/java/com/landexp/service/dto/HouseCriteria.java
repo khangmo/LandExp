@@ -71,6 +71,8 @@ public class HouseCriteria implements Serializable {
 
     private LongFilter id;
 
+    private StringFilter avatar;
+
     private UserActionTypeFilter actionType;
 
     private StringFilter address;
@@ -115,6 +117,8 @@ public class HouseCriteria implements Serializable {
 
     private LocalDateFilter updateAt;
 
+    private LongFilter photosId;
+
     private LongFilter cityId;
 
     private LongFilter streetId;
@@ -134,6 +138,14 @@ public class HouseCriteria implements Serializable {
 
     public void setId(LongFilter id) {
         this.id = id;
+    }
+
+    public StringFilter getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(StringFilter avatar) {
+        this.avatar = avatar;
     }
 
     public UserActionTypeFilter getActionType() {
@@ -312,6 +324,14 @@ public class HouseCriteria implements Serializable {
         this.updateAt = updateAt;
     }
 
+    public LongFilter getPhotosId() {
+        return photosId;
+    }
+
+    public void setPhotosId(LongFilter photosId) {
+        this.photosId = photosId;
+    }
+
     public LongFilter getCityId() {
         return cityId;
     }
@@ -356,6 +376,7 @@ public class HouseCriteria implements Serializable {
     public String toString() {
         return "HouseCriteria{" +
                 (id != null ? "id=" + id + ", " : "") +
+                (avatar != null ? "avatar=" + avatar + ", " : "") +
                 (actionType != null ? "actionType=" + actionType + ", " : "") +
                 (address != null ? "address=" + address + ", " : "") +
                 (money != null ? "money=" + money + ", " : "") +
@@ -378,6 +399,7 @@ public class HouseCriteria implements Serializable {
                 (statusType != null ? "statusType=" + statusType + ", " : "") +
                 (createAt != null ? "createAt=" + createAt + ", " : "") +
                 (updateAt != null ? "updateAt=" + updateAt + ", " : "") +
+                (photosId != null ? "photosId=" + photosId + ", " : "") +
                 (cityId != null ? "cityId=" + cityId + ", " : "") +
                 (streetId != null ? "streetId=" + streetId + ", " : "") +
                 (projectId != null ? "projectId=" + projectId + ", " : "") +

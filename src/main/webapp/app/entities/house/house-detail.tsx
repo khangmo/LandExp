@@ -29,6 +29,12 @@ export class HouseDetail extends React.Component<IHouseDetailProps> {
           </h2>
           <dl className="jh-entity-details">
             <dt>
+              <span id="avatar">
+                <Translate contentKey="landexpApp.house.avatar">Avatar</Translate>
+              </span>
+            </dt>
+            <dd>{house.avatar}</dd>
+            <dt>
               <span id="actionType">
                 <Translate contentKey="landexpApp.house.actionType">Action Type</Translate>
               </span>

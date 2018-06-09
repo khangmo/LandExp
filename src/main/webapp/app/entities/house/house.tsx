@@ -118,6 +118,9 @@ export class House extends React.Component<IHouseProps, IHouseState> {
                 <th className="hand" onClick={this.sort('id')}>
                   <Translate contentKey="global.field.id">ID</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
+                <th className="hand" onClick={this.sort('avatar')}>
+                  <Translate contentKey="landexpApp.house.avatar">Avatar</Translate> <FontAwesomeIcon icon="sort" />
+                </th>
                 <th className="hand" onClick={this.sort('actionType')}>
                   <Translate contentKey="landexpApp.house.actionType">Action Type</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
@@ -210,6 +213,7 @@ export class House extends React.Component<IHouseProps, IHouseState> {
                       {house.id}
                     </Button>
                   </td>
+                  <td>{house.avatar}</td>
                   <td>{house.actionType}</td>
                   <td>{house.address}</td>
                   <td>{house.money}</td>

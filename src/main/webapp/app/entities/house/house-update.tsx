@@ -194,6 +194,12 @@ export class HouseUpdate extends React.Component<IHouseUpdateProps, IHouseUpdate
                   </AvGroup>
                 ) : null}
                 <AvGroup>
+                  <Label id="avatarLabel" for="avatar">
+                    <Translate contentKey="landexpApp.house.avatar">Avatar</Translate>
+                  </Label>
+                  <AvField id="house-avatar" type="text" name="avatar" />
+                </AvGroup>
+                <AvGroup>
                   <Label id="actionTypeLabel">
                     <Translate contentKey="landexpApp.house.actionType">Action Type</Translate>
                   </Label>

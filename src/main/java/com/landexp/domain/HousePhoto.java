@@ -2,6 +2,7 @@ package com.landexp.domain;
 
 
 import org.hibernate.annotations.CreationTimestamp;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
@@ -30,6 +31,14 @@ public class HousePhoto implements Serializable {
     @CreationTimestamp
     @Column(name = "create_at")
     private LocalDate createAt;
+
+    @ManyToOne
+    @JsonIgnoreProperties("photos")
+    private House house;
+
+    @ManyToOne
+    @JsonIgnoreProperties("")
+    private User user;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -64,6 +73,32 @@ public class HousePhoto implements Serializable {
 
     public void setCreateAt(LocalDate createAt) {
         this.createAt = createAt;
+    }
+
+    public House getHouse() {
+        return house;
+    }
+
+    public HousePhoto house(House house) {
+        this.house = house;
+        return this;
+    }
+
+    public void setHouse(House house) {
+        this.house = house;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public HousePhoto user(User user) {
+        this.user = user;
+        return this;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

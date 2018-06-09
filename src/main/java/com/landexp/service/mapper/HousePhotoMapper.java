@@ -8,10 +8,17 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity HousePhoto and its DTO HousePhotoDTO.
  */
-@Mapper(componentModel = "spring", uses = {})
+@Mapper(componentModel = "spring", uses = {HouseMapper.class, UserMapper.class})
 public interface HousePhotoMapper extends EntityMapper<HousePhotoDTO, HousePhoto> {
 
+    @Mapping(source = "house.id", target = "houseId")
+    @Mapping(source = "user.id", target = "userId")
+    @Mapping(source = "user.login", target = "userLogin")
+    HousePhotoDTO toDto(HousePhoto housePhoto);
 
+    @Mapping(source = "houseId", target = "house")
+    @Mapping(source = "userId", target = "user")
+    HousePhoto toEntity(HousePhotoDTO housePhotoDTO);
 
     default HousePhoto fromId(Long id) {
         if (id == null) {

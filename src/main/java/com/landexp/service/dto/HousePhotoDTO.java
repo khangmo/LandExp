@@ -15,6 +15,12 @@ public class HousePhotoDTO implements Serializable {
 
     private LocalDate createAt;
 
+    private Long houseId;
+
+    private Long userId;
+
+    private String userLogin;
+
     public Long getId() {
         return id;
     }
@@ -37,6 +43,30 @@ public class HousePhotoDTO implements Serializable {
 
     public void setCreateAt(LocalDate createAt) {
         this.createAt = createAt;
+    }
+
+    public Long getHouseId() {
+        return houseId;
+    }
+
+    public void setHouseId(Long houseId) {
+        this.houseId = houseId;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public String getUserLogin() {
+        return userLogin;
+    }
+
+    public void setUserLogin(String userLogin) {
+        this.userLogin = userLogin;
     }
 
     @Override
@@ -66,6 +96,9 @@ public class HousePhotoDTO implements Serializable {
             "id=" + getId() +
             ", name='" + getName() + "'" +
             ", createAt='" + getCreateAt() + "'" +
+            ", house=" + getHouseId() +
+            ", user=" + getUserId() +
+            ", user='" + getUserLogin() + "'" +
             "}";
     }
 }

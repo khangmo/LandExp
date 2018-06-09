@@ -18,7 +18,9 @@
                 "title": "House Photo"
             },
             "name": "Name",
-            "createAt": "Create At"
+            "createAt": "Create At",
+            "house": "House",
+            "user": "User"
         }
     }
 }
