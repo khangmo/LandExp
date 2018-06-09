@@ -89,9 +89,9 @@ public class UserResource {
      * The user needs to be activated on creation.
      *
      * @param userDTO the user to create
-     * @return the ResponseEntity with status 201 (Created) and with body the new user, or with status 400 (Bad Request) if the login or email is already in use
+     * @return the ResponseEntity with status 201 (Created) and with body the new user, or with status 400 (Bad Request) if the login or mobile number is already in use
      * @throws URISyntaxException if the Location URI syntax is incorrect
-     * @throws BadRequestAlertException 400 (Bad Request) if the login or email is already in use
+     * @throws BadRequestAlertException 400 (Bad Request) if the login or mobile number is already in use
      */
     @PostMapping("/users")
     @Timed
@@ -120,7 +120,7 @@ public class UserResource {
      *
      * @param userDTO the user to update
      * @return the ResponseEntity with status 200 (OK) and with body the updated user
-     * @throws EmailAlreadyUsedException 400 (Bad Request) if the email is already in use
+     * @throws EmailAlreadyUsedException 400 (Bad Request) if the mobile number is already in use
      * @throws LoginAlreadyUsedException 400 (Bad Request) if the login is already in use
      */
     @PutMapping("/users")

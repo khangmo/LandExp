@@ -50,7 +50,7 @@ export class UserManagementDetail extends React.Component<IUserManagementDetailP
             </dt>
             <dd>{user.lastName}</dd>
             <dt>
-              <Translate contentKey="userManagement.email">Email</Translate>
+              <Translate contentKey="userManagement.email">Mobile number</Translate>
             </dt>
             <dd>{user.email}</dd>
             <dt>

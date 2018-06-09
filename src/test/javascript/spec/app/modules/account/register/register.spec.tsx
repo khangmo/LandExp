@@ -110,7 +110,7 @@ describe.only('RegisterComponent', () => {
           'entityName' : 'userManagement',
           'errorKey' : 'emailexists',
           'type' : 'https://www.jhipster.tech/problem/email-already-used',
-          'title' : 'Email is already in use!',
+          'title' : 'Mobile number is already in use!',
           'status' : 400,
           'message' : 'error.emailexists',
           'params' : 'userManagement'

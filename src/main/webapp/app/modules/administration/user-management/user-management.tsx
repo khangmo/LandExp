@@ -81,7 +81,7 @@ export class UserManagement extends React.Component<IUserManagementProps, IPagin
                 <FontAwesomeIcon icon="sort" />
               </th>
               <th className="hand" onClick={this.sort('email')}>
-                <Translate contentKey="userManagement.email">Email</Translate>
+                <Translate contentKey="userManagement.email">Mobile number</Translate>
                 <FontAwesomeIcon icon="sort" />
               </th>
               <th />

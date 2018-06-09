@@ -29,7 +29,7 @@ export class PasswordResetInit extends React.Component<IPasswordResetInitProps> 
             </h1>
             <Alert color="warning">
               <p>
-                <Translate contentKey="reset.request.messages.info">Enter the email address you used to register</Translate>
+                <Translate contentKey="reset.request.messages.info">Enter the mobile number you used to register</Translate>
               </p>
             </Alert>
             <AvForm onValidSubmit={this.handleValidSubmit}>

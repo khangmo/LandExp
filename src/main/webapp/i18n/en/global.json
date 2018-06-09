@@ -65,8 +65,8 @@
             "newpassword.placeholder": "New password",
             "confirmpassword": "New password confirmation",
             "confirmpassword.placeholder": "Confirm the new password",
-            "email": "Email",
-            "email.placeholder": "Your email"
+            "email": "Mobile number",
+            "email.placeholder": "Your mobile number"
         },
         "messages": {
             "info": {
@@ -96,10 +96,10 @@
                     "maxlength": "Your confirmation password cannot be longer than 50 characters."
                 },
                 "email": {
-                    "required": "Your email is required.",
-                    "invalid": "Your email is invalid.",
-                    "minlength": "Your email is required to be at least 5 characters.",
-                    "maxlength": "Your email cannot be longer than 50 characters."
+                    "required": "Your mobile number is required.",
+                    "invalid": "Your mobile number is invalid.",
+                    "minlength": "Your mobile number is required to be at least 10 characters.",
+                    "maxlength": "Your mobile number cannot be longer than 12 characters."
                 }
             }
         },
@@ -151,7 +151,7 @@
         "NotNull": "Field {{ fieldName }} cannot be empty!",
         "Size": "Field {{ fieldName }} does not meet min/max size requirements!",
         "userexists": "Login name already used!",
-        "emailexists": "Email is already in use!",
+        "emailexists": "Mobile number is already in use!",
         "idexists": "A new {{ entityName }} cannot already have an ID",
         "idnull": "Invalid ID"
     },

@@ -6,9 +6,9 @@
                 "button": "Đặt lại mật khẩu"
             },
             "messages": {
-                "info": "Nhập địa chỉ email mà bạn đã sử dụng để đăng ký",
-                "success": "Vui lòng kiểm tra hòm thư của bạn để xem chi tiết cách lấy lại mật khẩu.",
-                "notfound": "<strong>Địa chỉ email chưa được đăng ký!</strong> Vui lòng kiểm tra lại."
+                "info": "Nhập địa chỉ số điện thoại mà bạn đã sử dụng để đăng ký",
+                "success": "Vui lòng kiểm tra điện thoại của bạn để xem chi tiết cách lấy lại mật khẩu.",
+                "notfound": "<strong>Số điện thoại chưa được đăng ký!</strong> Vui lòng kiểm tra lại."
             }
         },
         "finish" : {
