@@ -29,10 +29,6 @@ import street, {
   StreetState
 } from 'app/entities/street/street.reducer';
 // prettier-ignore
-import userRegion, {
-  UserRegionState
-} from 'app/entities/user-region/user-region.reducer';
-// prettier-ignore
 import house, {
   HouseState
 } from 'app/entities/house/house.reducer';
@@ -48,6 +44,14 @@ import houseTracking, {
 import housePhoto, {
   HousePhotoState
 } from 'app/entities/house-photo/house-photo.reducer';
+// prettier-ignore
+import landProject, {
+  LandProjectState
+} from 'app/entities/land-project/land-project.reducer';
+// prettier-ignore
+import landProjectPhoto, {
+  LandProjectPhotoState
+} from 'app/entities/land-project-photo/land-project-photo.reducer';
 // prettier-ignore
 import article, {
   ArticleState
@@ -92,14 +96,6 @@ import banner, {
 import payment, {
   PaymentState
 } from 'app/entities/payment/payment.reducer';
-// prettier-ignore
-import landProject, {
-  LandProjectState
-} from 'app/entities/land-project/land-project.reducer';
-// prettier-ignore
-import landProjectPhoto, {
-  LandProjectPhotoState
-} from 'app/entities/land-project-photo/land-project-photo.reducer';
 /* jhipster-needle-add-reducer-import - JHipster will add reducer here */
 
 export interface IRootState {
@@ -117,11 +113,12 @@ export interface IRootState {
   readonly city: CityState;
   readonly district: DistrictState;
   readonly street: StreetState;
-  readonly userRegion: UserRegionState;
   readonly house: HouseState;
   readonly serviceFee: ServiceFeeState;
   readonly houseTracking: HouseTrackingState;
   readonly housePhoto: HousePhotoState;
+  readonly landProject: LandProjectState;
+  readonly landProjectPhoto: LandProjectPhotoState;
   readonly article: ArticleState;
   readonly category: CategoryState;
   readonly userProfile: UserProfileState;
@@ -133,8 +130,6 @@ export interface IRootState {
   readonly potentialCustomer: PotentialCustomerState;
   readonly banner: BannerState;
   readonly payment: PaymentState;
-  readonly landProject: LandProjectState;
-  readonly landProjectPhoto: LandProjectPhotoState;
   /* jhipster-needle-add-reducer-type - JHipster will add reducer type here */
   readonly loadingBar: any;
 }
@@ -154,11 +149,12 @@ const rootReducer = combineReducers<IRootState>({
   city,
   district,
   street,
-  userRegion,
   house,
   serviceFee,
   houseTracking,
   housePhoto,
+  landProject,
+  landProjectPhoto,
   article,
   category,
   userProfile,
@@ -170,8 +166,6 @@ const rootReducer = combineReducers<IRootState>({
   potentialCustomer,
   banner,
   payment,
-  landProject,
-  landProjectPhoto,
   /* jhipster-needle-add-reducer-combine - JHipster will add reducer here */
   loadingBar
 });

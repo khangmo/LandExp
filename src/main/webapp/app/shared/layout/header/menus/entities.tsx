@@ -19,9 +19,6 @@ export const EntitiesMenu = props => (
     <DropdownItem tag={Link} to="/entity/street">
       <FontAwesomeIcon icon="asterisk" />&nbsp; Street
     </DropdownItem>
-    <DropdownItem tag={Link} to="/entity/user-region">
-      <FontAwesomeIcon icon="asterisk" />&nbsp; User Region
-    </DropdownItem>
     <DropdownItem tag={Link} to="/entity/house">
       <FontAwesomeIcon icon="asterisk" />&nbsp; House
     </DropdownItem>
@@ -33,6 +30,12 @@ export const EntitiesMenu = props => (
     </DropdownItem>
     <DropdownItem tag={Link} to="/entity/house-photo">
       <FontAwesomeIcon icon="asterisk" />&nbsp; House Photo
+    </DropdownItem>
+    <DropdownItem tag={Link} to="/entity/land-project">
+      <FontAwesomeIcon icon="asterisk" />&nbsp; Land Project
+    </DropdownItem>
+    <DropdownItem tag={Link} to="/entity/land-project-photo">
+      <FontAwesomeIcon icon="asterisk" />&nbsp; Land Project Photo
     </DropdownItem>
     <DropdownItem tag={Link} to="/entity/article">
       <FontAwesomeIcon icon="asterisk" />&nbsp; Article
@@ -66,12 +69,6 @@ export const EntitiesMenu = props => (
     </DropdownItem>
     <DropdownItem tag={Link} to="/entity/payment">
       <FontAwesomeIcon icon="asterisk" />&nbsp; Payment
-    </DropdownItem>
-    <DropdownItem tag={Link} to="/entity/land-project">
-      <FontAwesomeIcon icon="asterisk" />&nbsp; Land Project
-    </DropdownItem>
-    <DropdownItem tag={Link} to="/entity/land-project-photo">
-      <FontAwesomeIcon icon="asterisk" />&nbsp; Land Project Photo
     </DropdownItem>
     {/* jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here */}
   </NavDropdown>

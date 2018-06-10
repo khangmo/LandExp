@@ -11,12 +11,12 @@
                 "city": "City",
                 "district": "District",
                 "street": "Street",
-                "userRegion": "User Region",
                 "house": "House",
                 "serviceFee": "Service Fee",
                 "houseTracking": "House Tracking",
                 "housePhoto": "House Photo",
-                "landProjects": "Land Projects",
+                "landProject": "Land Project",
+                "landProjectPhoto": "Land Project Photo",
                 "article": "Article",
                 "category": "Category",
                 "userProfile": "User Profile",
@@ -28,8 +28,6 @@
                 "potentialCustomer": "Potential Customer",
                 "banner": "Banner",
                 "payment": "Payment",
-                "landProject": "Land Project",
-                "landProjectPhoto": "Land Project Photo",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

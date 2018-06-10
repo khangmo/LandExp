@@ -6,11 +6,12 @@ import Region from './region';
 import City from './city';
 import District from './district';
 import Street from './street';
-import UserRegion from './user-region';
 import House from './house';
 import ServiceFee from './service-fee';
 import HouseTracking from './house-tracking';
 import HousePhoto from './house-photo';
+import LandProject from './land-project';
+import LandProjectPhoto from './land-project-photo';
 import Article from './article';
 import Category from './category';
 import UserProfile from './user-profile';
@@ -22,8 +23,6 @@ import UserFinancial from './user-financial';
 import PotentialCustomer from './potential-customer';
 import Banner from './banner';
 import Payment from './payment';
-import LandProject from './land-project';
-import LandProjectPhoto from './land-project-photo';
 /* jhipster-needle-add-route-import - JHipster will add routes here */
 
 const Routes = ({ match }) => (
@@ -34,11 +33,12 @@ const Routes = ({ match }) => (
       <Route path={`${match.url}/city`} component={City} />
       <Route path={`${match.url}/district`} component={District} />
       <Route path={`${match.url}/street`} component={Street} />
-      <Route path={`${match.url}/user-region`} component={UserRegion} />
       <Route path={`${match.url}/house`} component={House} />
       <Route path={`${match.url}/service-fee`} component={ServiceFee} />
       <Route path={`${match.url}/house-tracking`} component={HouseTracking} />
       <Route path={`${match.url}/house-photo`} component={HousePhoto} />
+      <Route path={`${match.url}/land-project`} component={LandProject} />
+      <Route path={`${match.url}/land-project-photo`} component={LandProjectPhoto} />
       <Route path={`${match.url}/article`} component={Article} />
       <Route path={`${match.url}/category`} component={Category} />
       <Route path={`${match.url}/user-profile`} component={UserProfile} />
@@ -50,8 +50,6 @@ const Routes = ({ match }) => (
       <Route path={`${match.url}/potential-customer`} component={PotentialCustomer} />
       <Route path={`${match.url}/banner`} component={Banner} />
       <Route path={`${match.url}/payment`} component={Payment} />
-      <Route path={`${match.url}/land-project`} component={LandProject} />
-      <Route path={`${match.url}/land-project-photo`} component={LandProjectPhoto} />
       {/* jhipster-needle-add-route-path - JHipster will routes here */}
     </Switch>
   </div>
