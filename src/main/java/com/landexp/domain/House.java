@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.elasticsearch.annotations.Document;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -114,9 +116,11 @@ public class House implements Serializable {
     @Column(name = "status_type")
     private StatusType statusType;
 
+    @CreationTimestamp
     @Column(name = "create_at")
     private LocalDate createAt;
 
+    @UpdateTimestamp
     @Column(name = "update_at")
     private LocalDate updateAt;
 

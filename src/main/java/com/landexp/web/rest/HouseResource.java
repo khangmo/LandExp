@@ -1,6 +1,9 @@
 package com.landexp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.landexp.domain.enumeration.StatusType;
+import com.landexp.security.AuthoritiesConstants;
+import com.landexp.security.SecurityUtils;
 import com.landexp.service.HouseService;
 import com.landexp.web.rest.errors.BadRequestAlertException;
 import com.landexp.web.rest.util.HeaderUtil;
@@ -16,6 +19,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -102,6 +107,34 @@ public class HouseResource {
         log.debug("REST request to get Houses by criteria: {}", criteria);
         Page<HouseDTO> page = houseQueryService.findByCriteria(criteria, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/houses");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    /**
+     * GET  /houses/users : get all the house of staff
+     *
+     * @param pageable the pagination information
+     * @return the ResponseEntity with status 200 (OK) and the list of houses in body
+     */
+    @PreAuthorize("hasAuthority('ROLE_STAFF')")
+    @GetMapping("/houses/users")
+    @Timed
+    public ResponseEntity<List<HouseDTO>> getAllHouseOfStaff(
+        @RequestParam(value = "status", required = false) String status,
+        Pageable pageable) {
+        log.debug("REST request to get House of staff");
+        Page<HouseDTO> page;
+        String username = SecurityUtils.getCurrentUserLogin().get();
+        if (SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.MANAGER)) {
+            page = houseService.findAll(pageable);
+        } else {
+            if (StringUtils.isEmpty(status)) {
+                page = houseService.findByUser(username, pageable);
+            } else {
+                page = houseService.findByStatusAndUser(StatusType.valueOf(status), username, pageable);
+            }
+        }
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/houses/users");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 

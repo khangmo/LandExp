@@ -1,6 +1,7 @@
 package com.landexp.service;
 
 import com.landexp.domain.House;
+import com.landexp.domain.enumeration.StatusType;
 import com.landexp.repository.HouseRepository;
 import com.landexp.repository.search.HouseSearchRepository;
 import com.landexp.service.dto.HouseDTO;
@@ -63,10 +64,35 @@ public class HouseService {
     @Transactional(readOnly = true)
     public Page<HouseDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Houses");
-        return houseRepository.findAll(pageable)
+        return houseRepository.findAllByOrderByCreateAtDesc(pageable)
             .map(houseMapper::toDto);
     }
 
+    /**
+     * Get all the house of staff.
+     *
+     * @param pageable the pagination information
+     * @return the list of entities
+     */
+    @Transactional(readOnly = true)
+    public Page<HouseDTO> findByStatusAndUser(StatusType status, String username, Pageable pageable) {
+        log.debug("Request to get all House of staff [{}]", username);
+        return houseRepository.findByStatusTypeAndDistrictRegionUsersLoginOrderByCreateAtDesc(status, username, pageable)
+            .map(houseMapper::toDto);
+    }
+
+    /**
+     * Get all the house of staff.
+     *
+     * @param pageable the pagination information
+     * @return the list of entities
+     */
+    @Transactional(readOnly = true)
+    public Page<HouseDTO> findByUser(String username, Pageable pageable) {
+        log.debug("Request to get all House of staff [{}]", username);
+        return houseRepository.findByDistrictRegionUsersLoginOrderByCreateAtDesc(username, pageable)
+            .map(houseMapper::toDto);
+    }
 
     /**
      * Get one house by id.
