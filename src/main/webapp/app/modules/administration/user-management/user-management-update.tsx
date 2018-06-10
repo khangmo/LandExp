@@ -140,13 +140,13 @@ export class UserManagementUpdate extends React.Component<IUserManagementUpdateP
                     name="email"
                     label={translate('global.form.email')}
                     placeholder={translate('global.form.email.placeholder')}
-                    type="email"
                     validate={{
                       required: {
                         value: true,
                         errorMessage: translate('global.messages.validate.email.required')
                       },
-                      email: {
+                      pattern: {
+                        value: '^0[0-9-]*$',
                         errorMessage: translate('global.messages.validate.email.invalid')
                       },
                       minLength: {
