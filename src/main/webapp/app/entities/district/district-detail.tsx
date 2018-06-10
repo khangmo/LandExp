@@ -59,7 +59,7 @@ export class DistrictDetail extends React.Component<IDistrictDetailProps> {
             <dt>
               <Translate contentKey="landexpApp.district.region">Region</Translate>
             </dt>
-            <dd>{district.regionName ? district.regionName : ''}</dd>
+            <dd>{district.regionId ? district.regionId : ''}</dd>
             <dt>
               <Translate contentKey="landexpApp.district.city">City</Translate>
             </dt>

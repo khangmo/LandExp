@@ -19,10 +19,16 @@
     ],
     "relationships": [
         {
-            "relationshipType": "many-to-one",
             "relationshipName": "region",
             "otherEntityName": "region",
-            "otherEntityField": "name"
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "houses",
+            "otherEntityName": "house",
+            "otherEntityRelationshipName": "district"
         },
         {
             "relationshipType": "many-to-one",

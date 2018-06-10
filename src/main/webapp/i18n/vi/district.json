@@ -22,6 +22,7 @@
             "createAt": "Create At",
             "updateAt": "Update At",
             "region": "Region",
+            "houses": "Houses",
             "city": "City"
         }
     }

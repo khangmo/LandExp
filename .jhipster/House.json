@@ -107,6 +107,12 @@
     ],
     "relationships": [
         {
+            "relationshipName": "district",
+            "otherEntityName": "district",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
             "relationshipType": "one-to-many",
             "relationshipName": "photos",
             "otherEntityName": "housePhoto",
@@ -116,12 +122,6 @@
             "relationshipType": "many-to-one",
             "relationshipName": "city",
             "otherEntityName": "city",
-            "otherEntityField": "name"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "district",
-            "otherEntityName": "district",
             "otherEntityField": "name"
         },
         {

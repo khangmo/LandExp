@@ -12,6 +12,8 @@ import org.mapstruct.*;
 public interface RegionMapper extends EntityMapper<RegionDTO, Region> {
 
 
+    @Mapping(target = "districts", ignore = true)
+    Region toEntity(RegionDTO regionDTO);
 
     default Region fromId(Long id) {
         if (id == null) {

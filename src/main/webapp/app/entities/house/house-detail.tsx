@@ -177,13 +177,13 @@ export class HouseDetail extends React.Component<IHouseDetailProps> {
               <TextFormat value={house.updateAt} type="date" format={APP_LOCAL_DATE_FORMAT} />
             </dd>
             <dt>
+              <Translate contentKey="landexpApp.house.district">District</Translate>
+            </dt>
+            <dd>{house.districtId ? house.districtId : ''}</dd>
+            <dt>
               <Translate contentKey="landexpApp.house.city">City</Translate>
             </dt>
             <dd>{house.cityName ? house.cityName : ''}</dd>
-            <dt>
-              <Translate contentKey="landexpApp.house.district">District</Translate>
-            </dt>
-            <dd>{house.districtName ? house.districtName : ''}</dd>
             <dt>
               <Translate contentKey="landexpApp.house.street">Street</Translate>
             </dt>

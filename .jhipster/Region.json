@@ -17,7 +17,14 @@
             "fieldType": "LocalDate"
         }
     ],
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "districts",
+            "otherEntityName": "district",
+            "otherEntityRelationshipName": "region"
+        }
+    ],
     "changelogDate": "20180607131153",
     "entityTableName": "region",
     "dto": "mapstruct",

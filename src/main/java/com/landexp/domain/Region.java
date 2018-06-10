@@ -3,12 +3,15 @@ package com.landexp.domain;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
 import org.springframework.data.elasticsearch.annotations.Document;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -38,6 +41,9 @@ public class Region implements Serializable {
     @UpdateTimestamp
     @Column(name = "update_at")
     private LocalDate updateAt;
+
+    @OneToMany(mappedBy = "region")
+    private Set<District> districts = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -98,6 +104,31 @@ public class Region implements Serializable {
 
     public void setUpdateAt(LocalDate updateAt) {
         this.updateAt = updateAt;
+    }
+
+    public Set<District> getDistricts() {
+        return districts;
+    }
+
+    public Region districts(Set<District> districts) {
+        this.districts = districts;
+        return this;
+    }
+
+    public Region addDistricts(District district) {
+        this.districts.add(district);
+        district.setRegion(this);
+        return this;
+    }
+
+    public Region removeDistricts(District district) {
+        this.districts.remove(district);
+        district.setRegion(null);
+        return this;
+    }
+
+    public void setDistricts(Set<District> districts) {
+        this.districts = districts;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

@@ -20,7 +20,8 @@
             "name": "Name",
             "enabled": "Enabled",
             "createAt": "Create At",
-            "updateAt": "Update At"
+            "updateAt": "Update At",
+            "districts": "Districts"
         }
     }
 }

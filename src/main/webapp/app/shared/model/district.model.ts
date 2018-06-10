@@ -1,4 +1,5 @@
 import { Moment } from 'moment';
+import { IHouse } from './house.model';
 
 export interface IDistrict {
   id?: number;
@@ -6,8 +7,8 @@ export interface IDistrict {
   enabled?: boolean;
   createAt?: Moment;
   updateAt?: Moment;
-  regionName?: string;
   regionId?: number;
+  houses?: IHouse[];
   cityName?: string;
   cityId?: number;
 }

@@ -67,13 +67,11 @@ public class HouseDTO implements Serializable {
 
     private LocalDate updateAt;
 
+    private Long districtId;
+
     private Long cityId;
 
     private String cityName;
-
-    private Long districtId;
-
-    private String districtName;
 
     private Long streetId;
 
@@ -291,6 +289,14 @@ public class HouseDTO implements Serializable {
         this.updateAt = updateAt;
     }
 
+    public Long getDistrictId() {
+        return districtId;
+    }
+
+    public void setDistrictId(Long districtId) {
+        this.districtId = districtId;
+    }
+
     public Long getCityId() {
         return cityId;
     }
@@ -305,22 +311,6 @@ public class HouseDTO implements Serializable {
 
     public void setCityName(String cityName) {
         this.cityName = cityName;
-    }
-
-    public Long getDistrictId() {
-        return districtId;
-    }
-
-    public void setDistrictId(Long districtId) {
-        this.districtId = districtId;
-    }
-
-    public String getDistrictName() {
-        return districtName;
-    }
-
-    public void setDistrictName(String districtName) {
-        this.districtName = districtName;
     }
 
     public Long getStreetId() {
@@ -436,10 +426,9 @@ public class HouseDTO implements Serializable {
             ", statusType='" + getStatusType() + "'" +
             ", createAt='" + getCreateAt() + "'" +
             ", updateAt='" + getUpdateAt() + "'" +
+            ", district=" + getDistrictId() +
             ", city=" + getCityId() +
             ", city='" + getCityName() + "'" +
-            ", district=" + getDistrictId() +
-            ", district='" + getDistrictName() + "'" +
             ", street=" + getStreetId() +
             ", street='" + getStreetName() + "'" +
             ", project=" + getProjectId() +

@@ -155,7 +155,7 @@ export class District extends React.Component<IDistrictProps, IDistrictState> {
                   <td>
                     <TextFormat type="date" value={district.updateAt} format={APP_LOCAL_DATE_FORMAT} />
                   </td>
-                  <td>{district.regionName ? <Link to={`region/${district.regionId}`}>{district.regionName}</Link> : ''}</td>
+                  <td>{district.regionId ? <Link to={`region/${district.regionId}`}>{district.regionId}</Link> : ''}</td>
                   <td>{district.cityName ? <Link to={`city/${district.cityId}`}>{district.cityName}</Link> : ''}</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">

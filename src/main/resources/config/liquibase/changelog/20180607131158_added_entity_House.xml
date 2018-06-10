@@ -118,11 +118,11 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="city_id" type="bigint">
+            <column name="district_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 
-            <column name="district_id" type="bigint">
+            <column name="city_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 

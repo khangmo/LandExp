@@ -191,10 +191,10 @@ export class House extends React.Component<IHouseProps, IHouseState> {
                   <Translate contentKey="landexpApp.house.updateAt">Update At</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th>
-                  <Translate contentKey="landexpApp.house.city">City</Translate> <FontAwesomeIcon icon="sort" />
+                  <Translate contentKey="landexpApp.house.district">District</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th>
-                  <Translate contentKey="landexpApp.house.district">District</Translate> <FontAwesomeIcon icon="sort" />
+                  <Translate contentKey="landexpApp.house.city">City</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th>
                   <Translate contentKey="landexpApp.house.street">Street</Translate> <FontAwesomeIcon icon="sort" />
@@ -247,8 +247,8 @@ export class House extends React.Component<IHouseProps, IHouseState> {
                   <td>
                     <TextFormat type="date" value={house.updateAt} format={APP_LOCAL_DATE_FORMAT} />
                   </td>
+                  <td>{house.districtId ? <Link to={`district/${house.districtId}`}>{house.districtId}</Link> : ''}</td>
                   <td>{house.cityName ? <Link to={`city/${house.cityId}`}>{house.cityName}</Link> : ''}</td>
-                  <td>{house.districtName ? <Link to={`district/${house.districtId}`}>{house.districtName}</Link> : ''}</td>
                   <td>{house.streetName ? <Link to={`street/${house.streetId}`}>{house.streetName}</Link> : ''}</td>
                   <td>{house.projectName ? <Link to={`landProject/${house.projectId}`}>{house.projectName}</Link> : ''}</td>
                   <td>{house.createByLogin ? house.createByLogin : ''}</td>

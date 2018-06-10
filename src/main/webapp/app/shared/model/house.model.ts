@@ -86,11 +86,10 @@ export interface IHouse {
   statusType?: StatusType;
   createAt?: Moment;
   updateAt?: Moment;
+  districtId?: number;
   photos?: IHousePhoto[];
   cityName?: string;
   cityId?: number;
-  districtName?: string;
-  districtId?: number;
   streetName?: string;
   streetId?: number;
   projectName?: string;

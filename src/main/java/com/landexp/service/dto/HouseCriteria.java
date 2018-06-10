@@ -126,11 +126,11 @@ public class HouseCriteria implements Serializable {
 
     private LocalDateFilter updateAt;
 
+    private LongFilter districtId;
+
     private LongFilter photosId;
 
     private LongFilter cityId;
-
-    private LongFilter districtId;
 
     private LongFilter streetId;
 
@@ -343,6 +343,14 @@ public class HouseCriteria implements Serializable {
         this.updateAt = updateAt;
     }
 
+    public LongFilter getDistrictId() {
+        return districtId;
+    }
+
+    public void setDistrictId(LongFilter districtId) {
+        this.districtId = districtId;
+    }
+
     public LongFilter getPhotosId() {
         return photosId;
     }
@@ -357,14 +365,6 @@ public class HouseCriteria implements Serializable {
 
     public void setCityId(LongFilter cityId) {
         this.cityId = cityId;
-    }
-
-    public LongFilter getDistrictId() {
-        return districtId;
-    }
-
-    public void setDistrictId(LongFilter districtId) {
-        this.districtId = districtId;
     }
 
     public LongFilter getStreetId() {
@@ -427,9 +427,9 @@ public class HouseCriteria implements Serializable {
                 (statusType != null ? "statusType=" + statusType + ", " : "") +
                 (createAt != null ? "createAt=" + createAt + ", " : "") +
                 (updateAt != null ? "updateAt=" + updateAt + ", " : "") +
+                (districtId != null ? "districtId=" + districtId + ", " : "") +
                 (photosId != null ? "photosId=" + photosId + ", " : "") +
                 (cityId != null ? "cityId=" + cityId + ", " : "") +
-                (districtId != null ? "districtId=" + districtId + ", " : "") +
                 (streetId != null ? "streetId=" + streetId + ", " : "") +
                 (projectId != null ? "projectId=" + projectId + ", " : "") +
                 (createById != null ? "createById=" + createById + ", " : "") +

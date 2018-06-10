@@ -69,14 +69,14 @@ export class DistrictUpdate extends React.Component<IDistrictUpdateProps, IDistr
   };
 
   regionUpdate = element => {
-    const name = element.target.value.toString();
-    if (name === '') {
+    const id = element.target.value.toString();
+    if (id === '') {
       this.setState({
         regionId: -1
       });
     } else {
       for (const i in this.props.regions) {
-        if (name === this.props.regions[i].name.toString()) {
+        if (id === this.props.regions[i].id.toString()) {
           this.setState({
             regionId: this.props.regions[i].id
           });
@@ -155,7 +155,7 @@ export class DistrictUpdate extends React.Component<IDistrictUpdateProps, IDistr
                   <AvField id="district-updateAt" type="date" className="form-control" name="updateAt" />
                 </AvGroup>
                 <AvGroup>
-                  <Label for="region.name">
+                  <Label for="region.id">
                     <Translate contentKey="landexpApp.district.region">Region</Translate>
                   </Label>
                   <AvInput id="district-region" type="select" className="form-control" name="regionId" onChange={this.regionUpdate}>
@@ -163,7 +163,7 @@ export class DistrictUpdate extends React.Component<IDistrictUpdateProps, IDistr
                     {regions
                       ? regions.map(otherEntity => (
                           <option value={otherEntity.id} key={otherEntity.id}>
-                            {otherEntity.name}
+                            {otherEntity.id}
                           </option>
                         ))
                       : null}
