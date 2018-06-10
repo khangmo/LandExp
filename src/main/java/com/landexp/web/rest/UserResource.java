@@ -6,6 +6,7 @@ import com.landexp.domain.User;
 import com.landexp.repository.UserRepository;
 import com.landexp.repository.search.UserSearchRepository;
 import com.landexp.security.AuthoritiesConstants;
+import com.landexp.security.SecurityUtils;
 import com.landexp.service.MailService;
 import com.landexp.service.UserService;
 import com.landexp.service.dto.UserDTO;
@@ -151,7 +152,12 @@ public class UserResource {
     @GetMapping("/users")
     @Timed
     public ResponseEntity<List<UserDTO>> getAllUsers(Pageable pageable) {
-        final Page<UserDTO> page = userService.getAllManagedUsers(pageable);
+        Page<UserDTO> page;
+        if (SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN)) {
+            page = userService.getAllManagedUsers(pageable);
+        } else {
+            page = userService.getAllManagedUsersNotAdmin(pageable);
+        }
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/users");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

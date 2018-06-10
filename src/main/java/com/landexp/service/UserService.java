@@ -231,6 +231,11 @@ public class UserService {
     }
 
     @Transactional(readOnly = true)
+    public Page<UserDTO> getAllManagedUsersNotAdmin(Pageable pageable) {
+        return userRepository.findAllByLoginNotAndAuthoritiesNameNot(pageable, Constants.ANONYMOUS_USER, AuthoritiesConstants.ADMIN).map(UserDTO::new);
+    }
+
+    @Transactional(readOnly = true)
     public Optional<User> getUserWithAuthoritiesByLogin(String login) {
         return userRepository.findOneWithAuthoritiesByLogin(login);
     }
@@ -264,6 +269,16 @@ public class UserService {
      * @return a list of all the authorities
      */
     public List<String> getAuthorities() {
-        return authorityRepository.findAll().stream().map(Authority::getName).collect(Collectors.toList());
+        List<String> authorities = authorityRepository.findAll().stream().map(Authority::getName).collect(Collectors.toList());
+        if (SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN)) {
+            return authorities;
+        } else if (SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.MANAGER)) {
+            authorities.remove("ROLE_ADMIN");
+            return authorities;
+        } else {
+            authorities.remove("ROLE_ADMIN");
+            authorities.remove("ROLE_MANAGER");
+            return authorities;
+        }
     }
 }
