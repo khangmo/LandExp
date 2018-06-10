@@ -30,7 +30,6 @@ entity Street {
 }
 
 relationship ManyToOne {
-   District{region(name)} to Region,
    District{city(name)} to City,
    Street{district(name)} to District
 }
@@ -46,6 +45,11 @@ relationship ManyToOne {
 
 relationship ManyToMany {
    UserRegion{region(name)} to Region
+}
+
+relationship OneToMany {
+   Region{districts} to District,
+   District{houses} to House
 }
 
 enum UserActionType {
@@ -114,7 +118,6 @@ entity ServiceFee {
 
 relationship ManyToOne {
    House{city(name)} to City,
-   House{district(name)} to District,
    House{street(name)} to Street,
    House{project(name)} to LandProject,
    House{createBy(login)} to User,
