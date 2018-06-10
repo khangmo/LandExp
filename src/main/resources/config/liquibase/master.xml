@@ -46,5 +46,6 @@
     <include file="config/liquibase/changelog/20180607131201_added_entity_constraints_HousePhoto.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180609031328_added_entity_constraints_LandProject.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180609031329_added_entity_constraints_LandProjectPhoto.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180607131153_added_entity_constraints_Region.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

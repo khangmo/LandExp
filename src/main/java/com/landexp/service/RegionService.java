@@ -67,6 +67,15 @@ public class RegionService {
             .map(regionMapper::toDto);
     }
 
+    /**
+     * Get all the Region with eager load of many-to-many relationships.
+     *
+     * @return the list of entities
+     */
+    public Page<RegionDTO> findAllWithEagerRelationships(Pageable pageable) {
+        return regionRepository.findAllWithEagerRelationships(pageable).map(regionMapper::toDto);
+    }
+    
 
     /**
      * Get one region by id.
@@ -77,7 +86,7 @@ public class RegionService {
     @Transactional(readOnly = true)
     public Optional<RegionDTO> findOne(Long id) {
         log.debug("Request to get Region : {}", id);
-        return regionRepository.findById(id)
+        return regionRepository.findOneWithEagerRelationships(id)
             .map(regionMapper::toDto);
     }
 

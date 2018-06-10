@@ -8,7 +8,7 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity Region and its DTO RegionDTO.
  */
-@Mapper(componentModel = "spring", uses = {})
+@Mapper(componentModel = "spring", uses = {UserMapper.class})
 public interface RegionMapper extends EntityMapper<RegionDTO, Region> {
 
 

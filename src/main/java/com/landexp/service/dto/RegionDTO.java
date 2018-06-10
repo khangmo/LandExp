@@ -2,6 +2,8 @@ package com.landexp.service.dto;
 
 import java.time.LocalDate;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -18,6 +20,8 @@ public class RegionDTO implements Serializable {
     private LocalDate createAt;
 
     private LocalDate updateAt;
+
+    private Set<UserDTO> users = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -57,6 +61,14 @@ public class RegionDTO implements Serializable {
 
     public void setUpdateAt(LocalDate updateAt) {
         this.updateAt = updateAt;
+    }
+
+    public Set<UserDTO> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<UserDTO> users) {
+        this.users = users;
     }
 
     @Override

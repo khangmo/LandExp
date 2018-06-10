@@ -19,5 +19,4 @@ public interface HouseRepository extends JpaRepository<House, Long>, JpaSpecific
     @Query("select house from House house where house.updateBy.login = ?#{principal.username}")
     List<House> findByUpdateByIsCurrentUser();
 
-    List<House> findByUpdateByIsCurrentUser();
 }

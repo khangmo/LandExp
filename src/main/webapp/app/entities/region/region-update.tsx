@@ -8,6 +8,8 @@ import { Translate, translate, ICrudGetAction, ICrudGetAllAction, ICrudPutAction
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { IRootState } from 'app/shared/reducers';
 
+import { IUser } from 'app/shared/model/user.model';
+import { getUsers } from 'app/modules/administration/user-management/user-management.reducer';
 import { getEntity, updateEntity, createEntity, reset } from './region.reducer';
 import { IRegion } from 'app/shared/model/region.model';
 // tslint:disable-next-line:no-unused-variable
@@ -18,12 +20,14 @@ export interface IRegionUpdateProps extends StateProps, DispatchProps, RouteComp
 
 export interface IRegionUpdateState {
   isNew: boolean;
+  idsuser: any[];
 }
 
 export class RegionUpdate extends React.Component<IRegionUpdateProps, IRegionUpdateState> {
   constructor(props) {
     super(props);
     this.state = {
+      idsuser: [],
       isNew: !this.props.match.params || !this.props.match.params.id
     };
   }
@@ -34,6 +38,8 @@ export class RegionUpdate extends React.Component<IRegionUpdateProps, IRegionUpd
     } else {
       this.props.getEntity(this.props.match.params.id);
     }
+
+    this.props.getUsers();
   }
 
   saveEntity = (event, errors, values) => {
@@ -57,9 +63,41 @@ export class RegionUpdate extends React.Component<IRegionUpdateProps, IRegionUpd
     this.props.history.push('/entity/region');
   };
 
+  userUpdate = element => {
+    const selected = Array.from(element.target.selectedOptions).map((e: any) => e.value);
+    this.setState({
+      idsuser: keysToValues(selected, this.props.users, 'login')
+    });
+  };
+
+  displayuser(value: any) {
+    if (this.state.idsuser && this.state.idsuser.length !== 0) {
+      const list = [];
+      for (const i in this.state.idsuser) {
+        if (this.state.idsuser[i]) {
+          list.push(this.state.idsuser[i].login);
+        }
+      }
+      return list;
+    }
+    if (value.users && value.users.length !== 0) {
+      const list = [];
+      for (const i in value.users) {
+        if (value.users[i]) {
+          list.push(value.users[i].login);
+        }
+      }
+      this.setState({
+        idsuser: keysToValues(list, this.props.users, 'login')
+      });
+      return list;
+    }
+    return null;
+  }
+
   render() {
     const isInvalid = false;
-    const { region, loading, updating } = this.props;
+    const { region, users, loading, updating } = this.props;
     const { isNew } = this.state;
 
     return (
@@ -109,6 +147,30 @@ export class RegionUpdate extends React.Component<IRegionUpdateProps, IRegionUpd
                   </Label>
                   <AvField id="region-updateAt" type="date" className="form-control" name="updateAt" />
                 </AvGroup>
+                <AvGroup>
+                  <Label for="users">
+                    <Translate contentKey="landexpApp.region.user">User</Translate>
+                  </Label>
+                  <AvInput
+                    id="region-user"
+                    type="select"
+                    multiple
+                    className="form-control"
+                    name="fakeusers"
+                    value={this.displayuser(region)}
+                    onChange={this.userUpdate}
+                  >
+                    <option value="" key="0" />
+                    {users
+                      ? users.map(otherEntity => (
+                          <option value={otherEntity.login} key={otherEntity.id}>
+                            {otherEntity.login}
+                          </option>
+                        ))
+                      : null}
+                  </AvInput>
+                  <AvInput id="region-user" type="hidden" name="users" value={this.state.idsuser} />
+                </AvGroup>
                 <Button tag={Link} id="cancel-save" to="/entity/region" replace color="info">
                   <FontAwesomeIcon icon="arrow-left" />&nbsp;
                   <span className="d-none d-md-inline">
@@ -130,12 +192,14 @@ export class RegionUpdate extends React.Component<IRegionUpdateProps, IRegionUpd
 }
 
 const mapStateToProps = (storeState: IRootState) => ({
+  users: storeState.userManagement.users,
   region: storeState.region.entity,
   loading: storeState.region.loading,
   updating: storeState.region.updating
 });
 
 const mapDispatchToProps = {
+  getUsers,
   getEntity,
   updateEntity,
   createEntity,

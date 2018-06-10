@@ -23,6 +23,14 @@
             "relationshipName": "districts",
             "otherEntityName": "district",
             "otherEntityRelationshipName": "region"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "",
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "otherEntityField": "login",
+            "ownerSide": true
         }
     ],
     "changelogDate": "20180607131153",

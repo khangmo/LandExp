@@ -88,14 +88,20 @@ public class RegionResource {
      * GET  /regions : get all the regions.
      *
      * @param pageable the pagination information
+     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many)
      * @return the ResponseEntity with status 200 (OK) and the list of regions in body
      */
     @GetMapping("/regions")
     @Timed
-    public ResponseEntity<List<RegionDTO>> getAllRegions(Pageable pageable) {
+    public ResponseEntity<List<RegionDTO>> getAllRegions(Pageable pageable, @RequestParam(required = false, defaultValue = "false") boolean eagerload) {
         log.debug("REST request to get a page of Regions");
-        Page<RegionDTO> page = regionService.findAll(pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/regions");
+        Page<RegionDTO> page;
+        if (eagerload) {
+            page = regionService.findAllWithEagerRelationships(pageable);
+        } else {
+            page = regionService.findAll(pageable);
+        }
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, String.format("/api/regions?eagerload=%b", eagerload));
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 

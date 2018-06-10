@@ -56,6 +56,19 @@ export class RegionDetail extends React.Component<IRegionDetailProps> {
             <dd>
               <TextFormat value={region.updateAt} type="date" format={APP_LOCAL_DATE_FORMAT} />
             </dd>
+            <dt>
+              <Translate contentKey="landexpApp.region.user">User</Translate>
+            </dt>
+            <dd>
+              {region.users
+                ? region.users.map((val, i) => (
+                    <span key={val.id}>
+                      <a>{val.login}</a>
+                      {i === region.users.length - 1 ? '' : ', '}
+                    </span>
+                  ))
+                : null}{' '}
+            </dd>
           </dl>
           <Button tag={Link} to="/entity/region" replace color="info">
             <FontAwesomeIcon icon="arrow-left" />{' '}

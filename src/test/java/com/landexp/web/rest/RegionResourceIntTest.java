@@ -13,6 +13,7 @@ import com.landexp.web.rest.errors.ExceptionTranslator;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -29,6 +30,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -64,11 +66,14 @@ public class RegionResourceIntTest {
 
     @Autowired
     private RegionRepository regionRepository;
-
+    @Mock
+    private RegionRepository regionRepositoryMock;
 
     @Autowired
     private RegionMapper regionMapper;
     
+    @Mock
+    private RegionService regionServiceMock;
 
     @Autowired
     private RegionService regionService;
@@ -193,6 +198,36 @@ public class RegionResourceIntTest {
             .andExpect(jsonPath("$.[*].updateAt").value(hasItem(DEFAULT_UPDATE_AT.toString())));
     }
     
+    public void getAllRegionsWithEagerRelationshipsIsEnabled() throws Exception {
+        RegionResource regionResource = new RegionResource(regionServiceMock);
+        when(regionServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
+
+        MockMvc restRegionMockMvc = MockMvcBuilders.standaloneSetup(regionResource)
+            .setCustomArgumentResolvers(pageableArgumentResolver)
+            .setControllerAdvice(exceptionTranslator)
+            .setConversionService(createFormattingConversionService())
+            .setMessageConverters(jacksonMessageConverter).build();
+
+        restRegionMockMvc.perform(get("/api/regions?eagerload=true"))
+        .andExpect(status().isOk());
+
+        verify(regionServiceMock, times(1)).findAllWithEagerRelationships(any());
+    }
+
+    public void getAllRegionsWithEagerRelationshipsIsNotEnabled() throws Exception {
+        RegionResource regionResource = new RegionResource(regionServiceMock);
+            when(regionServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
+            MockMvc restRegionMockMvc = MockMvcBuilders.standaloneSetup(regionResource)
+            .setCustomArgumentResolvers(pageableArgumentResolver)
+            .setControllerAdvice(exceptionTranslator)
+            .setConversionService(createFormattingConversionService())
+            .setMessageConverters(jacksonMessageConverter).build();
+
+        restRegionMockMvc.perform(get("/api/regions?eagerload=true"))
+        .andExpect(status().isOk());
+
+            verify(regionServiceMock, times(1)).findAllWithEagerRelationships(any());
+    }
 
     @Test
     @Transactional
