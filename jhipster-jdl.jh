@@ -34,17 +34,9 @@ relationship ManyToOne {
    Street{district(name)} to District
 }
 
-entity UserRegion {
-   createAt LocalDate,
-   updateAt LocalDate
-}
-
-relationship ManyToOne {
-   UserRegion{user(login)} to User
-}
 
 relationship ManyToMany {
-   UserRegion{region(name)} to Region
+   Region{user(login)} to User
 }
 
 relationship OneToMany {
@@ -358,7 +350,7 @@ relationship ManyToOne {
 }
 
 // Set pagination options
-paginate Region, District, Street, UserRegion, House, HouseTracking, HousePhoto with pagination
+paginate Region, District, Street, House, HouseTracking, HousePhoto with pagination
 
 paginate LandProject, Article, Category, SearchTracking, Banner with pagination
 
