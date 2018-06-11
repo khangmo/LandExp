@@ -8,7 +8,7 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { NavLink as Link } from 'react-router-dom';
 import LoadingBar from 'react-redux-loading-bar';
 
-import { Home, Brand } from './header-components';
+import { Home, BreadcrumbComponent } from './header-components';
 import { AdminMenu, EntitiesMenu, AccountMenu, LocaleMenu } from './menus';
 
 export interface IHeaderProps {
@@ -34,31 +34,29 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
     this.props.onLocaleChange(event.target.value);
   };
 
-  renderDevRibbon = () =>
-    this.props.isInProduction === false ? (
-      <div className="ribbon dev">
-        <a href="">
-          <Translate contentKey={`global.ribbon.${this.props.ribbonEnv}`} />
-        </a>
-      </div>
-    ) : null;
-
   toggleMenu = () => {
     this.setState({ menuOpen: !this.state.menuOpen });
   };
 
   render() {
     const { currentLocale, isAuthenticated, isAdmin, isSwaggerEnabled, isInProduction } = this.props;
-
-    /* jhipster-needle-add-element-to-menu - JHipster will add new menu items here */
-
+    const layout = [
+        {
+          label: "Home",
+          url: "/",
+          active: false
+        }, {
+          label: "Home-ListView",
+          url: "/",
+          active: true
+        }
+      ];
     return (
       <div id="app-header">
-        {this.renderDevRibbon()}
         <LoadingBar className="loading-bar" />
         <Navbar dark expand="sm" fixed="top" className="jh-navbar">
           <NavbarToggler aria-label="Menu" onClick={this.toggleMenu} />
-          <Brand />
+          <BreadcrumbComponent layout={layout} />
           <Collapse isOpen={this.state.menuOpen} navbar>
             <Nav id="header-tabs" className="ml-auto" navbar>
               <Home />

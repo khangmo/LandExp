@@ -1,0 +1,55 @@
+.menu-on-banner {
+  padding: 0.3em;
+  margin-bottom: 0;
+  list-style: none;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.menu-on-banner li {
+  margin-left: 1.5rem;
+  box-sizing: border-box;
+  list-style: none;
+
+  display: inline-flex;
+  align-items: center;
+  height: 38px;
+}
+
+.menu-on-banner li a {
+  color: inherit;
+
+  padding-right: .5rem;
+  padding-left: .5rem;
+
+  font-weight: 400;
+
+  color: #454545!important;
+  text-decoration: none;
+}
+
+.menu-on-banner li a span {
+  font-weight: bold;
+}
+
+.menu-on-banner li a span.second {
+  color: #009cd8;
+}
+
+.menu-on-banner li button {
+  border-radius: 18px;
+  color: white;
+  font-weight: bold;
+}
+
+.menu-on-banner li button:hover {
+  color: white;
+}
+
+.menu-on-banner .on-left {
+  float: left;
+}
+
+.menu-on-banner .on-right {
+  float: right;
+}

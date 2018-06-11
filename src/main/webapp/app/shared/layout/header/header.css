@@ -1,41 +1,31 @@
 /* ==========================================================================
-Developement Ribbon
-========================================================================== */
-.ribbon {
-  background-color: rgba(170, 0, 0, 0.5);
-  left: -3.5em;
-  -moz-transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-  overflow: hidden;
-  position: absolute;
-  top: 30px;
-  white-space: nowrap;
-  width: 15em;
-  z-index: 99999;
-  pointer-events: none;
-  opacity: 0.75;
-}
-.ribbon a {
-  color: #fff;
-  display: block;
-  font-weight: 400;
-  margin: 1px 0;
-  padding: 10px 50px;
-  text-align: center;
-  text-decoration: none;
-  text-shadow: 0 0 5px #444;
-  pointer-events: none;
-}
-/* ==========================================================================
 Navbar styles
 ========================================================================== */
 .jh-navbar {
-  background-color: #353d47;
-  padding: 0.2em 1em;
+  padding: 0.2em 0;
+  background-image: -webkit-linear-gradient(top,#fff 0,#f8f8f8 100%);
+  border-bottom: 1px solid #c3c3c3;
 }
+
+.jh-navbar .breadcrumb {
+  margin-bottom: 0;
+  background-image: -webkit-linear-gradient(top,#fff 0,#f8f8f8 100%);
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+  content: ">";
+}
+
+.navbar-collapse ul li a {
+  color: #428bca!important;
+  text-decoration: none;
+}
+
+.navbar-collapse ul li a:hover {
+  color: #2a6496!important;
+  text-decoration: underline;
+}
+
 .jh-navbar .profile-image {
   margin: -10px 0px;
   height: 40px;
@@ -51,7 +41,7 @@ Navbar styles
   margin-left: 0.15em;
 }
 .jh-navbar ul.navbar-nav {
-  padding: 0.5em;
+  padding: 0.3em;
 }
 .jh-navbar ul.navbar-nav .nav-item {
   margin-left: 1.5rem;

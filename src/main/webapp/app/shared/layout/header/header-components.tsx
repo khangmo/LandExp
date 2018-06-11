@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Translate } from 'react-jhipster';
 
-import { UncontrolledDropdown, DropdownToggle, DropdownMenu, NavItem, NavLink, NavbarBrand } from 'reactstrap';
+import { UncontrolledDropdown, DropdownToggle, DropdownMenu, NavItem, NavLink, NavbarBrand, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { NavLink as Link } from 'react-router-dom';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 
@@ -25,14 +25,23 @@ export const BrandIcon = props => (
   </div>
 );
 
+export const BreadcrumbComponent = props => (
+  <Breadcrumb>
+  { props.layout.map((item) =>
+    (item.active ?
+      (<BreadcrumbItem active>{ item.label }</BreadcrumbItem>)
+      :
+      (<BreadcrumbItem><a href={ item.url }>{ item.label }</a></BreadcrumbItem>)
+    ) )
+  }
+  </Breadcrumb>
+);
+
 export const Brand = props => (
-  <NavbarBrand tag={Link} to="/" className="brand-logo">
-    <BrandIcon />
-    <span className="brand-title">
-      <Translate contentKey="global.title">Landexp</Translate>
-    </span>
-    <span className="navbar-version">{appConfig.VERSION}</span>
-  </NavbarBrand>
+  <Breadcrumb>
+    <BreadcrumbItem><a href="#">All Page</a></BreadcrumbItem>
+    <BreadcrumbItem active>Library</BreadcrumbItem>
+  </Breadcrumb>
 );
 
 export const Home = props => (

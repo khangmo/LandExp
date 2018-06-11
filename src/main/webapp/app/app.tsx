@@ -16,6 +16,10 @@ import { hasAnyAuthority } from 'app/shared/auth/private-route';
 import { AUTHORITIES } from 'app/config/constants';
 import AppRoutes from 'app/routes';
 
+import { MenuOnBanner } from 'app/shared/layout/banner/menu/menu-on-banner';
+
+import { Banner } from 'app/shared/layout/banner/banner';
+
 export interface IAppProps extends StateProps, DispatchProps {}
 
 export class App extends React.Component<IAppProps> {
@@ -26,6 +30,9 @@ export class App extends React.Component<IAppProps> {
 
   render() {
     const paddingTop = '60px';
+    const padding = '40px 40px 0 40px';
+    const border = '1px solid #c3c3c3';
+    const borderRadius = '3px';
     return (
       <Router>
         <div className="app-container" style={{ paddingTop }}>
@@ -39,8 +46,9 @@ export class App extends React.Component<IAppProps> {
             isInProduction={this.props.isInProduction}
             isSwaggerEnabled={this.props.isSwaggerEnabled}
           />
-          <div className="container-fluid view-container" id="app-view-container">
-            <Card className="jh-card">
+          <div className="container-fluid view-container" id="app-view-container" style={{ padding }}>
+            <Card className="jh-card" style={{ border, borderRadius }}>
+              <MenuOnBanner />
               <AppRoutes />
             </Card>
             <Footer />
